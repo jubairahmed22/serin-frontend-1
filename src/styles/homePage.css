@@ -1,0 +1,31 @@
+.popularBooksTitle{
+    color: #282828;
+    font-size: 32px;
+}
+.buttonPopular{
+   background-color: #50C878;
+   font-size: 14px;
+   color: white;
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+  color: #4f46e5; /* indigo-600 */
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-button-next::after, 
+.swiper-button-prev::after {
+  font-size: 1.2rem;
+}
+
+.swiper {
+  padding: 20px 10px;
+}
+.authorTitle{
+  font-size: 14px;
+}
