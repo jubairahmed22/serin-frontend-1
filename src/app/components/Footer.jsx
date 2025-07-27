@@ -1,61 +1,75 @@
-import React from 'react';
-import logo from '../../assets/book_forest.png';
-import '../../styles/footer.css';
+import React from "react";
+import logo from "../../assets/book_forest.png";
+import "../../styles/footer.css";
 
 const Footer = () => {
-    return (
-        <div className='bg-[#282828] w-full fontPoppins '>
-              <div className='max-w-[1400px] h-[313px] py-10 flex flex-row justify-between mx-auto'>
-                 <div className=' flex flex-col '>
-                     <img className='w-[182px] h-[180px] ' src={logo.src} alt=''></img>
-                     <p className='text-[12px] text-[#848484]'>Sector-06, Uttara, Dhaka - 1230</p>
-                 </div>
-                 <div className='border-l pl-10 border-[#444444]'>
-                    <h1 className='text-white text-[17px] font-semibold fontPoppins'>Need Help</h1>
-                    <h1 className='text-[32px] font-bold mt-4 text-[#50C878]'>+880-1763427561</h1>
-                    <div className='mt-2 flex flex-col gap-3'>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Sunday - Friday: 9:00 - 20:00</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Saturday: 11:00 - 15:00</h1>
-                    </div>
-                 </div>
-                 <div>
-                    <h1 className='text-white text-[17px] font-semibold fontPoppins'>Explore</h1>
-                    <div className='mt-4 flex flex-col gap-3'>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>About us</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Sitemap</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Bookmarks</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Sign in/Join</h1>
-                    </div>
-                 </div>
-                 <div>
-                    <h1 className='text-white text-[17px] font-semibold fontPoppins'>Our Service</h1>
-                    <div className='mt-4 flex flex-col gap-3'>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Help Center</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Returns</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Product Recalls</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Accessibility</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Contact Us</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Store Pickup</h1>
-                    </div>
-                 </div>
-                 <div>
-                    <h1 className='text-white text-[17px] font-semibold fontPoppins'>Categories</h1>
-                    <div className='mt-4 flex flex-col gap-3'>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Action</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Comedy</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Drama</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Horror</h1>
-                        <h1 className='text-[16px] font-medium  text-[#8F8F8F]'>Kids</h1>
-                    </div>
-                 </div>
-              </div>
-              <div className='w-full border-t border-t-[#444444]'>
-                <div className='max-w-[1400px] h-[110px] py-5   flex flex-row justify-between mx-auto'>
-                  <h1 className='text-[17px] text-white'>Copyright 2025 <span className='text-[#50C878]'>Bookforrest</span>. All rights reserved. </h1>
-              </div>
-              </div>
-        </div>
-    );
+  return (
+    <div className="bg-[#282828] text-white fontPoppins w-full">
+  <div className="max-w-[1400px] w-full mx-auto px-4 py-10">
+    <div className="gridCustom">
+      {/* Logo & Address */}
+      <div className="flex flex-col items-start">
+        <img src={logo.src} alt="Bookforrest Logo" className="w-[150px] h-auto mb-4" />
+        <p className="text-sm text-[#b3b3b3]">Sector-06, Uttara, Dhaka - 1230</p>
+      </div>
+
+      {/* Need Help */}
+      <div>
+        <h2 className="text-lg font-semibold mb-4">Need Help</h2>
+        <p className="text-2xl font-bold text-[#50C878] mb-2">+880-1763427561</p>
+        <p className="text-sm text-[#b3b3b3]">Sunday - Friday: 9:00 - 20:00</p>
+        <p className="text-sm text-[#b3b3b3]">Saturday: 11:00 - 15:00</p>
+      </div>
+
+      {/* Explore */}
+      <div>
+        <h2 className="text-lg font-semibold mb-4">Explore</h2>
+        <ul className="space-y-2 text-sm text-[#b3b3b3]">
+          <li>About Us</li>
+          <li>Sitemap</li>
+          <li>Bookmarks</li>
+          <li>Sign In / Join</li>
+        </ul>
+      </div>
+
+      {/* Services */}
+      <div>
+        <h2 className="text-lg font-semibold mb-4">Our Services</h2>
+        <ul className="space-y-2 text-sm text-[#b3b3b3]">
+          <li>Help Center</li>
+          <li>Returns</li>
+          <li>Product Recalls</li>
+          <li>Accessibility</li>
+          <li>Contact Us</li>
+          <li>Store Pickup</li>
+        </ul>
+      </div>
+
+      {/* Categories */}
+      <div>
+        <h2 className="text-lg font-semibold mb-4">Categories</h2>
+        <ul className="space-y-2 text-sm text-[#b3b3b3]">
+          <li>Action</li>
+          <li>Comedy</li>
+          <li>Drama</li>
+          <li>Horror</li>
+          <li>Kids</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {/* Bottom Bar */}
+  <div className="border-t border-[#444]">
+    <div className="max-w-[1400px] mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center">
+      <p className="text-sm text-[#b3b3b3] text-center sm:text-left">
+        © 2025 <span className="text-[#50C878]">Bookforrest</span>. All rights reserved.
+      </p>
+    </div>
+  </div>
+</div>
+
+  );
 };
 
 export default Footer;

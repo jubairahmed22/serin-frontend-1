@@ -14,9 +14,9 @@ const Specification = ({ product }) => {
   ];
 
   return (
-    <div className='flex flex-row gap-5'>
-        <div className="product-specifications w-[60%] fontPoppins border border-[#E6E6E6] rounded-xl">
-      <h3 className='px-6 py-4'>Books Specifications</h3>
+    <div className='flex flex-row layoutFlexOne gap-5'>
+      <div className="product-specifications lg:w-[60%] md:w-[100%] sm:w-[100%] fontPoppins border border-[#E6E6E6] rounded-xl">
+      <h3 className='px-6 py-4 dark:text-black'>Books Specifications</h3>
       <div className="specifications-table">
         {specifications.map((spec, index) => (
           <div 
@@ -53,7 +53,7 @@ const Specification = ({ product }) => {
         ))}
       </div>
     </div>
-     <div className='w-[40%] rounded-xl border border-[#E6E6E6]  p-5'>
+     <div className='lg:w-[60%] md:w-[100%] sm:w-[100%] rounded-xl border border-[#E6E6E6]  p-5'>
          <AuthorProfile product={product}></AuthorProfile>
      </div>
      

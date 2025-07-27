@@ -163,7 +163,7 @@ const AddProductForm = ({ onClose }) => {
     // Validate category selections
     if (!selectedCategory) return toast.error("Please select a category");
     if (!selectedSubCategory) return toast.error("Please select a sub-category");
-    if (!selectedChildCategory) return toast.error("Please select a child category");
+    // if (!selectedChildCategory) return toast.error("Please select a child category");
 
     setIsLoading(true);
     const formDataToSend = new FormData();
@@ -182,9 +182,9 @@ const AddProductForm = ({ onClose }) => {
     formDataToSend.append("subCategoryId", selectedSubCategory.subCategoryId);
     formDataToSend.append("subCategoryObjectId", selectedSubCategory._id);
     formDataToSend.append("subCategoryTitle", selectedSubCategory.title);
-    formDataToSend.append("childCategoryId", selectedChildCategory.childCategoryId);
-    formDataToSend.append("childCategoryObjectId", selectedChildCategory._id);
-    formDataToSend.append("childCategoryTitle", selectedChildCategory.title);
+    formDataToSend.append("childCategoryId", selectedChildCategory?.childCategoryId || "");
+    formDataToSend.append("childCategoryObjectId", selectedChildCategory?._id || "");
+    formDataToSend.append("childCategoryTitle", selectedChildCategory?.title || "");
 
     // Handle author data - ensure we have both ID and name
     if (formData.authorId) {

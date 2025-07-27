@@ -1,96 +1,31 @@
+"use client";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 
 const avroMap = {
-  // Vowels (standalone)
-  a: "অ",
-  aa: "আ",
-  i: "ই",
-  ii: "ঈ",
-  ee: "ঈ",
-  u: "উ",
-  oo: "ঊ",
-  e: "এ",
-  oi: "ঐ",
-  o: "ও",
-  ou: "ঔ",
-  ri: "ঋ",
-
-  // Consonants
-  k: "ক",
-  kh: "খ",
-  g: "গ",
-  gh: "ঘ",
-  ng: "ঙ",
-  c: "চ",
-  ch: "ছ",
-  j: "জ",
-  jh: "ঝ",
-  ny: "ঞ",
-  t: "ত",
-  th: "থ",
-  d: "দ",
-  dh: "ধ",
-  n: "ন",
-  p: "প",
-  ph: "ফ",
-  f: "ফ",
-  b: "ব",
-  bh: "ভ",
-  m: "ম",
-  z: "জ",
-  r: "র",
-  l: "ল",
-  sh: "শ",
-  ss: "ষ",
-  s: "স",
-  h: "হ",
-  y: "য়",
-  w: "ও",
-  v: "ভ",
-  x: "ক্স",
-
-  // Numbers
-  0: "০",
-  1: "১",
-  2: "২",
-  3: "৩",
-  4: "৪",
-  5: "৫",
-  6: "৬",
-  7: "৭",
-  8: "৮",
-  9: "৯",
+  a: "অ", aa: "আ", i: "ই", ii: "ঈ", ee: "ঈ", u: "উ", oo: "ঊ",
+  e: "এ", oi: "ঐ", o: "ও", ou: "ঔ", ri: "ঋ",
+  k: "ক", kh: "খ", g: "গ", gh: "ঘ", ng: "ঙ", c: "চ", ch: "ছ",
+  j: "জ", jh: "ঝ", ny: "ঞ", t: "ত", th: "থ", d: "দ", dh: "ধ", n: "ন",
+  p: "প", ph: "ফ", f: "ফ", b: "ব", bh: "ভ", m: "ম", z: "জ",
+  r: "র", l: "ল", sh: "শ", ss: "ষ", s: "স", h: "হ", y: "য়",
+  w: "ও", v: "ভ", x: "ক্স",
+  0: "০", 1: "১", 2: "২", 3: "৩", 4: "৪", 5: "৫", 6: "৬", 7: "৭", 8: "৮", 9: "৯",
 };
 
 const vowelSigns = {
-  a: "",
-  aa: "া",
-  i: "ি",
-  ii: "ী",
-  ee: "ী",
-  u: "ু",
-  oo: "ূ",
-  e: "ে",
-  oi: "ৈ",
-  o: "ো",
-  ou: "ৌ",
-  ri: "ৃ",
+  a: "", aa: "া", i: "ি", ii: "ী", ee: "ী", u: "ু", oo: "ূ",
+  e: "ে", oi: "ৈ", o: "ো", ou: "ৌ", ri: "ৃ",
 };
 
-const isConsonant = (char) => {
-  return Object.keys(avroMap).includes(char) && !vowelSigns[char];
-};
+const isConsonant = (char) => Object.keys(avroMap).includes(char) && !vowelSigns[char];
 
 const transliterateToBanglaAvro = (text) => {
-  let result = "";
-  let buffer = "";
-  let lastCharWasConsonant = false;
+  let result = "", buffer = "", lastCharWasConsonant = false;
 
   const flushBuffer = () => {
     if (buffer) {
       if (vowelSigns[buffer] && lastCharWasConsonant) {
-        // Vowel sign
         result += vowelSigns[buffer];
       } else if (avroMap[buffer]) {
         result += avroMap[buffer];
@@ -106,13 +41,11 @@ const transliterateToBanglaAvro = (text) => {
   for (let i = 0; i < text.length; i++) {
     buffer += text[i].toLowerCase();
 
-    // Try 3-letter match
     if (buffer.length === 3 && (avroMap[buffer] || vowelSigns[buffer])) {
       flushBuffer();
       continue;
     }
 
-    // Try 2-letter match
     if (buffer.length >= 2) {
       const sub = buffer.slice(-2);
       if (avroMap[sub] || vowelSigns[sub]) {
@@ -121,7 +54,6 @@ const transliterateToBanglaAvro = (text) => {
       }
     }
 
-    // Try single char if buffer doesn't match next
     if (buffer.length >= 2 && !(avroMap[buffer] || vowelSigns[buffer])) {
       const oneChar = buffer[0];
       buffer = buffer.slice(1);
@@ -147,10 +79,11 @@ const InputFilter = () => {
   const [error, setError] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const [lastValidBanglaTerm, setLastValidBanglaTerm] = useState("");
-  const [searchMode, setSearchMode] = useState("english"); // 'english' or 'bangla'
+  const [searchMode, setSearchMode] = useState("english");
+  const [animatedPlaceholder, setAnimatedPlaceholder] = useState("");
+
   const dropdownRef = useRef(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -185,7 +118,6 @@ const InputFilter = () => {
       setLoading(true);
       setError(null);
       try {
-        // First try searching in English
         if (searchMode === "english") {
           const englishRes = await fetch(
             `https://books-server-001.vercel.app/api/admin/all-products?` +
@@ -205,12 +137,10 @@ const InputFilter = () => {
             return;
           }
 
-          // If no English results found, switch to Bangla search
           setSearchMode("bangla");
           return;
         }
 
-        // If in Bangla mode or no English results found
         if (searchMode === "bangla" && banglaSearchTerm) {
           const banglaRes = await fetch(
             `https://books-server-001.vercel.app/api/admin/all-products?` +
@@ -252,21 +182,51 @@ const InputFilter = () => {
     }
   };
 
+  // 🆕 Typewriter Placeholder Effect
+  useEffect(() => {
+    const fullText = "Search by book name ...";
+    let index = 0;
+    let isDeleting = false;
+
+    const type = () => {
+      setAnimatedPlaceholder(fullText.substring(0, index));
+
+      if (!isDeleting && index < fullText.length) {
+        index++;
+      } else if (isDeleting && index > 0) {
+        index--;
+      }
+
+      if (index === fullText.length) {
+        setTimeout(() => {
+          isDeleting = true;
+        }, 1000);
+      }
+
+      if (index === 0 && isDeleting) {
+        isDeleting = false;
+      }
+
+      const timeout = setTimeout(type, 100);
+      return () => clearTimeout(timeout);
+    };
+
+    const timeoutId = setTimeout(type, 300);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
-    <div
-      className="flex flex-col justify-center items-center w-full relative"
-      ref={dropdownRef}
-    >
-      <div className="relative w-full ">
+    <div className="flex flex-col justify-center items-center w-full relative" ref={dropdownRef}>
+      <div className="relative w-full">
         <input
           className="w-full bg-gray-100 h-12 rounded-full px-4 focus:outline-none 
                      border border-gray-300 focus:border-blue-500 text-gray-800
                      placeholder-gray-500 text-lg"
-          placeholder="Search products..."
+          placeholder={animatedPlaceholder}
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
-            setSearchMode("english"); // Reset to English search mode when typing
+            setSearchMode("english");
           }}
           onFocus={() => searchTerm && setShowDropdown(true)}
           onKeyDown={handleKeyDown}
@@ -287,9 +247,8 @@ const InputFilter = () => {
         )}
       </div>
 
-      {/* Dropdown */}
       {showDropdown && (
-        <div className="absolute top-14 w-full  bg-white shadow-lg rounded-md z-50 max-h-80 overflow-y-auto border border-gray-200">
+        <div className="absolute top-14 w-full bg-white shadow-lg rounded-md z-50 max-h-80 overflow-y-auto border border-gray-200">
           {loading ? (
             <div className="p-4 text-center">Searching...</div>
           ) : error ? (
@@ -299,7 +258,6 @@ const InputFilter = () => {
               {products.map((product) => (
                 <Link key={product._id} href={`/all-books/${product._id}`}>
                   <li
-                
                     className="p-3 hover:bg-blue-50 cursor-pointer border-b border-gray-100 flex items-center transition-colors"
                     onClick={() => handleProductSelect(product)}
                   >
@@ -337,12 +295,8 @@ const InputFilter = () => {
                 <div>No results found for "{searchTerm}" in English</div>
               ) : (
                 <>
-                  <div>
-                    No results found for "{lastValidBanglaTerm}" in Bangla
-                  </div>
-                  <div className="text-xs mt-1">
-                    Try using different keywords
-                  </div>
+                  <div>No results found for "{lastValidBanglaTerm}" in Bangla</div>
+                  <div className="text-xs mt-1">Try using different keywords</div>
                 </>
               )}
             </div>

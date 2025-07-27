@@ -36,8 +36,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 const PaginationButton = ({ page, isActive, direction, onClick }) => {
   const classNames = `relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
     isActive
-      ? "z-10 bg-blue-50 border-blue-500 text-blue-600 dark:bg-gray-700 dark:text-white"
-      : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+      ? "z-10 bg-blue-50 border-blue-500 text-blue-600 dark:bg-blue-100 dark:text-blue-800 dark:border-blue-300"
+      : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50 dark:bg-white dark:border-gray-300 dark:text-black dark:hover:bg-gray-100"
   }`;
 
   if (direction) {
@@ -61,7 +61,7 @@ const PaginationButton = ({ page, isActive, direction, onClick }) => {
 
 const PaginationIcon = ({ direction }) => (
   <svg
-    className="h-5 w-5"
+    className="h-5 w-5 text-gray-500 dark:text-black"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 20 20"
     fill="currentColor"

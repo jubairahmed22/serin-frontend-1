@@ -175,69 +175,69 @@ const DataDetails = ({ product }) => {
       <div className="flex flex-col gap-2 ">
         <h1 className="quantity font-semibold fontPoppins">Quantity</h1>
         <div className="flex flex-row gap-5">
-        <div className="flex flex-row items-center gap-1 rounded-full border border-gray-300 dark:border-gray-700 px-4 py-1 focus-within:ring-2 focus-within:ring-primary-500 focus-within:border-transparent transition-all duration-200 hover:border-gray-400 dark:hover:border-gray-600">
-          <button
-            onClick={handleDecrement}
-            disabled={quantity <= 1}
-            aria-label="Decrease quantity"
-            className={`p-1 cursor-pointer rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 transition-colors duration-200 ${
-              quantity <= 1
-                ? "opacity-50 cursor-not-allowed text-gray-400"
-                : "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
-            }`}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20 12H4"
-              />
-            </svg>
-          </button>
+       <div className="flex flex-row items-center gap-1 rounded-full border border-gray-300 dark:border-gray-300 px-4 py-1 focus-within:ring-2 focus-within:ring-primary-500 focus-within:border-transparent transition-all duration-200 hover:border-gray-400 dark:hover:border-gray-400 dark:bg-white">
+  <button
+    onClick={handleDecrement}
+    disabled={quantity <= 1}
+    aria-label="Decrease quantity"
+    className={`p-1 cursor-pointer rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 transition-colors duration-200 ${
+      quantity <= 1
+        ? "opacity-50 cursor-not-allowed text-gray-400"
+        : "hover:bg-gray-100 dark:hover:bg-gray-100 text-gray-700 dark:text-gray-900"
+    }`}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-4 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M20 12H4"
+      />
+    </svg>
+  </button>
 
-          <input
-            type="number"
-            value={quantity}
-            min="1"
-            max={product.stock}
-            onChange={handleInputChange}
-            aria-label="Quantity"
-            className="w-12 text-center bg-transparent border-none focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-          />
+  <input
+    type="number"
+    value={quantity}
+    min="1"
+    max={product.stock}
+    onChange={handleInputChange}
+    aria-label="Quantity"
+    className="w-12 text-center bg-transparent border-none focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none dark:text-gray-900"
+  />
 
-          <button
-            onClick={handleIncrement}
-            disabled={quantity >= product.stock}
-            aria-label="Increase quantity"
-            className={`p-1 cursor-pointer rounded-full focus:outline-none focus:ring-2 focus:ring-gray-50 focus:ring-opacity-50 transition-colors duration-200 ${
-              quantity >= product.stock
-                ? "opacity-50 cursor-not-allowed text-gray-400"
-                : "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
-            }`}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-          </button>
-        </div>
+  <button
+    onClick={handleIncrement}
+    disabled={quantity >= product.stock}
+    aria-label="Increase quantity"
+    className={`p-1 cursor-pointer rounded-full focus:outline-none focus:ring-2 focus:ring-gray-50 focus:ring-opacity-50 transition-colors duration-200 ${
+      quantity >= product.stock
+        ? "opacity-50 cursor-not-allowed text-gray-400"
+        : "hover:bg-gray-100 dark:hover:bg-gray-100 text-gray-700 dark:text-gray-900"
+    }`}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M12 4v16m8-8H4"
+      />
+    </svg>
+  </button>
+</div>
 
         <div>
           <motion.button

@@ -1,0 +1,41 @@
+@media (min-width: 200px) and (max-width: 639px) {
+  .bigDisplay {
+    display: none;
+  }
+  .customWidth {
+    width: 0px;
+  }
+  .customLayout {
+    display: flex;
+    flex-direction: column;
+  }
+  .customGridBooks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 639px) and (max-width: 1040px) {
+  .bigDisplay {
+    display: none;
+  }
+  .customWidth {
+    width: 0px;
+  }
+  .customLayout {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 1040px) and (max-width: 1600px) {
+  .mobileDisplay {
+    display: none;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 2200px) {
+  .mobileDisplay {
+    display: none;
+  }
+}

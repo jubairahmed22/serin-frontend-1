@@ -60,7 +60,7 @@ const ProductBasicInfo = ({
   };
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 dark:text-black">
       <div className="grid grid-cols-2 gap-5">
         <div className="flex flex-col gap-5">
           <div className="w-full">
@@ -88,7 +88,7 @@ const ProductBasicInfo = ({
             <select
               value={formData.authorId || ""}
               onChange={handleAuthorChange}
-              className="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              className="block w-full px-4 dark:text-black py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
               required
               disabled={isFetchingAuthors}
             >

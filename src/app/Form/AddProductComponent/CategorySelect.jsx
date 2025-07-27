@@ -11,7 +11,7 @@ const CategorySelect = ({
 }) => {
   return (
     <div className="w-full">
-      <label className="block text-sm fontPoppins text-gray-800 mb-1">
+      <label className="block text-sm fontPoppins dark:text-black text-gray-800 mb-1">
         Select Category <span className="text-red-500">*</span>
       </label>
       <div className="relative rounded-md shadow-sm">
@@ -49,10 +49,10 @@ const CategorySelect = ({
               setSelectedCategory(selected);
               setSelectedSubCategory(null);
             }}
-            className="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            className="block w-full px-4 py-3 border dark:text-black border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
             required
           >
-            <option value="">Select a category</option>
+            <option value="dark:text-black">Select a category</option>
             {categories.map((category) => (
               <option key={category._id} value={category._id}>
                 {category.title}

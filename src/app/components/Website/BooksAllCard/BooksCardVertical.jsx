@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { toast } from "react-hot-toast"; // Optional: for showing notifications
+import '../../../../styles/homePage.css';
 
 import { useCart } from "../../../hooks/useCart";
 
@@ -194,7 +195,7 @@ const BooksCardVertical = ({ product }) => {
               onClick={handleCartAction}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className={`w-36 cursor-pointer mt-3 py-2 px-3 rounded-lg text-[12px] font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
+              className={`w-36 cursor-pointer cartButton mt-3 py-2 px-3 rounded-lg text-[12px] font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
                 productInCart
                   ? "bg-red-600 hover:bg-red-700 text-white"
                   : "bg-[#50C878] hover:bg-emerald-700 text-white"

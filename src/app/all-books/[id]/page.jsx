@@ -7,7 +7,7 @@ import ImageManagement from "../../components/Website/DetailsPage/ImageManagemen
 import DataDetails from "../../components/Website/DetailsPage/DataDetails";
 import Specification from "../../components/Website/DetailsPage/Specification";
 import RelatedProduct from "../../components/Website/DetailsPage/RelatedProduct";
-
+import "../../../styles/productDetails.css";
 import Link from "next/link";
 
 const ProductDetails = () => {
@@ -92,18 +92,18 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="bg-white w-full  flex flex-col gap-10">
-      <div className="max-w-[1400px]   mx-auto fontPoppins">
+    <div className="bg-white w-full  flex flex-col gap-10 px-4">
+      <div className="max-w-[1400px] mx-auto fontPoppins">
         <Breadcrumbs
           product={product}
           handleSubCategoryClick={handleSubCategoryClick}
           handleChildCategoryClick={handleChildCategoryClick}
         />
-        <div className="flex flex-row gap-5">
-          <div className="w-[60%] rounded-xl  my-2">
+        <div className="flex flex-row layoutFlexOne gap-5">
+          <div className="lg:w-[60%] md:w-full sm:w-full rounded-xl  my-2">
             <ImageManagement product={product}></ImageManagement>
           </div>
-          <div className="w-[40%] rounded-xl border border-[#E6E6E6] my-7 p-5">
+          <div className="lg:w-[60%] md:w-full sm:w-full rounded-xl border border-[#E6E6E6] my-7 p-5">
             <DataDetails product={product}></DataDetails>
           </div>
         </div>

@@ -136,7 +136,7 @@ const AddCreatePublisherForm = ({ onClose }) => {
   };
 
   return (
-    <div className="p-5">
+    <div className="p-5 dark:text-black">
       {/* Tab Content */}
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="flex flex-col">

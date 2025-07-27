@@ -28,6 +28,28 @@ body {
   color: white;
 }
 
+
+/* Responsive styles for screens up to 600px */
+@media screen and (max-width: 1000px) {
+  .navInfoText {
+    font-size: 10px; /* adjust as needed */
+    font-weight: 500; /* optional: slightly lighter */
+    text-align: center; /* optional: for better alignment on small screens */
+  }
+  .categorySection{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .phoneShow{
+    display: none;
+  }
+}
+
+
+
+
 .buttonCategory{
   background-color: #50C878;
 }

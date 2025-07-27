@@ -8,3 +8,13 @@
 .fontPoppins{
   font-family: 'Poppins', sans-serif;
 }
+
+/* tiptap.css */
+.ProseMirror {
+  min-height: 160px;
+  outline: none;
+}
+
+.ProseMirror:focus {
+  outline: none;
+}

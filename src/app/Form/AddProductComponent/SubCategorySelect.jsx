@@ -48,7 +48,7 @@ const SubCategorySelect = ({
               );
               setSelectedSubCategory(selected);
             }}
-            className="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            className="block w-full px-4 py-3 dark:text-black border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
             required
             disabled={!selectedCategory || subCategories.length === 0}
           >

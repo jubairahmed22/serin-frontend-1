@@ -155,6 +155,8 @@ const EditProductForm = ({ onClose }) => {
             `https://books-server-001.vercel.app/api/admin/all-products/${productId}`
           );
           const product = productResponse.data;
+          console.log("products", product);
+          
 
           // Set form data
           setFormData({
@@ -177,10 +179,10 @@ const EditProductForm = ({ onClose }) => {
             rating: product.rating || "",
             categoryId: product.parentCategory.id || "",
             categoryTitle: product.parentCategory.title || "",
-            subCategoryId: product.parentSubCategory.objectId || "",
+            subCategoryId: product.parentSubCategory?.objectId || "",
             subCategoryTitle: product.parentSubCategory.title || "",
-            childCategoryId: product.parentChildCategory.objectId || "",
-            childCategoryTitle: product.parentChildCategory.title || "",
+            childCategoryId: product.parentChildCategory?.objectId || "",
+            childCategoryTitle: product.parentChildCategory?.title || "",
           });
 
           setShowWebsite(product.showWebsite || false);
@@ -306,8 +308,8 @@ const EditProductForm = ({ onClose }) => {
     if (!selectedCategory) return toast.error("Please select a category");
     if (!selectedSubCategory)
       return toast.error("Please select a sub-category");
-    if (!selectedChildCategory)
-      return toast.error("Please select a child category");
+    // if (!selectedChildCategory)
+    //   return toast.error("Please select a child category");
 
     setIsLoading(true);
     const formDataToSend = new FormData();
@@ -325,8 +327,8 @@ const EditProductForm = ({ onClose }) => {
     formDataToSend.append("categoryTitle", selectedCategory.title);
     formDataToSend.append("subCategoryId", selectedSubCategory._id);
     formDataToSend.append("subCategoryTitle", selectedSubCategory.title);
-    formDataToSend.append("childCategoryId", selectedChildCategory._id);
-    formDataToSend.append("childCategoryTitle", selectedChildCategory.title);
+    formDataToSend.append("childCategoryId", selectedChildCategory?._id || "");
+    formDataToSend.append("childCategoryTitle", selectedChildCategory?.title || "");
 
     // Handle author data
     if (formData.authorId) {
@@ -545,7 +547,7 @@ const EditProductForm = ({ onClose }) => {
   };
 
   return (
-    <div className="m-5 p-6 bg-white rounded-xl">
+    <div className="m-5 p-6 bg-white dark:text-black rounded-xl">
         <div className="mb-8">
         <button
           onClick={handleBack}

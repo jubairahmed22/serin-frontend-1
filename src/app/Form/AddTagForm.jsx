@@ -40,7 +40,7 @@ const AddTagForm = ({ onClose, refreshTags }) => {
   };
 
   return (
-    <div className="p-5">
+    <div className="p-5 dark:text-black">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col">
           <div className="flex flex-row gap-5">

@@ -74,10 +74,16 @@ const RelatedProduct = ({ product, handleChildCategoryClick }) => {
   return (
     <div className="bg-[#F5F5F5] py-10 fontPoppins">
       <div className="max-w-[1400px] mx-auto px-4">
-        <div className="flex justify-between items-center mb-6">
-          <h3 className="RelatedProduct font-semibold">Related Products</h3>
+       
+        <div className="flex items-center w-full mb-6">
+          <h1 className="lg:text-3xl md:text-3xl sm:text-sm font-bold text-gray-900 whitespace-nowrap mr-4">
+            Related Products
+          </h1>
+
+          <div className="flex-grow h-px bg-gray-200 mx-8"></div>
+
           <button
-            className="button-view-all-product px-6 py-3 cursor-pointer rounded-full text-white"
+        className="px-6 py-3 buttonPopular hover:bg-green-600 cursor-pointer text-white font-medium rounded-full whitespace-nowrap transition-colors duration-300 shadow hover:shadow-md"
             onClick={() =>
               handleChildCategoryClick(
                 product.parentChildCategory,

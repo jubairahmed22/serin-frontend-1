@@ -6,6 +6,8 @@ import axios from "axios";
 import BooksData from "../components/Website/DataFiltered/BooksData";
 import PaginationCard from "../components/Website/Paginations/PaginationCard";
 import AllBooksFilter from "../components/Website/Filters/AllBooksFilter";
+import '../../styles/allBooks.css'
+
 
 const AllBooksPage = () => {
   const router = useRouter();
@@ -19,6 +21,7 @@ const AllBooksPage = () => {
   const [childCategories, setChildCategories] = useState([]);
   const [authors, setAuthors] = useState([]);
   const [publishers, setPublishers] = useState([]);
+  const [tags, setTags] = useState([]);
   const [initialLoading, setInitialLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(1);
   const [error, setError] = useState(null);
@@ -29,6 +32,7 @@ const AllBooksPage = () => {
   const [isFetchingChildCategories, setIsFetchingChildCategories] = useState(false);
   const [isFetchingAuthors, setIsFetchingAuthors] = useState(false);
   const [isFetchingPublishers, setIsFetchingPublishers] = useState(false);
+  const [isFetchingTags, setIsFetchingTags] = useState(false);
 
   // Get URL params
   const currentPage = parseInt(searchParams.get("page")) || 1;
@@ -37,6 +41,7 @@ const AllBooksPage = () => {
   const childCategoryParam = searchParams.get("childCategory") || "";
   const authorParam = searchParams.get("author") || "";
   const publisherParam = searchParams.get("publisher") || "";
+  const tagParam = searchParams.get("tag") || "";
   const popularBooksParam = searchParams.get("popularBooks") || "";
   const discountParam = searchParams.get("discount") || "";
   const dailyDealsParam = searchParams.get("dailyDeals") || "";
@@ -116,6 +121,12 @@ const AllBooksPage = () => {
     updateFilters(new URLSearchParams({ publisher: e.target.value }));
   };
 
+  const handleTagChange = (tagId) => {
+    const newParams = new URLSearchParams();
+    newParams.set("tag", tagId);
+    updateFilters(newParams);
+  };
+
   const handleSpecialFilterChange = (filterName) => (e) => {
     const newParams = new URLSearchParams();
     
@@ -165,22 +176,26 @@ const AllBooksPage = () => {
         setIsFetchingCategories(true);
         setIsFetchingAuthors(true);
         setIsFetchingPublishers(true);
+        setIsFetchingTags(true);
 
-        const [categoriesRes, authorsRes, publishersRes] = await Promise.all([
+        const [categoriesRes, authorsRes, publishersRes, tagsRes] = await Promise.all([
           axios.get("https://books-server-001.vercel.app/api/admin/category"),
           axios.get("https://books-server-001.vercel.app/api/admin/all-author"),
-          axios.get("https://books-server-001.vercel.app/api/admin/all-publisher")
+          axios.get("https://books-server-001.vercel.app/api/admin/all-publisher"),
+          axios.get("https://books-server-001.vercel.app/api/admin/all-tag")
         ]);
 
         setCategories(categoriesRes.data.products);
         setAuthors(authorsRes.data.products);
         setPublishers(publishersRes.data.products);
+        setTags(tagsRes.data.products);
       } catch (error) {
         setError("Failed to load initial data");
       } finally {
         setIsFetchingCategories(false);
         setIsFetchingAuthors(false);
         setIsFetchingPublishers(false);
+        setIsFetchingTags(false);
       }
     };
 
@@ -243,15 +258,18 @@ const AllBooksPage = () => {
   if (error) return <div className="p-4 text-red-500">Error: {error}</div>;
 
   return (
-    <div className="fontPoppins max-w-[1400px] mx-auto flex justify-between gap-3">
-      <div className="flex w-[450px] mt-2">
+    <div className="fontPoppins max-w-[1400px] dark:bg-white customLayout mx-auto flex justify-between gap-3">
+      <div className="flex w-[450px] customWidth dark:bg-white mt-2">
         <AllBooksFilter
           authors={authors}
           publishers={publishers}
+          tags={tags}
           selectedAuthor={authorParam}
           selectedPublisher={publisherParam}
+          selectedTag={tagParam}
           isFetchingAuthors={isFetchingAuthors}
           isFetchingPublishers={isFetchingPublishers}
+          isFetchingTags={isFetchingTags}
           popularBooksFilter={popularBooksParam}
           discountFilter={discountParam}
           dailyDealsFilter={dailyDealsParam}
@@ -260,6 +278,7 @@ const AllBooksPage = () => {
           inStockFilter={inStockParam}
           onAuthorChange={handleAuthorChange}
           onPublisherChange={handlePublisherChange}
+          onTagChange={handleTagChange}
           onPopularBooksChange={handleSpecialFilterChange("popularBooks")}
           onDiscountChange={handleSpecialFilterChange("discount")}
           onDailyDealsChange={handleSpecialFilterChange("dailyDeals")}
@@ -269,14 +288,14 @@ const AllBooksPage = () => {
           onClear={clearAllFilters}
         />
       </div>
-         <div className="flex flex-col mt-2 w-full bg-white rounded-lg ">
-          <BooksData initialLoading={initialLoading} products={products} />
-          <PaginationCard
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        </div>
+      <div className="flex flex-col mt-2 w-full bg-white rounded-lg mb-6">
+        <BooksData initialLoading={initialLoading} products={products} />
+        <PaginationCard
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };

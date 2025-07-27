@@ -24,7 +24,7 @@ export default function CustomSelect({ options, value, onChange }) {
   return (
     <div className="relative w-full" ref={dropdownRef}>
       <div
-        className="p-2 border rounded w-full cursor-pointer flex justify-between items-center"
+        className="p-2 border rounded w-full cursor-pointer flex dark:text-black justify-between items-center"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>

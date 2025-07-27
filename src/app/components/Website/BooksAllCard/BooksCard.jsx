@@ -2,33 +2,34 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { toast } from "react-hot-toast"; // Optional: for showing notifications
+import "../../../../styles/homePage.css";
 
 import { useCart } from "../../../hooks/useCart";
 
 const BooksCard = ({ product }) => {
- const { addToCart, removeFromCart, isInCart } = useCart();
-  const productInCart = isInCart(product._id);
+  const { addToCart, removeFromCart, isInCart } = useCart();
+  const productInCart = isInCart(product?._id);
 
   // Calculate discounted price
   const calculateDiscount = () => {
-    if (product.discount && product.discountValue) {
-      if (product.discountType === "percentage") {
-        return product.price - (product.price * product.discountValue) / 100;
+    if (product?.discount && product?.discountValue) {
+      if (product?.discountType === "percentage") {
+        return product?.price - (product?.price * product?.discountValue) / 100;
       }
-      return product.price - product.discountValue;
+      return product?.price - product?.discountValue;
     }
-    return product.price;
+    return product?.price;
   };
 
   const discountedPrice = calculateDiscount();
-  const hasDiscount = product.discount && product.discountValue;
-  const rating = product.rating || 0;
+  const hasDiscount = product?.discount && product?.discountValue;
+  const rating = product?.rating || 0;
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
 
   const handleCartAction = () => {
     if (productInCart) {
-      removeFromCart(product._id);
+      removeFromCart(product?._id);
     } else {
       addToCart(product);
     }
@@ -106,14 +107,14 @@ const BooksCard = ({ product }) => {
       transition={{ duration: 0.2 }}
       className="relative group border flex flex-col justify-between border-gray-100 p-3"
     >
-      <Link href={`/all-books/${product._id}`} prefetch={true}>
+      <Link href={`/all-books/${product?._id}`} prefetch={true}>
         <div className="flex flex-col gap-3  rounded-xl  bg-white  transition-all duration-300 ">
           {/* Image with overlay */}
           <div className="relative overflow-hidden rounded-lg aspect-[3/4] bg-gray-100 ">
             <img
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              src={product.singleImage}
-              alt={product.title}
+              src={product?.singleImage}
+              alt={product?.title}
             />
 
             {/* Hover overlay */}
@@ -134,8 +135,8 @@ const BooksCard = ({ product }) => {
             {/* Discount badge */}
             {hasDiscount && (
               <div className="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
-                {product.discountType === "percentage"
-                  ? `${product.discountValue}% OFF`
+                {product?.discountType === "percentage"
+                  ? `${product?.discountValue}% OFF`
                   : "SALE"}
               </div>
             )}
@@ -143,9 +144,10 @@ const BooksCard = ({ product }) => {
 
           {/* Product Info */}
           <div className="flex flex-col gap-2 ">
-            <h1 className="bangla-text font-semibold text-gray-900 ">
-              {product.title}
-            </h1>
+            <h1 className="bangla-text font-semibold text-gray-900 truncate">
+  {product?.title.split(' ').slice(0, 4).join(' ')}
+  {product?.title.split(' ').length > 4 && '...'}
+</h1>
 
             {/* Rating */}
             <div className="flex items-center gap-1">
@@ -157,7 +159,7 @@ const BooksCard = ({ product }) => {
 
             {/* Stock */}
             <div className="text-xs text-gray-600">
-              {product.stock > 0 ? `${product.stock} in stock` : "Out of stock"}
+              {product?.stock > 0 ? `${product?.stock} in stock` : "Out of stock"}
             </div>
 
             {/* Price */}
@@ -169,20 +171,20 @@ const BooksCard = ({ product }) => {
                       BDT {discountedPrice.toFixed(2)}
                     </span>
                     <del className="text-sm text-gray-500">
-                      BDT {product.price.toFixed(2)}
+                      BDT {product?.price.toFixed(2)}
                     </del>
                   </div>
-                  {product.discountType === "percentage" && (
+                  {product?.discountType === "percentage" && (
                     <span className="text-xs text-red-600">
                       You save BDT{" "}
-                      {(product.price - discountedPrice).toFixed(2)} (
-                      {product.discountValue}%)
+                      {(product?.price - discountedPrice).toFixed(2)} (
+                      {product?.discountValue}%)
                     </span>
                   )}
                 </div>
               ) : (
                 <span className="text-lg font-bold text-gray-900">
-                  BDT {product.price.toFixed(2)}
+                  BDT {product?.price.toFixed(2)}
                 </span>
               )}
             </div>
@@ -195,7 +197,7 @@ const BooksCard = ({ product }) => {
         onClick={handleCartAction}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className={`w-full cursor-pointer mt-3 py-2.5 px-4 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
+        className={`w-full cursor-pointer mt-3 py-2.5 px-4 rounded-lg  cartButton font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
           productInCart
             ? "bg-red-600 hover:bg-red-700 text-white"
             : "bg-[#50C878] hover:bg-emerald-700 text-white"
@@ -209,18 +211,18 @@ const BooksCard = ({ product }) => {
         >
           {productInCart ? (
             <svg
-  xmlns="http://www.w3.org/2000/svg"
-  fill="none"
-  viewBox="0 0 24 24"
-  stroke="currentColor"
->
-  <path
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth="2"
-    d="M6 18L18 6M6 6l12 12"
-  />
-</svg>
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
           ) : (
             <path
               strokeLinecap="round"

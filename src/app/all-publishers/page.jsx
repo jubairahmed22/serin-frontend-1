@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "../../styles/homePage.css";
 import "../../styles/globals.css";
 import { useRouter } from "next/navigation";
+import AuthorCardSkeleton from "../components/Spinner/AuthorCardSkeleton";
 
 const allPublisher = () => {
   const [authors, setAuthors] = useState([]);
@@ -61,30 +62,40 @@ const allPublisher = () => {
 
   const router = useRouter();
 
-const handleAuthorClick = (author) => {
-  return (e) => {
-    e.preventDefault();
-    const params = new URLSearchParams();
-    params.set("publisher", author._id);
-    router.push(`/all-books?${params.toString()}`);
+  const handleAuthorClick = (author) => {
+    return (e) => {
+      e.preventDefault();
+      const params = new URLSearchParams();
+      params.set("publisher", author._id);
+      router.push(`/all-books?${params.toString()}`);
+    };
   };
-};
 
-  if (loading) return <div className="text-center py-16">Loading...</div>;
-  if (error)
-    return <div className="text-center py-16 text-red-500">Error: {error}</div>;
+  if (error) {
+    return (
+      <div className="text-center py-16 text-red-500">
+        Error: {error}
+        <button 
+          onClick={() => window.location.reload()}
+          className="ml-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen py-10 bg-white max-w-[1400px] font-poppins mx-auto px-4">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <h1 className="text-3xl font-bold text-gray-900">All Publisher</h1>
+        <h1 className="lg:text-3xl md:text-xl sm:text-sm font-bold text-gray-900">All Publisher</h1>
 
         <form onSubmit={handleSearch} className="w-96 md:w-auto">
           <div className="relative">
             <input
               type="text"
               placeholder="Search authors..."
-              className="px-4 py-2  border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 "
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -111,20 +122,28 @@ const handleAuthorClick = (author) => {
         </form>
       </div>
 
-      {authors.length === 0 ? (
+      {loading ? (
+        <div className="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {[...Array(8)].map((_, index) => (
+            <div key={`skeleton-${index}`} className="cursor-pointer">
+              <AuthorCardSkeleton />
+            </div>
+          ))}
+        </div>
+      ) : authors.length === 0 ? (
         <div className="text-center py-16 text-gray-500">
           No authors found. Try a different search.
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {authors.map((author) => (
-              <button  key={author._id}  onClick={handleAuthorClick(author)} className="cursor-pointer">
-                <div
-                 
-                  className="max-w-sm bg-white dark:bg-gray-800 dark:border-gray-700 overflow-hidden"
-                >
-                  {/* Image section - takes full width */}
+              <button 
+                key={author._id}  
+                onClick={handleAuthorClick(author)} 
+                className="cursor-pointer"
+              >
+                <div className="max-w-sm bg-white dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
                   <div className="relative w-full h-64 overflow-hidden">
                     <img
                       src={author.singleImage || "/default-author.jpg"}
@@ -136,8 +155,6 @@ const handleAuthorClick = (author) => {
                       }}
                     />
                   </div>
-
-                  {/* Content section */}
                   <div className="p-5">
                     <h3 className="mb-2 bangla-text text-lg font-bold tracking-tight text-gray-900 dark:text-white">
                       {author.title}

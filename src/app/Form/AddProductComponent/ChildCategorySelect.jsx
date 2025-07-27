@@ -8,7 +8,7 @@ const ChildCategorySelect = ({
   return (
     <div className="w-full">
       <label className="block text-sm fontPoppins text-gray-800 mb-1">
-        Child Category <span className="text-red-500">*</span>
+        Child Category
       </label>
       <div className="relative rounded-md shadow-sm">
         {isFetchingChildCategories ? (
@@ -24,8 +24,8 @@ const ChildCategorySelect = ({
               );
               setSelectedChildCategory(selected);
             }}
-            className="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-            required
+            className="block w-full px-4 dark:text-black py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            
           >
             <option value="">Select a child category</option>
             {childCategories.map((childCat) => (

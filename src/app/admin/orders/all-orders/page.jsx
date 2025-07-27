@@ -22,7 +22,7 @@ const page = () => {
           </div>
         </div>
         <div className="">
-            <AllOrdersDataAdmin></AllOrdersDataAdmin>
+          <AllOrdersDataAdmin></AllOrdersDataAdmin>
         </div>
       </div>
       <ModalCreateProducts

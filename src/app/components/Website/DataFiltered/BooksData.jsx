@@ -1,25 +1,29 @@
+"use client";
 import Link from "next/link";
 import React from "react";
-import BooksCard from '../BooksAllCard/BooksCard'
-const BooksData = ({ products, initialLoading }) => {
-  if (initialLoading)
-    return <div className="w-full mx-auto">Loading products...</div>;
+import BooksCard from '../BooksAllCard/BooksCard';
+import '../../../../styles/allBooks.css';
+import BookCardSkeleton from "../../../components/Spinner/BookCardSkeleton";
 
+const BooksData = ({ products, initialLoading }) => {
   return (
-    <div className="grid grid-cols-4 ">
-      {products?.length > 0 ? (
+    <div className="grid grid-cols-4 customGridBooks px-4 gap-4">
+      {initialLoading ? (
+        [...Array(8)].map((_, index) => (
+          <div key={`skeleton-${index}`} className="w-full">
+            <BookCardSkeleton />
+          </div>
+        ))
+      ) : products?.length > 0 ? (
         products.map((product) => (
-          <BooksCard product={product} ></BooksCard>
-          ))
+          <BooksCard key={product._id} product={product} />
+        ))
       ) : (
-        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-          <td
-            colSpan="9"
-            className="px-6 py-4 text-center text-gray-500 dark:text-gray-400"
-          >
+        <div className="col-span-4 bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <div className="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
             No products found matching your filters
-          </td>
-        </tr>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -33,23 +33,23 @@ const ImageManagement = ({ product }) => {
         ))}
       </HTMLFlipBook>
 
-      <div className="controls">
-        <button 
-          className="arrow left" 
-          onClick={() => bookRef.current.pageFlip().flipPrev()}
-        >
-          ‹
-        </button>
-        {/* <span className="page-counter">
-          {bookRef.current?.pageFlip()?.getCurrentPageIndex() + 1 || 1} / {allPages.length}
-        </span> */}
-        <button 
-          className="arrow right" 
-          onClick={() => bookRef.current.pageFlip().flipNext()}
-        >
-          ›
-        </button>
-      </div>
+      <div className="controls dark:text-gray-900">
+  <button 
+    className="arrow left hover:text-gray-700 dark:hover:text-gray-600" 
+    onClick={() => bookRef.current.pageFlip().flipPrev()}
+  >
+    ‹
+  </button>
+  {/* <span className="page-counter mx-4 font-medium">
+    {bookRef.current?.pageFlip()?.getCurrentPageIndex() + 1 || 1} / {allPages.length}
+  </span> */}
+  <button 
+    className="arrow right hover:text-gray-700 dark:hover:text-gray-600" 
+    onClick={() => bookRef.current.pageFlip().flipNext()}
+  >
+    ›
+  </button>
+</div>
     </div>
   );
 };

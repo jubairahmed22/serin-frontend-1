@@ -210,7 +210,7 @@ const EditPublisherPage = () => {
         </Link>
       </div>
 
-      <div className="bg-white p-5 rounded-xl border border-gray-200 shadow">
+      <div className="bg-white dark:text-black p-5 rounded-xl border border-gray-200 shadow">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
           Edit Category
         </h1>

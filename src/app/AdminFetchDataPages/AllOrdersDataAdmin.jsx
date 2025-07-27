@@ -24,6 +24,7 @@ const AllOrdersDataAdmin = () => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState(null);
   const [totalSum, setTotalSum] = useState(null);
+  const [totalDueSum, setTotalDue] = useState(null);
 
   const [totalPages, setTotalPages] = useState(1);
   const [refreshInterval] = useState(1000);
@@ -234,6 +235,7 @@ const AllOrdersDataAdmin = () => {
         setProducts(response.data.payments);
         setTotalPages(response.data.totalPages);
         setTotalSum(response.data.totalSum);
+        setTotalDue(response.data.totalDueSum);
 
       } catch (err) {
         setError(err.message);
@@ -500,7 +502,8 @@ const AllOrdersDataAdmin = () => {
 
       <OrderTable 
         products={products}
-        totalSum={totalSum} 
+        totalSum={totalSum}
+        totalDueSum={totalDueSum} 
         onDelete={handleDelete} 
       />
 

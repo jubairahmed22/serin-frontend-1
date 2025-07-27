@@ -43,7 +43,7 @@ const ChildCategoryUpdate = ({
   return (
     <div className="w-full">
       <label className="block text-sm font-medium text-gray-700 mb-1">
-        Child Category <span className="text-red-500">*</span>
+        Child Category
       </label>
       
       <div className="relative rounded-md shadow-sm">
@@ -77,7 +77,6 @@ const ChildCategoryUpdate = ({
               value={currentValue}
               onChange={handleChildCategoryChange}
               className="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-              required
               disabled={!selectedSubCategory || isFetchingChildCategories}
             >
               <option value="">{selectedSubCategory ? "Select a child category" : "Select a sub-category first"}</option>

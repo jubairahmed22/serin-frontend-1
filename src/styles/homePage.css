@@ -29,3 +29,51 @@
 .authorTitle{
   font-size: 14px;
 }
+
+
+
+/* Tablet (min-width: 640px) */
+@media (min-width: 200px) and (max-width: 639px) {
+  .sliderImgSize {
+    height: 150px;
+  }
+.buttonPopular {
+  font-size: 12px;
+  padding: 4px 10px; /* top/bottom = 2px, left/right = 3px */
+}
+.cartButton{
+    font-size: 10px;
+    padding: 8px 2px;
+  }
+.pageHeightPY{
+  padding: 28px 0px;
+}
+.pageHeightShopPY{
+  padding: 0px 0px;
+
+}
+.shopTitle{
+  padding-bottom: 30px;
+}
+
+}
+@media (min-width: 639px) and (max-width: 1040px) {
+  .sliderImgSize {
+    height: 250px;
+  }
+  
+}
+@media (min-width: 1040px) and (max-width: 1600px) {
+  .sliderImgSize {
+    height: 300px;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 2200px) {
+  .sliderImgSize {
+    height: 600px;
+  }
+}
+
+
+

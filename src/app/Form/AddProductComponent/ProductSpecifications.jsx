@@ -22,7 +22,7 @@ const ProductSpecifications = ({
   };
 
   return (
-    <div className="grid grid-cols-3 md:grid-cols-3 gap-5 ">
+    <div className="grid grid-cols-3 md:grid-cols-3 gap-5 dark:text-black">
       <div>
         <label className="block text-sm font-medium text-gray-800 mb-1">
           Edition
@@ -75,7 +75,7 @@ const ProductSpecifications = ({
         <select
           value={formData.publisherId || ""}
           onChange={handlePublisherChange}
-          className="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+          className="block w-full px-4 py-3 border dark:text-black border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
           disabled={isFetchingPublishers}
         >
           <option value="">Select Publisher</option>

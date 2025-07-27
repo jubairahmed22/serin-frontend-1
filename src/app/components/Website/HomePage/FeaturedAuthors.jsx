@@ -1,31 +1,31 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "../../../../styles/homePage.css";
-import DailyDealsFilter from "../../../components/Website/Filters/DailyDealsFilter";
 import AuthorCard from "../BooksAllCard/AuthorCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import '../../../../styles/productDetails.css'
+import '../../../../styles/productDetails.css';
 import Link from "next/link";
+import AuthorCardSkeleton from "../../../components/Spinner/AuthorCardSkeleton"
+
 
 const FeaturedAuthors = () => {
-  const [popularBooks, setPopularBooks] = useState([]);
+  const [authors, setAuthors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPopularBooks = async () => {
+    const fetchAuthors = async () => {
       try {
-        const response = await fetch(
-          "https://books-server-001.vercel.app/api/web/all-author"
-        );
+        setLoading(true);
+        const response = await fetch("https://books-server-001.vercel.app/api/web/all-author");
         if (!response.ok) {
-          throw new Error("Failed to fetch popular books");
+          throw new Error("Failed to fetch authors");
         }
         const data = await response.json();
-        setPopularBooks(data.products);
+        setAuthors(data.products);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -33,47 +33,56 @@ const FeaturedAuthors = () => {
       }
     };
 
-    fetchPopularBooks();
+    fetchAuthors();
   }, []);
 
-  if (loading) return <div className="text-center py-16">Loading...</div>;
-  if (error)
-    return <div className="text-center py-16 text-red-500">Error: {error}</div>;
+  if (error) {
+    return (
+      <div className="text-center py-16 text-red-500">
+        Error: {error}
+        <button 
+          onClick={() => window.location.reload()}
+          className="ml-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div className="bg-white py-16 fontPoppins ">
+    <div className="bg-white py-16 pageHeightPY fontPoppins">
       <div className="max-w-[1440px] mx-auto relative px-6">
-        <div className="max-w-[1400px] mx-auto ">
+        <div className="max-w-[1400px] mx-auto">
           <div className="flex items-center w-full mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 whitespace-nowrap mr-4">
+            <h1 className="lg:text-3xl md:text-3xl sm:text-sm font-bold text-gray-900 whitespace-nowrap mr-4">
               Featured Authors
             </h1>
 
             <div className="flex-grow h-px bg-gray-200 mx-8"></div>
             <Link href="/all-author">
-            <button className="button-view-all-product px-6 py-3 cursor-pointer rounded-full text-white">
-              View All
-            </button>
+              <button className="px-6 py-3 buttonPopular hover:bg-green-600 cursor-pointer text-white font-medium rounded-full whitespace-nowrap transition-colors duration-300 shadow hover:shadow-md">
+                View All
+              </button>
             </Link>
-            {/* <DailyDealsFilter /> */}
           </div>
 
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={20}
-            slidesPerView={5}
+            slidesPerView={6}
             navigation={{
               nextEl: ".author-books-next",
               prevEl: ".author-books-prev",
             }}
-            autoplay={{
+            autoplay={!loading ? {
               delay: 3000,
               disableOnInteraction: false,
-            }}
-            loop={true}
+            } : false}
+            loop={!loading}
             breakpoints={{
               320: {
-                slidesPerView: 1,
+                slidesPerView: 3,
                 spaceBetween: 10,
               },
               640: {
@@ -94,11 +103,19 @@ const FeaturedAuthors = () => {
               },
             }}
           >
-            {popularBooks.map((product) => (
-              <SwiperSlide>
-                <AuthorCard key={product._id} product={product}></AuthorCard>
-              </SwiperSlide>
-            ))}
+            {loading ? (
+              [...Array(6)].map((_, index) => (
+                <SwiperSlide key={`skeleton-${index}`}>
+                  <AuthorCardSkeleton />
+                </SwiperSlide>
+              ))
+            ) : (
+              authors.map((author) => (
+                <SwiperSlide key={author._id}>
+                  <AuthorCard product={author} />
+                </SwiperSlide>
+              ))
+            )}
           </Swiper>
 
           {/* Custom Navigation Buttons */}

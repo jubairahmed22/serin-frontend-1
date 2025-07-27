@@ -1,13 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import { useCart } from "../hooks/useCart";
+import useCon from '../hooks/useCon';
 import { toast } from "react-hot-toast";
 import CartItemCompo from "../components/Website/CartCompo/CartItemCompo";
 import OrderSummery from "../components/Website/CartCompo/OrderSummery";
+import '../../styles/cart.css';
+
 const Page = () => {
   const { cart, cartCount, removeFromCart, updateCart } = useCart();
+  const { config, loading, error } = useCon();
   const [editingQuantity, setEditingQuantity] = useState(null);
-  const DELIVERY_CHARGE = 112; // TKA online fee constant
+  const DELIVERY_CHARGE = config.deliveryCharge;
 
   const calculateFinalPrice = (item) => {
     return Math.max(
@@ -64,10 +68,10 @@ const Page = () => {
 
 
   return (
-    <div className="min-h-screen bg-white max-w-[1400px] mx-auto py-10 fontPoppins">
-      <div className="flex flex-row lg:flex-row gap-5 w-full">
-        <div className="w-[55%]">
-          <h1 className="text-xl mb-6 py-6 px-4 bg-[#defde8] rounded-2xl text-black font-semibold ">
+    <div className="min-h-screen bg-white max-w-[1400px] mx-auto py-10 fontPoppins px-4">
+      <div className="flex flex-row cartCustomLayout  gap-5 w-full">
+        <div className="w-[55%] customWidthFull">
+          <h1 className="lg:text-xl md:text-lg sm:text-sm mb-6 py-6 px-4 bg-[#defde8] rounded-2xl text-black font-semibold ">
             Your Cart ({cartCount} items)
           </h1>
           <CartItemCompo
@@ -81,7 +85,7 @@ const Page = () => {
             calculateFinalPrice={calculateFinalPrice}
           />
         </div>
-        <div className="w-[45%]">
+        <div className="w-[45%] customWidthFull">
  
             <OrderSummery
               itemCount={cartSummary.itemCount}
