@@ -38,10 +38,9 @@ export const authOptions = {
     }),
 
     GoogleProvider({
-
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
-
+      clientId: "916371205801-u475fs0io0h27tn4cmqqn1f97smlj5hp.apps.googleusercontent.com",
+      clientSecret: "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"
+      
     })
   ],
 
