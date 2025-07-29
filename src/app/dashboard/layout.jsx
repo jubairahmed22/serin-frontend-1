@@ -14,10 +14,10 @@ export default function AdminLayout({ children }) {
     <ProtectedRoute allowedRoles={["user"]}>
       <div className="flex h-screen bg-gray-100 relative">
         {/* Admin Sidebar - z-20 */}
-        <AdminSidebar
+        {/* <AdminSidebar
           isCollapsed={sidebarCollapsed}
           toggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)}
-        />
+        /> */}
 
         <div
           className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${

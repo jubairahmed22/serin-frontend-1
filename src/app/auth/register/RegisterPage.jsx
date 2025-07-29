@@ -19,7 +19,7 @@ export default function RegisterPage() {
   const searchParams = useSearchParams()
 
   // Read the callback URL from query or default to dashboard
-  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard'
+  const callbackUrl = searchParams.get('callbackUrl') || '/all-books'
   // Helper to wait briefly for session updates
   const wait = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -42,7 +42,7 @@ export default function RegisterPage() {
   //       if (updatedSession?.user?.role === "admin") {
   //         router.push("/admin");
   //       } else {
-  //         router.push("/dashboard");
+  //         router.push("/all-books");
   //       }
   //     } catch (error) {
   //       if (error.response?.status === 409) {
@@ -88,7 +88,7 @@ export default function RegisterPage() {
       if (updatedSession?.user?.role === "admin") {
         router.push("/admin");
       } else {
-        router.push("/dashboard");
+        router.push("/all-books");
       }
     } catch (error) {
       if (error.response?.status === 409) {

@@ -38,8 +38,8 @@ export const authOptions = {
     }),
 
     GoogleProvider({
-      clientId: "49234905994-uc3g63jbricmqrgp72r623eut8lkrfvn.apps.googleusercontent.com",
-      clientSecret: "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"
+      clientId: "916371205801-u475fs0io0h27tn4cmqqn1f97smlj5hp.apps.googleusercontent.com",
+      clientSecret: "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"
     })
   ],
 

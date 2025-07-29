@@ -1,21 +1,15 @@
+.customGridBooks {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Mobile (200px-639px) - 2 columns */
 @media (min-width: 200px) and (max-width: 639px) {
-  .bigDisplay {
-    display: none;
-  }
-  .customWidth {
-    width: 0px;
-  }
-  .customLayout {
-    display: flex;
-    flex-direction: column;
-  }
   .customGridBooks {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-}
-
-@media (min-width: 639px) and (max-width: 1040px) {
+  
   .bigDisplay {
     display: none;
   }
@@ -28,13 +22,41 @@
   }
 }
 
-@media (min-width: 1040px) and (max-width: 1600px) {
+/* Tablet (640px-1040px) - 3 columns */
+@media (min-width: 640px) and (max-width: 1040px) {
+  .customGridBooks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .bigDisplay {
+    display: none;
+  }
+  .customWidth {
+    width: 0px;
+  }
+  .customLayout {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Laptop (1041px-1600px) - 4 columns */
+@media (min-width: 1041px) and (max-width: 1600px) {
+  .customGridBooks {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  
   .mobileDisplay {
     display: none;
   }
 }
 
-@media (min-width: 1600px) and (max-width: 2200px) {
+/* Large desktop (1601px+) - 5 columns */
+@media (min-width: 1601px) {
+  .customGridBooks {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  
   .mobileDisplay {
     display: none;
   }

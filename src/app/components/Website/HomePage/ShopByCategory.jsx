@@ -16,17 +16,17 @@ const ShopByCategory = () => {
             Shop By Category
           </h1>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
-              <div className="flex flex-col justify-center items-center gap-3 border border-[#E6E6E6] rounded-xl p-5">
+              <div className="flex flex-col justify-center items-center gap-3 lg:border lg:border-[#E6E6E6] lg:rounded-xl lg:p-5">
                   <h1 className="text-[#282828] font-bold lg:text-2xl md:text-2xl sm:text-sm">Fiction</h1>
                   <FictionData></FictionData>
                   <FictionBookFilter></FictionBookFilter>
               </div>
-              <div className="flex flex-col justify-center items-center gap-3 border border-[#E6E6E6] rounded-xl p-5">
+              <div className="flex flex-col justify-center items-center gap-3 lg:border lg:border-[#E6E6E6] lg:rounded-xl lg:p-5">
                   <h1 className="text-[#282828] font-bold lg:text-2xl md:text-2xl sm:text-sm">Non-Fiction</h1>
                   <NonFictionData></NonFictionData>
                   <NonFictionBookFilter></NonFictionBookFilter>
               </div>
-              <div className="flex flex-col justify-center items-center gap-3 border border-[#E6E6E6] rounded-xl p-5">
+              <div className="flex flex-col justify-center items-center gap-3 lg:border lg:border-[#E6E6E6] lg:rounded-xl lg:p-5">
                   <h1 className="text-[#282828] font-bold lg:text-2xl md:text-2xl sm:text-sm">Novel</h1>
                   <NovelData></NovelData>
                   <NovelBookFilter></NovelBookFilter>

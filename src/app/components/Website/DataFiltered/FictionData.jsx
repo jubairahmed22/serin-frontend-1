@@ -94,10 +94,10 @@ const FictionData = () => {
   }
 
   return (
-    <div className="fontPoppins w-full max-w-6xl mx-auto px-4">
+    <div className="fontPoppins w-full max-w-6xl mx-auto lg:px-4">
       {/* Header and Filters */}
       <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full">
-        <h1 className="text-2xl font-bold text-gray-900 whitespace-nowrap">Fiction Books</h1>
+        {/* <h1 className="text-2xl font-bold text-gray-900 whitespace-nowrap">Fiction Books</h1> */}
         
         <div className="flex-1 flex items-center gap-4 w-full">
           <div className="flex-1 max-w-md">
