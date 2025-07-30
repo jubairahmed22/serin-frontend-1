@@ -265,7 +265,7 @@ const BannerAllDataAdmin = () => {
                       )}
                     </span>
                     <Link
-                      href={`/admin/banner/banner-two/${category._id}`}
+                      href={`/admin/banner/banner-one/${category._id}`}
                       className="hover:underline hover:text-blue-600 dark:hover:text-blue-400"
                     >
                       {category.title.slice(0, 35)}

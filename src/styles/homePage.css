@@ -50,11 +50,17 @@
 }
 .pageHeightShopPY{
   padding: 0px 0px;
-
 }
 .shopTitle{
   padding-bottom: 30px;
 }
+.PriceTextSize{
+  font-size: 8px;
+}
+.PriceTextSizeMain{
+  font-size: 12px;
+}
+
 
 }
 @media (min-width: 639px) and (max-width: 1040px) {

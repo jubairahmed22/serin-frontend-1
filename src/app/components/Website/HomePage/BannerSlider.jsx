@@ -135,7 +135,7 @@ const BannerSlider = () => {
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-40 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-60 z-20"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-[#50C878] bg-opacity-40 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-60 z-20"
             aria-label="Previous slide"
           >
             <motion.svg
@@ -152,7 +152,7 @@ const BannerSlider = () => {
 
           <button
             onClick={nextSlide}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-40 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-60 z-20"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-[#50C878] bg-opacity-40 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-60 z-20"
             aria-label="Next slide"
           >
             <motion.svg

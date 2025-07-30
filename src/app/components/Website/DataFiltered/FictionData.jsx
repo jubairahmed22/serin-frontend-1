@@ -85,7 +85,7 @@ const FictionData = () => {
         Error: {error}
         <button 
           onClick={() => window.location.reload()}
-          className="ml-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="ml-4 px-4 py-2 bg-[#50C878] text-white rounded hover:bg-green-600"
         >
           Retry
         </button>
@@ -139,7 +139,7 @@ const FictionData = () => {
             {selectedChildCategory && (
               <button
                 onClick={handleResetFilters}
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="px-4 py-2 bg-[#50C878] text-white rounded hover:bg-green-600"
               >
                 Reset Filters
               </button>
@@ -161,7 +161,7 @@ const FictionData = () => {
             className={`p-2 rounded-full ${
               currentPage === 1
                 ? "bg-gray-200 cursor-not-allowed text-gray-400"
-                : "bg-blue-500 text-white hover:bg-blue-600"
+                : "bg-[#50C878] text-white hover:bg-green-600"
             }`}
             aria-label="Previous page"
           >
@@ -189,7 +189,7 @@ const FictionData = () => {
             className={`p-2 rounded-full ${
               currentPage === totalPages
                 ? "bg-gray-200 cursor-not-allowed text-gray-400"
-                : "bg-blue-500 text-white hover:bg-blue-600"
+                : "bg-[#50C878] text-white hover:bg-green-600"
             }`}
             aria-label="Next page"
           >

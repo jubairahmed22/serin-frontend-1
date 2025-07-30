@@ -145,9 +145,10 @@ const BooksCardVertical = ({ product }) => {
           {/* Product Info */}
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2 ">
-              <h1 className="bangla-text font-semibold text-gray-900 ">
-                {product.title}
-              </h1>
+              <h1 className="bangla-text font-semibold text-gray-900 truncate">
+          {product?.title.split(" ").slice(0, 2).join(" ")}
+          {product?.title.split(" ").length > 2 && "..."}
+        </h1>
 
               {/* Rating */}
               <div className="flex items-center gap-1">
@@ -168,16 +169,16 @@ const BooksCardVertical = ({ product }) => {
               <div className="mt-1">
                 {hasDiscount ? (
                   <div className="flex flex-col">
-                    <div className="flex items-center gap-2">
-                      <span className="text-lg font-bold text-gray-900">
+                    <div className="flex flex-col items-start">
+                      <span className="text-lg PriceTextSizeMain font-bold text-gray-900">
                         BDT {discountedPrice.toFixed(2)}
                       </span>
-                      <del className="text-sm text-gray-500">
+                      <del className="text-sm PriceTextSize text-gray-500">
                         BDT {product.price.toFixed(2)}
                       </del>
                     </div>
                     {product.discountType === "percentage" && (
-                      <span className="text-xs text-red-600">
+                      <span className="text-xs text-red-600 mt-2 PriceTextSize">
                         You save BDT{" "}
                         {(product.price - discountedPrice).toFixed(2)} (
                         {product.discountValue}%)
@@ -195,7 +196,7 @@ const BooksCardVertical = ({ product }) => {
               onClick={handleCartAction}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className={`w-36 cursor-pointer cartButton mt-3 py-2 px-3 rounded-lg text-[12px] font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
+              className={`w-36 cursor-pointer cartButton mt-3 py-2 px-2 rounded-lg text-[10px] font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
                 productInCart
                   ? "bg-red-600 hover:bg-red-700 text-white"
                   : "bg-[#50C878] hover:bg-emerald-700 text-white"
