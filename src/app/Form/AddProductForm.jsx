@@ -71,25 +71,25 @@ const AddProductForm = ({ onClose }) => {
       try {
         // Fetch categories
         const categoriesResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/category"
+          "https://cosmetics-server-001.vercel.app/api/admin/category"
         );
         setCategories(categoriesResponse.data.products);
 
         // Fetch authors
         const authorsResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/all-author"
+          "https://cosmetics-server-001.vercel.app/api/admin/all-skincare"
         );
         setAuthors(authorsResponse.data.products);
 
         // Fetch tags
         const tagsResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/all-tag"
+          "https://cosmetics-server-001.vercel.app/api/admin/all-tag"
         );
         setTags(tagsResponse.data.products);
 
         // Fetch publishers
         const publishersResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/all-publisher"
+          "https://cosmetics-server-001.vercel.app/api/admin/all-brands"
         );
         setPublishers(publishersResponse.data.products);
       } catch (error) {
@@ -113,7 +113,7 @@ const AddProductForm = ({ onClose }) => {
       setIsFetchingSubCategories(true);
       try {
         const response = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/sub-category"
+          "https://cosmetics-server-001.vercel.app/api/admin/sub-category"
         );
         const filteredSubCategories = response.data.products.filter(
           (subCat) => subCat.parentCategory.id === selectedCategory._id
@@ -138,7 +138,7 @@ const AddProductForm = ({ onClose }) => {
       setIsFetchingChildCategories(true);
       try {
         const response = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/child-category"
+          "https://cosmetics-server-001.vercel.app/api/admin/child-category"
         );
         const filteredChildCategories = response.data.products.filter(
           (childCat) =>
@@ -187,20 +187,20 @@ const AddProductForm = ({ onClose }) => {
     formDataToSend.append("childCategoryTitle", selectedChildCategory?.title || "");
 
     // Handle author data - ensure we have both ID and name
-    if (formData.authorId) {
-      const selectedAuthor = authors.find(author => author._id === formData.authorId);
-      if (selectedAuthor) {
-        formDataToSend.set("author", selectedAuthor.title); // Use set() to overwrite any existing value
-        formDataToSend.set("authorId", selectedAuthor._id);
-      }
-    }
+    // if (formData.authorId) {
+    //   const selectedAuthor = authors.find(author => author._id === formData.authorId);
+    //   if (selectedAuthor) {
+    //     formDataToSend.set("skinCare", selectedAuthor.title); // Use set() to overwrite any existing value
+    //     formDataToSend.set("skinCareId", selectedAuthor._id);
+    //   }
+    // }
 
     // Handle publisher data - ensure we have both ID and name
     if (formData.publisherId) {
       const selectedPublisher = publishers.find(publisher => publisher._id === formData.publisherId);
       if (selectedPublisher) {
-        formDataToSend.set("publisher", selectedPublisher.title); // Use set() to overwrite any existing value
-        formDataToSend.set("publisherId", selectedPublisher._id);
+        formDataToSend.set("brand", selectedPublisher.title); // Use set() to overwrite any existing value
+        formDataToSend.set("brandId", selectedPublisher._id);
       }
     }
 
@@ -223,7 +223,7 @@ const AddProductForm = ({ onClose }) => {
 
     try {
       const response = await axios.post(
-        "https://books-server-001.vercel.app/api/admin/upload/product",
+        "https://cosmetics-server-001.vercel.app/api/admin/upload/product",
         formDataToSend,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -234,7 +234,8 @@ const AddProductForm = ({ onClose }) => {
         icon: "success",
         timer: 1500,
         showConfirmButton: false,
-      }).then(() => onClose());
+      });
+      // .then(() => onClose())
     } catch (error) {
       console.error("Error adding product:", error);
       toast.error(error.response?.data?.error || "Product Upload Failed");

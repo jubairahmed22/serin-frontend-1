@@ -14,7 +14,7 @@
 /* Medium and above: 5 columns (1040px and up) */
 @media (min-width: 1040px) {
   .gridCustom {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

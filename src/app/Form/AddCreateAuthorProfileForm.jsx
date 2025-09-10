@@ -34,7 +34,7 @@ const AddCreateAuthorProfileForm = ({ onClose }) => {
 
     try {
       const response = await axios.post(
-        "https://books-server-001.vercel.app/api/admin/upload/create-author-profile",
+        "https://cosmetics-server-001.vercel.app/api/admin/upload/create-author-profile",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

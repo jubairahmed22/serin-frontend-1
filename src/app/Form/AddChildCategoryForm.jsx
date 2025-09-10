@@ -25,7 +25,7 @@ const AddChildCategoryForm = ({ onClose }) => {
       setIsFetchingCategories(true);
       try {
         const response = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/category"
+          "https://cosmetics-server-001.vercel.app/api/admin/category"
         );
         setCategories(response.data.products);
       } catch (error) {
@@ -47,7 +47,7 @@ const AddChildCategoryForm = ({ onClose }) => {
       setIsFetchingSubCategories(true);
       try {
         const response = await axios.get(
-          `https://books-server-001.vercel.app/api/admin/sub-category`
+          `https://cosmetics-server-001.vercel.app/api/admin/sub-category`
         );
         // Filter sub-categories based on selected category
         const filteredSubCategories = response.data.products.filter(
@@ -100,7 +100,7 @@ const AddChildCategoryForm = ({ onClose }) => {
 
     try {
       const response = await axios.post(
-        "https://books-server-001.vercel.app/api/admin/upload/child-category",
+        "https://cosmetics-server-001.vercel.app/api/admin/upload/child-category",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -113,7 +113,7 @@ const AddChildCategoryForm = ({ onClose }) => {
         showConfirmButton: false, // No "OK" button
       }).then(() => {
         // Close the modal after user acknowledges the success message
-        onClose();
+        // onClose();
       });
     } catch (error) {
       console.error("Error adding product:", error);

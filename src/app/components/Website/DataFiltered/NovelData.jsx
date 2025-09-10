@@ -19,7 +19,7 @@ const NovelData = () => {
       try {
         setChildCategoriesLoading(true);
         const response = await fetch(
-          "https://books-server-001.vercel.app/api/admin/child-category"
+          "https://cosmetics-server-001.vercel.app/api/admin/child-category"
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
@@ -40,7 +40,7 @@ const NovelData = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        let url = `https://books-server-001.vercel.app/api/admin/novel?page=${currentPage}`;
+        let url = `https://cosmetics-server-001.vercel.app/api/admin/novel?page=${currentPage}`;
         if (selectedChildCategory) url += `&childCategory=${selectedChildCategory}`;
 
         const response = await fetch(url);
@@ -92,7 +92,7 @@ const NovelData = () => {
   }
 
   return (
-    <div className="fontPoppins w-full max-w-6xl mx-auto lg:px-4">
+    <div className="fontPoppins w-full max-w-8xl mx-auto lg:px-4">
       {/* Header and Filters */}
       <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full">
         {/* <h1 className="text-2xl font-bold text-gray-900 whitespace-nowrap">Novels</h1> */}

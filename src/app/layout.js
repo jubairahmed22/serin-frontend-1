@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Book Forest",
+  title: "SERIN",
   description: "",
 };
 

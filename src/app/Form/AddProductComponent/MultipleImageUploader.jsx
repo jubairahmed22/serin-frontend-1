@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 import { FiX } from "react-icons/fi";
 
 const MultipleImageUploader = ({
@@ -13,9 +13,52 @@ const MultipleImageUploader = ({
   handleDrop,
   handleFileChange,
 }) => {
+  // Remove image by index
   const removeImage = (index) => {
     setImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
+
+  // Convert URL → File (safe with try/catch)
+  const urlToFile = async (url, filename = "pasted-image.jpg") => {
+    try {
+      const res = await fetch(url, { mode: "cors" });
+      if (!res.ok) throw new Error("Failed to fetch image");
+      const blob = await res.blob();
+      return new File([blob], filename, { type: blob.type });
+    } catch (err) {
+      console.error("CORS blocked image fetch:", err);
+      alert("❌ Cannot paste this image due to CORS. Try saving it first.");
+      return null;
+    }
+  };
+
+  // Handle paste (files + URLs)
+  const handlePaste = useCallback(
+    async (e) => {
+      const items = e.clipboardData?.items;
+
+      // Case 1: Direct image file (screenshots, copied images)
+      if (items) {
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].type.indexOf("image") !== -1) {
+            const file = items[i].getAsFile();
+            if (file) {
+              setImages((prev) => [...prev, file]);
+              return;
+            }
+          }
+        }
+      }
+
+      // Case 2: Pasted image URL
+      const text = e.clipboardData.getData("text/plain");
+      if (text && text.startsWith("http")) {
+        const file = await urlToFile(text);
+        if (file) setImages((prev) => [...prev, file]);
+      }
+    },
+    [setImages]
+  );
 
   return (
     <div className="flex flex-col h-full">
@@ -31,6 +74,8 @@ const MultipleImageUploader = ({
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
+        onPaste={handlePaste} // ✅ handle paste
+        tabIndex={0} // ✅ required so div can receive paste events
       >
         {isLoading ? (
           <div className="flex flex-col items-center justify-center h-full">
@@ -59,7 +104,7 @@ const MultipleImageUploader = ({
         ) : (
           <div className="flex flex-col items-center justify-center h-full">
             <p className="text-gray-500 mb-2">
-              Drag & drop files here or click to select
+              Drag & drop, paste (Ctrl+V), or click to select
             </p>
             <input
               type="file"
@@ -81,14 +126,14 @@ const MultipleImageUploader = ({
           <div className="mt-2">
             <input
               type="file"
-              id="fileInputImage"
+              id="fileInputImageMore"
               className="hidden"
               multiple
               accept="image/*, .heic, .heif"
               onChange={handleFileChange}
             />
             <label
-              htmlFor="fileInputImage"
+              htmlFor="fileInputImageMore"
               className="text-blue-600 underline cursor-pointer text-sm hover:text-blue-700"
             >
               Add more images

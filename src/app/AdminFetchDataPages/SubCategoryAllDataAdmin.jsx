@@ -13,11 +13,12 @@ const SubCategoryAllDataAdmin = () => {
 
   // State for data and loading
   const [categories, setSubCategories] = useState([]);
-  const [initialLoading, setInitialLoading] = useState(true); // Only for first load
-  const [isRefreshing, setIsRefreshing] = useState(false); // For background refreshes
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
-  const [refreshInterval, setRefreshInterval] = useState(1000); // Default 1 second
+  const [refreshInterval, setRefreshInterval] = useState(1000);
+  const [isDragging, setIsDragging] = useState(false);
 
   // Get current params
   const currentPage = parseInt(searchParams.get("page")) || 1;
@@ -44,7 +45,7 @@ const SubCategoryAllDataAdmin = () => {
         if (showWebParam) params.set("showWebFilter", showWebParam);
 
         const response = await axios.get(
-          `https://books-server-001.vercel.app/api/admin/sub-category?${params.toString()}`
+          `https://cosmetics-server-001.vercel.app/api/admin/sub-category?${params.toString()}`
         );
         setSubCategories(response.data.products);
         setTotalPages(response.data.totalPages);
@@ -63,17 +64,93 @@ const SubCategoryAllDataAdmin = () => {
 
   // Set up interval for auto-refresh
   useEffect(() => {
-    // Fetch immediately on mount (not a background refresh)
     fetchSubCategories(false);
 
-    // Set up interval for background refreshes
     const intervalId = setInterval(() => {
       fetchSubCategories(true);
     }, refreshInterval);
 
-    // Clean up interval on unmount or when dependencies change
     return () => clearInterval(intervalId);
   }, [fetchSubCategories, refreshInterval]);
+
+  // Drag and drop handlers
+  const handleDragStart = (e, index) => {
+    e.dataTransfer.setData("text/plain", index);
+    setIsDragging(true);
+    e.currentTarget.classList.add("dragging");
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+  };
+
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    e.currentTarget.classList.add("drag-over");
+  };
+
+  const handleDragLeave = (e) => {
+    e.currentTarget.classList.remove("drag-over");
+  };
+
+  const handleDrop = async (e, targetIndex) => {
+    e.preventDefault();
+    setIsDragging(false);
+    
+    // Remove drag classes
+    document.querySelectorAll(".drag-over, .dragging").forEach(el => {
+      el.classList.remove("drag-over", "dragging");
+    });
+    
+    const sourceIndex = parseInt(e.dataTransfer.getData("text/plain"));
+    
+    if (sourceIndex === targetIndex) return;
+    
+    // Create a new array with reordered items
+    const reorderedCategories = [...categories];
+    const [movedItem] = reorderedCategories.splice(sourceIndex, 1);
+    reorderedCategories.splice(targetIndex, 0, movedItem);
+    
+    // Update UI immediately
+    setSubCategories(reorderedCategories);
+    
+    try {
+      // Update positions in backend
+      const positionUpdates = reorderedCategories.map((category, index) => ({
+        id: category._id,
+        position: index
+      }));
+      
+      await axios.put("https://cosmetics-server-001.vercel.app/api/admin/update-position-sub-category", {
+        positions: positionUpdates
+      });
+      
+      // Show success message
+      await Swal.fire({
+        title: "Success!",
+        text: "Positions updated successfully",
+        icon: "success",
+        timer: 2000,
+        showConfirmButton: false
+      });
+      
+      // Refresh data to ensure consistency
+      fetchSubCategories(false);
+    } catch (err) {
+      console.error("Error updating positions:", err);
+      
+      // Revert UI changes on error
+      fetchSubCategories(false);
+      
+      await Swal.fire({
+        title: "Error!",
+        text: "Failed to update positions",
+        icon: "error",
+        confirmButtonText: "OK"
+      });
+    }
+  };
 
   // Update URL when filters or pagination changes
   const updateUrlParams = (newParams) => {
@@ -94,7 +171,7 @@ const SubCategoryAllDataAdmin = () => {
   const handleFilterSubmit = (e) => {
     e.preventDefault();
     updateUrlParams({
-      page: "1", // Reset to first page
+      page: "1",
       title: titleFilter,
       showWebFilter: showWebFilter,
     });
@@ -115,12 +192,11 @@ const SubCategoryAllDataAdmin = () => {
 
     try {
       const response = await axios.delete(
-        `https://books-server-001.vercel.app/api/admin/delete/subcategory/${id}`
+        `https://cosmetics-server-001.vercel.app/api/admin/delete/subcategory/${id}`
       );
 
       if (response.data.success) {
-        // Refresh the categories after deletion
-        fetchSubCategories(false); // Not a background refresh
+        fetchSubCategories(false);
 
         await Swal.fire(
           "Deleted!",
@@ -228,91 +304,120 @@ const SubCategoryAllDataAdmin = () => {
         </div>
       </form>
 
-      {/* Categories Table */}
-      {/* Categories Table */}
-<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-  <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    <thead className="text-xs border-b border-gray-400 text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-      <tr>
-        <th scope="col" className="px-6 py-3">
-          Title
-        </th>
-        <th scope="col" className="px-6 py-3">
-          Parent Category
-        </th>
-        <th scope="col" className="px-6 py-3">
-          Status
-        </th>
-        <th scope="col" className="px-6 py-3 flex justify-end">
-          Delete
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      {categories.length > 0 ? (
-        categories.map((category) => (
-          <tr
-            key={category._id}
-            className="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-          >
-            <th
-              scope="row"
-              className="px-6 py-4 flex flex-row gap-3 items-center font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              <span>
-                {category.singleImage && (
-                  <img
-                    src={category.singleImage}
-                    alt={category.title}
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
-                )}
-              </span>
-              <Link
-                href={`/admin/categories/add-subcategory/${category._id}`}
-                className="hover:underline hover:text-blue-600 dark:hover:text-blue-400"
-              >
-                {category.title}
-              </Link>
-            </th>
-            <td className="px-6 py-4">
-              {category.parentCategory?.title || "N/A"}
-            </td>
-            <td className="px-6 py-4">
-              <span
-                className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                  category.showWebsite
-                    ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                    : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
-                }`}
-              >
-                {category.showWebsite ? "Visible" : "Hidden"}
-              </span>
-            </td>
+      {/* Drag and Drop Instructions */}
+      <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg dark:bg-blue-900/20 dark:border-blue-800">
+        <p className="text-blue-800 dark:text-blue-200 text-sm flex items-center">
+          <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd"></path>
+          </svg>
+          Drag and drop items to reorder. Changes are automatically saved.
+        </p>
+      </div>
 
-            <td className="px-6 py-4 text-right">
-              <button
-                onClick={() => handleDelete(category._id)}
-                className="font-medium cursor-pointer text-red-600 dark:text-red-500 hover:underline"
-              >
+      {/* Categories Table */}
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs border-b border-gray-400 text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                Position
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Title
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Parent Category
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Status
+              </th>
+              <th scope="col" className="px-6 py-3 flex justify-end">
                 Delete
-              </button>
-            </td>
-          </tr>
-        ))
-      ) : (
-        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-          <td
-            colSpan="4"
-            className="px-6 py-4 text-center text-gray-500 dark:text-gray-400"
-          >
-            No categories found matching your filters
-          </td>
-        </tr>
-      )}
-    </tbody>
-  </table>
-</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {categories.length > 0 ? (
+              categories.map((category, index) => (
+                <tr
+                  key={category._id}
+                  className="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+                  draggable
+                  onDragStart={(e) => handleDragStart(e, index)}
+                  onDragOver={handleDragOver}
+                  onDragEnter={handleDragEnter}
+                  onDragLeave={handleDragLeave}
+                  onDrop={(e) => handleDrop(e, index)}
+                  onDragEnd={() => {
+                    setIsDragging(false);
+                    document.querySelectorAll(".drag-over, .dragging").forEach(el => {
+                      el.classList.remove("drag-over", "dragging");
+                    });
+                  }}
+                >
+                  <td className="px-6 py-4 text-gray-400 cursor-move drag-handle">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                    </svg>
+                  </td>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 flex flex-row gap-3 items-center font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    <span>
+                      {category.singleImage && (
+                        <img
+                          src={category.singleImage}
+                          alt={category.title}
+                          className="w-10 h-10 rounded-full object-cover"
+                        />
+                      )}
+                    </span>
+                    <Link
+                      href={`/admin/categories/add-subcategory/${category._id}`}
+                      className="hover:underline hover:text-blue-600 dark:hover:text-blue-400"
+                    >
+                      {category.title}
+                    </Link>
+                  </th>
+                  <td className="px-6 py-4">
+                    {category.parentCategory?.title || "N/A"}
+                  </td>
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                        category.showWebsite
+                          ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                          : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
+                      }`}
+                    >
+                      {category.showWebsite ? "Visible" : "Hidden"}
+                    </span>
+                  </td>
+
+                  <td className="px-6 py-4 text-right">
+                    <button
+                      onClick={() => handleDelete(category._id)}
+                      className="font-medium cursor-pointer text-red-600 dark:text-red-500 hover:underline"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td
+                  colSpan="5"
+                  className="px-6 py-4 text-center text-gray-500 dark:text-gray-400"
+                >
+                  No categories found matching your filters
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
 
       {/* Pagination */}
       {totalPages > 1 && (
@@ -385,6 +490,22 @@ const SubCategoryAllDataAdmin = () => {
           </nav>
         </div>
       )}
+
+      <style jsx>{`
+        .dragging {
+          opacity: 0.5;
+          background-color: #f0f9ff;
+        }
+        .drag-over {
+          border-top: 2px solid #3b82f6;
+        }
+        .drag-handle {
+          cursor: grab;
+        }
+        .drag-handle:active {
+          cursor: grabbing;
+        }
+      `}</style>
     </div>
   );
 };

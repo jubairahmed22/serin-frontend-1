@@ -8,6 +8,8 @@ const useCon = () => {
   const [config, setConfig] = useState({
     termsAndConditions: '',
     deliveryCharge: 0,
+    deliveryChargeInsideDhaka: 0,
+    deliveryChargeOutsideDhaka: 0,
     taxRate: 0,
     storeName: '',
     contactEmail: '',
@@ -19,11 +21,13 @@ const useCon = () => {
   useEffect(() => {
     const fetchConfiguration = async () => {
       try {
-        const response = await axios.get('https://books-server-001.vercel.app/api/get-configuration');
+        const response = await axios.get('https://cosmetics-server-001.vercel.app/api/get-configuration');
         const data = response.data;
         setConfig({
           termsAndConditions: data.termsAndConditions,
           deliveryCharge: data.deliveryCharge,
+          deliveryChargeInsideDhaka: data.deliveryChargeInsideDhaka,
+          deliveryChargeOutsideDhaka: data.deliveryChargeOutsideDhaka,
           taxRate: data.taxRate,
           storeName: data.storeName,
           contactEmail: data.contactEmail,

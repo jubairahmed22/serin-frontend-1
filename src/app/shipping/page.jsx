@@ -119,7 +119,7 @@ const Page = () => {
 
     try {
       const response = await axios.post(
-        "https://books-server-001.vercel.app/pay-sslcommerz",
+        "https://cosmetics-server-001.vercel.app/pay-sslcommerz",
         {
           total,
           customerTotal: total,
@@ -157,7 +157,7 @@ const Page = () => {
 
   //     try {
   //       const response = await fetch(
-  //         "https://books-server-001.vercel.app/api/sent-cart-details",
+  //         "https://cosmetics-server-001.vercel.app/api/sent-cart-details",
   //         {
   //           method: "POST",
   //           headers: { "Content-Type": "application/json" },
@@ -217,7 +217,7 @@ const Page = () => {
     try {
       // First make the cash on delivery order request
       const orderResponse = await axios.post(
-        "https://books-server-001.vercel.app/pay-cashondelivery",
+        "https://cosmetics-server-001.vercel.app/pay-cashondelivery",
         {
           total,
           customerTotal: total,
@@ -236,7 +236,7 @@ const Page = () => {
         // Then send the email confirmation
         try {
           const emailResponse = await fetch(
-            "https://books-server-001.vercel.app/api/sent-cart-details",
+            "https://cosmetics-server-001.vercel.app/api/sent-cart-details",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -340,7 +340,7 @@ const Page = () => {
             <div className="flex flex-row gap-5">
               <button
   onClick={handleCashOnDelivery}
-  className={`w-full bg-[#50C878] text-white py-3 rounded-lg mt-6 hover:bg-blue-700 transition-colors flex justify-center items-center ${
+  className={`w-full bg-[#414143] text-white py-3 rounded-lg mt-6 hover:bg-blue-700 transition-colors flex justify-center items-center ${
     (itemCount === 0 || isLoading) ? 'opacity-70 cursor-not-allowed' : ''
   }`}
   disabled={itemCount === 0 || isLoading}
@@ -359,7 +359,7 @@ const Page = () => {
 </button>
               {/* <button
                 onClick={handlePayment}
-                className="w-full bg-[#50C878] text-white py-3 rounded-lg mt-6 hover:bg-blue-700 transition-colors"
+                className="w-full bg-[#414143] text-white py-3 rounded-lg mt-6 hover:bg-blue-700 transition-colors"
                 disabled={itemCount === 0}
               >
                 Mobile Wallet (৳{total.toFixed(2)})
@@ -428,7 +428,7 @@ const Page = () => {
           <div className="flex flex-row gap-5">
             <button
   onClick={handleCashOnDelivery}
-  className={`w-full bg-[#50C878] text-white py-3 rounded-lg mt-6 hover:bg-blue-700 transition-colors flex justify-center items-center ${
+  className={`w-full bg-[#414143] text-white py-3 rounded-lg mt-6 hover:bg-blue-700 transition-colors flex justify-center items-center ${
     (itemCount === 0 || isLoading) ? 'opacity-70 cursor-not-allowed' : ''
   }`}
   disabled={itemCount === 0 || isLoading}
@@ -447,7 +447,7 @@ const Page = () => {
 </button>
             {/* <button
                 onClick={handlePayment}
-                className="w-full bg-[#50C878] text-white py-3 rounded-lg mt-6 hover:bg-blue-700 transition-colors"
+                className="w-full bg-[#414143] text-white py-3 rounded-lg mt-6 hover:bg-blue-700 transition-colors"
                 disabled={itemCount === 0}
               >
                 Mobile Wallet (৳{total.toFixed(2)})

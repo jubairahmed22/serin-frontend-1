@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import InvoicePaymentDetails from "../../components/OrderDetails/InvoicePaymentDetails";
 import "../../../styles/globals.css";
-import logo from "../../../assets/book_forest.png";
+import logo from "../../../assets/serin-logo-svg.svg";
 
 const OrderInvoice = ({ cartItems, formData, paymentData }) => {
   const [configData, setConfigData] = useState(null);
@@ -14,7 +14,7 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://books-server-001.vercel.app/api/get-configuration"
+          "https://cosmetics-server-001.vercel.app/api/get-configuration"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -209,7 +209,7 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/sent-order-details",
+        "https://cosmetics-server-001.vercel.app/api/sent-order-details",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -274,7 +274,7 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
         className="w-[620px] h-[1020px] print-container z-50 bg-white flex flex-col justify-between"
       >
         {/* <div
-          className="w-full h-5 bg-green-700"
+          className="w-full h-5 bg-pink-700"
           style={{
             backgroundImage: `
       linear-gradient(45deg, #16a34a 25%, transparent 25%),
@@ -288,17 +288,17 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
         ></div> */}
         <div className="w-full p-10 flex flex-col h-full">
           {/* header */}
-          <div className="border-b border-green-700 pb-1 flex justify-between font-semibold text-green-900">
+          <div className="border-b border-pink-700 pb-1 flex justify-between font-semibold text-pink-900">
             <div className="flex flex-col space-y-2">
               <div className="flex flex-row items-center gap-2">
                 <img src={logo.src} className="w-28 h-28" alt=""></img>
                 <div className="flex flex-col gap-1">
-                  <h1 className="font-semibold text-green-900">BOOK FOREST</h1>
+                  <h1 className="font-semibold text-pink-900">SERIN</h1>
 
-                  <h1 className="text-sm font-light text-green-900">
+                  <h1 className="text-sm font-light text-pink-900">
                     Email: {configData.contactEmail}
                   </h1>
-                  <h1 className="text-sm font-light text-green-900">
+                  <h1 className="text-sm font-light text-pink-900">
                     Phone: {configData.contactPhone}
                   </h1>
                 </div>
@@ -306,7 +306,7 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
             </div>
           </div>
           {/* Information */}
-          <div className="pb-1 mt-10 flex justify-between text-green-900">
+          <div className="pb-1 mt-10 flex justify-between text-pink-900">
             <div>
               <h1>Invoice to</h1>
               <h1 className="text-2xl font-bold">{formData.name}</h1>
@@ -315,11 +315,11 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
               <h1>Address : {formData.address}</h1>
             </div>
             <div>
-              <h1 className="text-green-900 text-sm">
+              <h1 className="text-pink-900 text-sm">
                 <span className="text-sm font-semibold">Invoice No :</span>{" "}
                 {formData.invoiceId}
               </h1>
-              <h1 className="text-green-900 text-sm">
+              <h1 className="text-pink-900 text-sm">
                 <span className="text-sm font-semibold">Invoice Date :</span>{" "}
                 {formatDate(formData.createdAt)}
               </h1>
@@ -328,8 +328,8 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
           {/* cart item */}
           <div className=" rounded-xl overflow-hidden mt-2">
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200 border border-green-200">
-                <thead className="bg-green-700 rounded-2xl text-white">
+              <table className="min-w-full divide-y divide-gray-200 border border-pink-200">
+                <thead className="bg-pink-700 rounded-2xl text-white">
                   <tr>
                     <th
                       scope="col"
@@ -411,7 +411,7 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                           {item.discountValue > 0 ? (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-green-100 text-green-800">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-800">
                               {item.discountValue}
                               {item.discountType === "percentage" ? "%" : " tk"}
                             </span>
@@ -457,10 +457,10 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
             </div>
           </div>
           {/* payment details */}
-          <div className="flex flex-row gap-5 mt-5 py-2 border-t border-green-700">
+          <div className="flex flex-row gap-5 mt-5 py-2 border-t border-pink-700">
             {/* terms and conditions */}
             <div className=" w-full space-y-2">
-              <h1 className="text-md text-green-900 font-semibold">
+              <h1 className="text-md text-pink-900 font-semibold">
                 Payment Info
               </h1>
               <InvoicePaymentDetails
@@ -468,7 +468,7 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
               ></InvoicePaymentDetails>
             </div>
             {/* total info */}
-            <div className="border-l pl-2 border-green-100 w-full">
+            <div className="border-l pl-2 border-pink-100 w-full">
               <div className="flex flex-col gap-5">
                 <div className="">
                   <div className="">
@@ -526,11 +526,11 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
             </div>
           </div>
           {/* terms and conditions */}
-          <h1 className="text-md text-green-900 font-semibold mt-5">
+          <h1 className="text-md text-pink-900 font-semibold mt-5">
             Terms and Conditions
           </h1>
           <div
-            className="prose text-sm  text-green-900"
+            className="prose text-sm  text-pink-900"
             dangerouslySetInnerHTML={{ __html: configData.termsAndConditions }}
           />
         </div>
@@ -538,7 +538,7 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
         {/* footer part */}
 
         {/* <div
-          className="w-full h-20 bg-green-700"
+          className="w-full h-20 bg-pink-700"
           style={{
             backgroundImage: `
       linear-gradient(45deg, #16a34a 25%, transparent 25%),
@@ -560,18 +560,18 @@ const OrderInvoice = ({ cartItems, formData, paymentData }) => {
       value={clientEmail}
       onChange={(e) => setClientEmail(e.target.value)}
       placeholder="Client Email"
-      className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent w-full sm:w-[280px] transition-all"
+      className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent w-full sm:w-[280px] transition-all"
     />
     <input
       type="text"
       value={emailSubject}
       onChange={(e) => setEmailSubject(e.target.value)}
       placeholder="Email Subject"
-      className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent w-full sm:w-[280px] transition-all"
+      className="px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent w-full sm:w-[280px] transition-all"
     />
     <button
       onClick={handleSendEmail}
-      className="px-6 py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium text-sm w-full sm:w-auto transition-colors shadow-sm hover:shadow-md flex items-center justify-center gap-2"
+      className="px-6 py-3 rounded-lg bg-pink-600 hover:bg-pink-700 text-white font-medium text-sm w-full sm:w-auto transition-colors shadow-sm hover:shadow-md flex items-center justify-center gap-2"
     >
       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

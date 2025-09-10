@@ -17,7 +17,7 @@ const HomeCategorySection = () => {
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        const res = await fetch("https://books-server-001.vercel.app/api/admin/sub-categories-with-products");
+        const res = await fetch("https://cosmetics-server-001.vercel.app/api/admin/sub-categories-with-products");
         if (!res.ok) throw new Error("Failed to load data");
         const json = await res.json();
         setCategoryData(json.data || []);
@@ -49,14 +49,10 @@ const HomeCategorySection = () => {
     return (
       <div className="w-full">
         {[...Array(3)].map((_, index) => (
-          <div key={`skeleton-category-${index}`} className="bg-white py-16 fontPoppins">
+          <div key={`skeleton-category-${index}`} className="bg-white py-4 fontPoppins">
             <div className="max-w-[1440px] mx-auto relative px-6">
               <div className="max-w-[1400px] mx-auto">
-                <div className="flex items-center w-full mb-8">
-                  <div className="h-8 bg-gray-200 rounded w-1/4 mr-4"></div>
-                  <div className="flex-grow h-px bg-gray-200 mx-8"></div>
-                  <div className="h-10 bg-gray-200 rounded w-32"></div>
-                </div>
+               
                 <Swiper
                   modules={[Navigation]}
                   spaceBetween={20}
@@ -93,23 +89,23 @@ const HomeCategorySection = () => {
         return (
           <div
             key={category._id}
-            className="bg-white py-16 pageHeightPY fontPoppins"
+            className="bg-white   fontPoppins"
           >
             <div className="max-w-[1440px] mx-auto relative px-6">
               <div className="max-w-[1400px] mx-auto">
-                <div className="flex items-center w-full mb-8">
-                  <h1 className="lg:text-3xl md:text-3xl sm:text-sm font-bold text-gray-900 whitespace-nowrap mr-4">
+                <div className="flex flex-row justify-between items-center w-full ">
+                  <h1 className="fontGaramond lg:text-3xl md:text-3xl sm:text-sm font-bold text-[#414143] whitespace-nowrap mr-4">
                     {category.title} 
                   </h1>
 
-                  <div className="flex-grow h-px bg-gray-200 mx-8"></div>
+                  <div className="flex-grow h-0.5 bg-[#414143]/20 lg:mx-8 sm:mx-4"></div>
                   <HomeCategoryFilter
                     categoryId={category.parentCategory?.id}
                     subCategoryId={category._id}
                   />
                 </div>
 
-                <div className="relative">
+                <div className="relative titlePY">
                   <Swiper
                     modules={[Navigation, Autoplay]}
                     navigation={{
@@ -141,12 +137,12 @@ const HomeCategorySection = () => {
                   {/* Navigation Buttons */}
                   {category.products.length > 5 && (
                     <>
-                      <div className={`prev-${category._id} absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#50C878] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg`}>
+                      <div className={`prev-${category._id} absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg`}>
                         <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" stroke="currentColor">
                           <path d="M15 19l-7-7 7-7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
                         </svg>
                       </div>
-                      <div className={`next-${category._id} absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#50C878] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg`}>
+                      <div className={`next-${category._id} absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg`}>
                         <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" stroke="currentColor">
                           <path d="M9 5l7 7-7 7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
                         </svg>

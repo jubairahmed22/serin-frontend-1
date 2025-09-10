@@ -1,55 +1,57 @@
-import React, { useRef } from 'react';
-import HTMLFlipBook from 'react-pageflip';
+import React, { useState, useRef } from 'react';
+import '../../../../styles/imageShow.css';
 
 const ImageManagement = ({ product }) => {
-  const bookRef = useRef();
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [zoom, setZoom] = useState(false);
+  const [transformOrigin, setTransformOrigin] = useState("center center");
+  const mainImageRef = useRef(null);
 
-  // Combine cover image with other images
-  const allPages = [product.singleImage, ...product.images];
+  const allImages = [product.singleImage, ...product.images];
+
+  // Handle zoom movement
+  const handleMouseMove = (e) => {
+    if (!mainImageRef.current) return;
+    const { left, top, width, height } = mainImageRef.current.getBoundingClientRect();
+
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+
+    setTransformOrigin(`${x}% ${y}%`);
+  };
 
   return (
-    <div className="book-container cursor-pointer">
-      <HTMLFlipBook
-        ref={bookRef}
-        width={300}
-        height={450}
-        size="stretch"
-        minWidth={200}
-        maxWidth={1000}
-        minHeight={300}
-        maxHeight={1200}
-        maxShadowOpacity={0.5}
-        showCover={true}
-        mobileScrollSupport={true}
-        className="flip-book"
-        style={{ background: 'transparent' }}
+    <div className="image-gallery">
+      {/* Main image with inline zoom */}
+      <div
+        className="main-image-container"
+        onMouseEnter={() => setZoom(true)}
+        onMouseLeave={() => setZoom(false)}
+        onMouseMove={handleMouseMove}
+        ref={mainImageRef}
       >
-        {allPages.map((img, index) => (
-          <div key={index} className="page">
-            <div className="page-content">
-              <img src={img} alt={`Page ${index + 1}`} />
-            </div>
-          </div>
-        ))}
-      </HTMLFlipBook>
+        <img
+          src={allImages[selectedImage]}
+          alt={`Product view ${selectedImage + 1}`}
+          className={`main-image ${zoom ? "zoomed" : ""}`}
+          style={{ transformOrigin }}
+        />
+      </div>
 
-      <div className="controls dark:text-gray-900">
-  <button 
-    className="arrow left hover:text-gray-700 dark:hover:text-gray-600" 
-    onClick={() => bookRef.current.pageFlip().flipPrev()}
-  >
-    ‹
-  </button>
-  {/* <span className="page-counter mx-4 font-medium">
-    {bookRef.current?.pageFlip()?.getCurrentPageIndex() + 1 || 1} / {allPages.length}
-  </span> */}
-  <button 
-    className="arrow right hover:text-gray-700 dark:hover:text-gray-600" 
-    onClick={() => bookRef.current.pageFlip().flipNext()}
-  >
-    ›
-  </button>
-</div>
+      {/* Thumbnails */}
+      <div className="thumbnail-section">
+        <div className="thumbnails-container">
+          {allImages.map((image, index) => (
+            <div
+              key={index}
+              className={`thumbnail-wrapper ${selectedImage === index ? 'active' : ''}`}
+              onClick={() => setSelectedImage(index)}
+            >
+              <img src={image} alt={`Thumbnail ${index + 1}`} className="thumbnail" />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

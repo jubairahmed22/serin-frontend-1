@@ -44,7 +44,7 @@ const AllOrdersDataAdmin = () => {
   const subCategoryParam = searchParams.get("subCategory") || "";
   const childCategoryParam = searchParams.get("childCategory") || "";
   const authorParam = searchParams.get("author") || "";
-  const publisherParam = searchParams.get("publisher") || "";
+  const publisherParam = searchParams.get("brand") || "";
   const startDateParam = searchParams.get("startDate") || "";
   const endDateParam = searchParams.get("endDate") || "";
   const popularBooksParam = searchParams.get("popularBooks") || "";
@@ -89,19 +89,19 @@ const AllOrdersDataAdmin = () => {
       try {
         // Fetch categories
         const categoriesResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/category"
+          "https://cosmetics-server-001.vercel.app/api/admin/category"
         );
         setCategories(categoriesResponse.data.products);
 
         // Fetch authors
         const authorsResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/all-author"
+          "https://cosmetics-server-001.vercel.app/api/admin/all-author"
         );
         setAuthors(authorsResponse.data.products);
 
         // Fetch publishers
         const publishersResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/all-publisher"
+          "https://cosmetics-server-001.vercel.app/api/admin/all-brands"
         );
         setPublishers(publishersResponse.data.products);
 
@@ -137,7 +137,7 @@ const AllOrdersDataAdmin = () => {
       setIsFetchingSubCategories(true);
       try {
         const response = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/sub-category"
+          "https://cosmetics-server-001.vercel.app/api/admin/sub-category"
         );
         const filteredSubCategories = response.data.products.filter(
           (subCat) => subCat.parentCategory.id === categorySelected._id
@@ -173,7 +173,7 @@ const AllOrdersDataAdmin = () => {
       setIsFetchingChildCategories(true);
       try {
         const response = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/child-category"
+          "https://cosmetics-server-001.vercel.app/api/admin/child-category"
         );
         const filteredChildCategories = response.data.products.filter(
           (childCat) => childCat.parentSubCategory.id === subCategorySelected._id
@@ -215,7 +215,7 @@ const AllOrdersDataAdmin = () => {
         if (subCategoryParam) params.set("subCategory", subCategoryParam);
         if (childCategoryParam) params.set("childCategory", childCategoryParam);
         if (authorParam) params.set("author", authorParam);
-        if (publisherParam) params.set("publisher", publisherParam);
+        if (publisherParam) params.set("brand", publisherParam);
         if (startDateParam) params.set("startDate", startDateParam);
         if (endDateParam) params.set("endDate", endDateParam);
         if (popularBooksParam) params.set("popularBooks", popularBooksParam);
@@ -230,7 +230,7 @@ const AllOrdersDataAdmin = () => {
         if (statusParam) params.set("status", statusParam);
 
         const response = await axios.get(
-          `https://books-server-001.vercel.app/api/payment-ssl?${params.toString()}`
+          `https://cosmetics-server-001.vercel.app/api/payment-ssl?${params.toString()}`
         );
         setProducts(response.data.payments);
         setTotalPages(response.data.totalPages);
@@ -293,7 +293,7 @@ const AllOrdersDataAdmin = () => {
     if (subCategorySelected) params.set("subCategory", subCategorySelected._id);
     if (childCategorySelected) params.set("childCategory", childCategorySelected._id);
     if (authorSelected) params.set("author", authorSelected);
-    if (publisherSelected) params.set("publisher", publisherSelected);
+    if (publisherSelected) params.set("brand", publisherSelected);
     if (startDateSelected) params.set("startDate", startDateSelected);
     if (endDateSelected) params.set("endDate", endDateSelected);
     if (popularBooksSelected) params.set("popularBooks", popularBooksSelected);
@@ -397,7 +397,7 @@ const AllOrdersDataAdmin = () => {
     await DeleteConfirmation(async () => {
       try {
         const response = await axios.delete(
-          `https://books-server-001.vercel.app/api/admin/delete/orders/${id}`
+          `https://cosmetics-server-001.vercel.app/api/admin/delete/orders/${id}`
         );
         if (response.data.success) {
           fetchProducts(false);

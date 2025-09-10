@@ -48,7 +48,7 @@ export const authOptions = {
     async signIn({ user, account }) {
       if (account?.provider === 'google') {
         try {
-          await axios.post('https://books-server-001.vercel.app/api/auth/registergoogle', {
+          await axios.post('https://cosmetics-server-001.vercel.app/api/auth/registergoogle', {
             name: user.name,
             email: user.email,
           })

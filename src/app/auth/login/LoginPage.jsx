@@ -28,9 +28,9 @@ export default function LoginPage() {
         }
       } else {
         if (redirectUrl.startsWith("/admin")) {
-          redirectUrl = "/all-books";
+          redirectUrl = "/products";
         } else if (!redirectUrl) {
-          redirectUrl = "/all-books";
+          redirectUrl = "/products";
         }
       }
 
@@ -119,7 +119,7 @@ export default function LoginPage() {
           <button
             type="submit"
             className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-all ${
-              loading ? "bg-emerald-400" : "bg-[#50C878] hover:bg-emerald-600"
+              loading ? "bg-emerald-400" : "bg-[#414143] hover:bg-emerald-600"
             } shadow-md hover:shadow-lg`}
             disabled={loading}
           >

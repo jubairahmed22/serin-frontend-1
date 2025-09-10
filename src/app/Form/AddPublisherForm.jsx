@@ -15,7 +15,7 @@ const AddPublisherForm = ({ onClose, refreshTags }) => {
 
     try {
       const response = await axios.post(
-        "https://books-server-001.vercel.app/api/admin/upload/add-publisher",
+        "https://cosmetics-server-001.vercel.app/api/admin/upload/add-publisher",
         { title },
         { headers: { "Content-Type": "application/json" } }
       );

@@ -1,0 +1,72 @@
+/* Mobile (200px-639px) - 2 columns */
+@media (min-width: 200px) and (max-width: 639px) {
+  .bigDisplay {
+    display: none;
+  }
+  .textCountNav {
+    font-size: 8px;
+  }
+  .seeMoreButton {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  .textTitleCard {
+    font-size: 10px;
+  }
+  .gridImageBanner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; /* optional */
+  }
+  .gridImageBannerThree {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px; /* optional */
+  }
+}
+
+/* Tablet (640px-1040px) - 3 columns */
+@media (min-width: 640px) and (max-width: 1040px) {
+  .bigDisplay {
+    display: none;
+  }
+  .gridImageBanner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; /* optional */
+  }
+}
+
+/* Laptop (1041px-1600px) - 4 columns */
+@media (min-width: 1041px) and (max-width: 1600px) {
+  .mobileDisplay {
+    display: none;
+  }
+  .gridImageBanner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; /* optional */
+  }
+  .gridImageBannerThree {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* optional */
+  }
+}
+
+/* Large desktop (1601px+) - 5 columns */
+@media (min-width: 1601px) {
+  .mobileDisplay {
+    display: none;
+  }
+  .gridImageBanner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px; /* optional */
+  }
+  .gridImageBannerThree {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px; /* optional */
+  }
+}

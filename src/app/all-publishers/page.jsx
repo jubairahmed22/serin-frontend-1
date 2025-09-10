@@ -24,7 +24,7 @@ const allPublisher = () => {
   const fetchAuthors = async (page = 1, search = "") => {
     try {
       setLoading(true);
-      const url = new URL("https://books-server-001.vercel.app/api/web/main-all-publisher");
+      const url = new URL("https://cosmetics-server-001.vercel.app/api/web/main-all-publisher");
       url.searchParams.append("page", page);
       if (search) {
         url.searchParams.append("title", search);
@@ -67,7 +67,7 @@ const allPublisher = () => {
       e.preventDefault();
       const params = new URLSearchParams();
       params.set("publisher", author._id);
-      router.push(`/all-books?${params.toString()}`);
+      router.push(`/products?${params.toString()}`);
     };
   };
 

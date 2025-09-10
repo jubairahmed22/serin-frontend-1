@@ -13,7 +13,7 @@ const DropdownPublication = ({ setIsOpen }) => {
     const fetchPopularBooks = async () => {
       try {
         const response = await fetch(
-          "https://books-server-001.vercel.app/api/web/all-publisher"
+          "https://cosmetics-server-001.vercel.app/api/web/all-publisher"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch popular books");
@@ -35,7 +35,7 @@ const DropdownPublication = ({ setIsOpen }) => {
       e.preventDefault();
       const params = new URLSearchParams();
       params.set("publisher", author._id);
-      router.push(`/all-books?${params.toString()}`);
+      router.push(`/products?${params.toString()}`);
       setIsOpen();
     };
   };

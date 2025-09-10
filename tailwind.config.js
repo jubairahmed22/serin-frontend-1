@@ -10,9 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["Poppins", "sans-serif"],
-      },
+      // fontFamily: {
+      //   sans: ["Poppins", "sans-serif"],
+      // },
       screens: {
         sm: { min: "335px", max: "780px" },
         md: { min: "760px", max: "1019px" },

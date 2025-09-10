@@ -3,7 +3,7 @@
     font-size: 32px;
 }
 .buttonPopular{
-   background-color: #50C878;
+   background-color: #F01F7B;
    font-size: 14px;
    color: white;
 }
@@ -34,9 +34,18 @@
 
 /* Tablet (min-width: 640px) */
 @media (min-width: 200px) and (max-width: 639px) {
-  .sliderImgSize {
-    height: 150px;
-  }
+ .sliderImgSize {
+  height: 300px;
+  margin-top: 10px;
+  max-width: 95%;
+  display: block;         /* helps with centering */
+  margin: 0 auto;         /* centers horizontally */
+  border-radius: 12px;    /* rounded-xl equivalent */
+  object-fit: cover;      /* ensures good cropping */
+}
+.sliderImageRes{
+   object-fit: cover;     /* ensures good cropping */
+}
 .buttonPopular {
   font-size: 12px;
   padding: 4px 10px; /* top/bottom = 2px, left/right = 3px */
@@ -46,7 +55,10 @@
     padding: 8px 2px;
   }
 .pageHeightPY{
-  padding: 28px 0px;
+  padding: 10px 0px;
+}
+.titlePY{
+padding: 10px 0px;
 }
 .pageHeightShopPY{
   padding: 0px 0px;
@@ -67,18 +79,27 @@
   .sliderImgSize {
     height: 250px;
   }
+  .titlePY{
+padding: 16px 0px;
+}
   
 }
 @media (min-width: 1040px) and (max-width: 1600px) {
   .sliderImgSize {
     height: 300px;
   }
+  .titlePY{
+padding: 30px 0px;
+}
 }
 
 @media (min-width: 1600px) and (max-width: 2200px) {
   .sliderImgSize {
     height: 600px;
   }
+  .titlePY{
+padding: 30px 0px;
+}
 }
 
 

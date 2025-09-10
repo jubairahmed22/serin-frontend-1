@@ -13,7 +13,7 @@ const HomeSlider = () => {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
-        const response = await fetch('https://books-server-001.vercel.app/api/admin/bannerOne');
+        const response = await fetch('https://cosmetics-server-001.vercel.app/api/admin/bannerOne');
         if (!response.ok) {
           throw new Error('Failed to fetch slides');
         }
@@ -121,7 +121,7 @@ const HomeSlider = () => {
             <motion.img
               src={slides[currentIndex].image}
               alt=""
-              className="w-full h-full object-fill cursor-pointer"
+              className="w-full h-full lg:object-fill cursor-pointer sliderImageRes"
               initial={{ scale: 1.1 }}
               animate={{ scale: 1 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
@@ -135,7 +135,7 @@ const HomeSlider = () => {
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-[#50C878] bg-opacity-40 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-60 z-20"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-[#414143] bg-opacity-40 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-60 z-20"
             aria-label="Previous slide"
           >
             <motion.svg
@@ -152,7 +152,7 @@ const HomeSlider = () => {
 
           <button
             onClick={nextSlide}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-[#50C878] bg-opacity-40 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-60 z-20"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-[#414143] bg-opacity-40 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-60 z-20"
             aria-label="Next slide"
           >
             <motion.svg

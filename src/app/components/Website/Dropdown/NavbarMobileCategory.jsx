@@ -16,7 +16,7 @@ const NavbarMobileCategory = () => {
         onClick={() => setIsOpen(true)}
         className=" text-green-800 hover:text-green-700 transition-colors"
       >
-        <HiMenuAlt3 className="text-3xl scale-x-[-1]" />
+        <HiMenuAlt3 className="text-4xl scale-x-[-1]" />
       </button>
 
       {/* Sidebar with Overlay */}

@@ -1,7 +1,11 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
 
+const TiptapEditor = dynamic(() => import("../../components/TiptapEditor"), {
+  ssr: false,
+});
 const ProductBasicInfo = ({
   formData,
   setFormData,
@@ -80,16 +84,31 @@ const ProductBasicInfo = ({
               />
             </div>
           </div>
-
-          <div>
+    <div className="w-full flex items-center">
+          <div className="flex items-center h-5">
+            <input
+              type="checkbox"
+              id="showWebsite"
+              checked={showWebsite}
+              onChange={() => setShowWebsite(!showWebsite)}
+              className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+          </div>
+          <label
+            htmlFor="showWebsite"
+            className="ml-3 text-sm font-medium text-gray-800"
+          >
+            Show on website
+          </label>
+        </div>
+          {/* <div>
             <label className="block text-sm font-medium text-gray-800 mb-1">
-              Author <span className="text-red-500">*</span>
+              Skin Care <span className="text-red-500">*</span>
             </label>
             <select
               value={formData.authorId || ""}
               onChange={handleAuthorChange}
               className="block w-full px-4 dark:text-black py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-              required
               disabled={isFetchingAuthors}
             >
               <option value="">Select an author</option>
@@ -99,26 +118,27 @@ const ProductBasicInfo = ({
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-800 mb-1">
             Description <span className="text-red-500">*</span>
           </label>
-          <textarea
-            value={formData.description || ""}
-            onChange={(e) =>
-              setFormData({ ...formData, description: e.target.value })
-            }
-            className="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 h-32"
-            placeholder="Enter product description"
-            required
-          />
+          <TiptapEditor
+                value={formData.description}
+                onChange={(value) =>
+                  setFormData((formData) => ({
+                    ...formData,
+                    description: value,
+                  }))
+                }
+              />
+
         </div>
       </div>
 
-      <div className="grid grid-cols-3 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-5">
         <div>
           <label className="block text-sm font-medium text-gray-800 mb-1">
             Price ($) <span className="text-red-500">*</span>
@@ -154,23 +174,7 @@ const ProductBasicInfo = ({
           />
         </div>
 
-        <div className="w-full flex items-center">
-          <div className="flex items-center h-5">
-            <input
-              type="checkbox"
-              id="showWebsite"
-              checked={showWebsite}
-              onChange={() => setShowWebsite(!showWebsite)}
-              className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-            />
-          </div>
-          <label
-            htmlFor="showWebsite"
-            className="ml-3 text-sm font-medium text-gray-800"
-          >
-            Show on website
-          </label>
-        </div>
+    
       </div>
 
       <div className="relative" ref={dropdownRef}>

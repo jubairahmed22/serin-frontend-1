@@ -21,7 +21,7 @@ const AddSubCategoryForm = ({ onClose }) => {
     const fetchCategories = async () => {
       setIsFetchingCategories(true);
       try {
-        const response = await axios.get("https://books-server-001.vercel.app/api/admin/category");
+        const response = await axios.get("https://cosmetics-server-001.vercel.app/api/admin/category");
         setCategories(response.data.products);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -61,7 +61,7 @@ const AddSubCategoryForm = ({ onClose }) => {
 
     try {
       const response = await axios.post(
-        "https://books-server-001.vercel.app/api/admin/upload/sub-category",
+        "https://cosmetics-server-001.vercel.app/api/admin/upload/sub-category",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -74,7 +74,7 @@ const AddSubCategoryForm = ({ onClose }) => {
         showConfirmButton: false, // No "OK" button
       }).then(() => {
         // Close the modal after user acknowledges the success message
-        onClose();
+        // onClose();
       });
     } catch (error) {
       console.error("Error adding product:", error);

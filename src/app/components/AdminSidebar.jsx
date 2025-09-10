@@ -25,9 +25,9 @@ export default function AdminSidebar({ isCollapsed, toggleSidebar }) {
         name: "Products",
         submenu: [
           { href: "/admin/products/all-products" },
-          { href: "/admin/products/add-author" },
+          { href: "/admin/products/add-brands" },
           { href: "/admin/products/add-tag" },
-          { href: "/admin/products/add-publisher" },
+          { href: "/admin/products/add-skincare" },
         ],
       },
       {
@@ -124,9 +124,9 @@ export default function AdminSidebar({ isCollapsed, toggleSidebar }) {
       icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
       submenu: [
         { name: "All Products", href: "/admin/products/all-products" },
-        { name: "Add Author", href: "/admin/products/add-author" },
+        { name: "Add Brands", href: "/admin/products/add-brands" },
         { name: "Add Product Tag", href: "/admin/products/add-tag" },
-        { name: "Add Publisher", href: "/admin/products/add-publisher" },
+        // { name: "Add Skin Care", href: "/admin/products/add-skincare" },
       ],
     },
     {
@@ -244,7 +244,7 @@ export default function AdminSidebar({ isCollapsed, toggleSidebar }) {
               isCollapsed ? "opacity-0 w-0" : "opacity-100 w-auto"
             }`}
           >
-            Book Forest
+            SERIN
           </h2>
         </div>
         </Link>

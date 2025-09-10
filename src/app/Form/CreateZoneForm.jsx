@@ -17,7 +17,7 @@ export default function CreateZoneForm({ fetchData }) {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await fetch("https://books-server-001.vercel.app/api/countryList");
+        const response = await fetch("https://cosmetics-server-001.vercel.app/api/countryList");
         if (!response.ok) {
           throw new Error("Failed to fetch countries");
         }
@@ -78,7 +78,7 @@ export default function CreateZoneForm({ fetchData }) {
     }
 
     try {
-      const response = await fetch("https://books-server-001.vercel.app/api/zone", {
+      const response = await fetch("https://cosmetics-server-001.vercel.app/api/zone", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

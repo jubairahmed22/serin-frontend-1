@@ -18,7 +18,7 @@ const TrendingNow = () => {
     const fetchTrendingBooks = async () => {
       try {
         setLoading(true);
-        const response = await fetch('https://books-server-001.vercel.app/api/web/trending-now');
+        const response = await fetch('https://cosmetics-server-001.vercel.app/api/web/trending-now');
         if (!response.ok) {
           throw new Error('Failed to fetch trending books');
         }
@@ -102,12 +102,12 @@ const TrendingNow = () => {
           </Swiper>
 
           {/* Custom Navigation Buttons */}
-          <div className="trending-books-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#50C878] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-colors duration-300">
+          <div className="trending-books-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-colors duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </div>
-          <div className="trending-books-next absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#50C878] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-colors duration-300">
+          <div className="trending-books-next absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-colors duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

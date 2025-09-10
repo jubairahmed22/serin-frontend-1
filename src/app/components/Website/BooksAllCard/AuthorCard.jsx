@@ -7,7 +7,7 @@ const AuthorCard = ({ product }) => {
     const handleAuthorClick = () => {
         const params = new URLSearchParams();
         params.set('author', product._id); // Assuming 'title' is the author's name
-        router.push(`/all-books?${params.toString()}`);
+        router.push(`/products?${params.toString()}`);
     };
 
     return (

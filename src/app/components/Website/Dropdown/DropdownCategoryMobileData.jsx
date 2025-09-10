@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
 import { IoClose } from "react-icons/io5";
 import { FiChevronRight } from "react-icons/fi";
-import logo from "../../../../assets/book_forest.png";
+import logo from "../../../../assets/serin-logo.png";
 import Link from "next/link";
 
 const DropdownCategoryMobileData = ({ setIsOpen }) => {
@@ -22,10 +22,10 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
     const fetchData = async () => {
       try {
         const [subRes, childRes, writersRes, publishersRes] = await Promise.all([
-          fetch("https://books-server-001.vercel.app/api/admin/sub-category"),
-          fetch("https://books-server-001.vercel.app/api/admin/child-category"),
-          fetch("https://books-server-001.vercel.app/api/web/all-author"),
-          fetch("https://books-server-001.vercel.app/api/web/all-publisher")
+          fetch("https://cosmetics-server-001.vercel.app/api/admin/sub-category"),
+          fetch("https://cosmetics-server-001.vercel.app/api/admin/child-category"),
+          fetch("https://cosmetics-server-001.vercel.app/api/web/all-author"),
+          fetch("https://cosmetics-server-001.vercel.app/api/web/all-brands")
         ]);
 
         const subData = await subRes.json();
@@ -62,7 +62,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
     params.set("page", "1");
     params.set("subCategory", subCategory._id);
     params.set("category", subCategory.parentCategory.id);
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
     setIsOpen(false);
   };
 
@@ -72,7 +72,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
     params.set("childCategory", childCategory._id);
     params.set("subCategory", childCategory.parentSubCategory.id);
     params.set("category", childCategory.parentCategory.id);
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
     setIsOpen(false);
   };
 
@@ -80,15 +80,15 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
     const params = new URLSearchParams();
     params.set("page", "1");
     params.set("author", writer._id);
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
     setIsOpen(false);
   };
 
   const handlePublisherClick = (publisher) => {
     const params = new URLSearchParams();
     params.set("page", "1");
-    params.set("publisher", publisher._id);
-    router.push(`/all-books?${params.toString()}`);
+    params.set("brand", publisher._id);
+    router.push(`/products?${params.toString()}`);
     setIsOpen(false);
   };
 
@@ -114,8 +114,8 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
       <div className="sticky top-0 bg-white z-10 border-b border-gray-200 p-4 flex justify-between items-center">
         <Link href="/">
           <div className="flex flex-row items-center gap-4">
-            <img src={logo.src} alt="" className="w-[50px] h-[54px]"></img>
-            <h1 className="text-lg font-bold dark:text-black">Book Forest</h1>
+            <img src={logo.src} alt="" className="w-[55px] h-[50px]"></img>
+            {/* <h1 className="text-lg font-bold dark:text-black">SERIN</h1> */}
           </div>
         </Link>
         <button
@@ -130,7 +130,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
       <div className="flex-1 overflow-y-auto">
         <div className="divide-y divide-gray-100">
           {/* Writers Section */}
-          <div className="group">
+          {/* <div className="group">
             <div
               className={`flex items-center justify-between p-4 ${
                 activeTab === 'writers'
@@ -184,7 +184,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </div> */}
 
           {/* Publications Section */}
           <div className="group">
@@ -203,7 +203,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
                     : "text-gray-700"
                 }`}
               >
-                Publications
+                Brands
               </span>
               <motion.div
                 animate={{

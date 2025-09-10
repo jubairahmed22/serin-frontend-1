@@ -1,5 +1,9 @@
 "use client";
+import dynamic from "next/dynamic";
 
+const TiptapEditor = dynamic(() => import("../../components/TiptapEditor"), {
+  ssr: false,
+});
 import React, { useState, useRef, useEffect } from "react";
 
 const ProductBasicInfoUpdate = ({
@@ -81,38 +85,23 @@ const ProductBasicInfoUpdate = ({
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-800 mb-1">
-              Author <span className="text-red-500">*</span>
-            </label>
-            <select
-              value={formData.authorId || ""}
-              onChange={handleAuthorChange}
-              className="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-              required
-              disabled={isFetchingAuthors}
-            >
-              <option value="">Select an author</option>
-              {authors.map((author) => (
-                <option key={author._id} value={author._id}>
-                  {author.title}
-                </option>
-              ))}
-            </select>
-            {/* Display the current author name if you want it visible outside the dropdown */}
-            {formData.authorId && (
-              <p className="mt-1 text-sm text-gray-500">
-                Current author: {formData.author}
-              </p>
-            )}
-          </div>
+      
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-800 mb-1">
             Description <span className="text-red-500">*</span>
           </label>
-          <textarea
+          <TiptapEditor
+                value={formData.description || ""}
+                onChange={(value) =>
+                  setFormData((formData) => ({
+                    ...formData,
+                    description: value,
+                  }))
+                }
+              />
+          {/* <textarea
             value={formData.description || ""}
             onChange={(e) =>
               setFormData({ ...formData, description: e.target.value })
@@ -120,7 +109,7 @@ const ProductBasicInfoUpdate = ({
             className="block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 h-32"
             placeholder="Enter product description"
             required
-          />
+          /> */}
         </div>
       </div>
 

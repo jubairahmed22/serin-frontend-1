@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 
 const ImageUploader = ({
   isDragging,
@@ -13,6 +13,24 @@ const ImageUploader = ({
   handleFileChange,
   label = "Featured Image",
 }) => {
+  // Handle paste event
+  const handlePaste = useCallback(
+    (e) => {
+      const items = e.clipboardData?.items;
+      if (items) {
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].type.indexOf("image") !== -1) {
+            const file = items[i].getAsFile();
+            if (file) {
+              setImage(file);
+            }
+          }
+        }
+      }
+    },
+    [setImage]
+  );
+
   return (
     <div>
       <label className="block text-sm font-medium text-gray-800 mb-2">
@@ -27,6 +45,8 @@ const ImageUploader = ({
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
+        onPaste={handlePaste} // 👈 support paste
+        tabIndex={0} // 👈 make div focusable so paste works
       >
         {isLoading ? (
           <div className="flex flex-col items-center justify-center space-y-3">
@@ -93,7 +113,7 @@ const ImageUploader = ({
                   accept="image/*, .heic, .heif"
                 />
               </label>
-              <p className="pl-1">or drag and drop</p>
+              <p className="pl-1">or drag, drop, <span className="font-semibold">paste</span></p>
             </div>
             <p className="text-xs text-gray-500 mt-1">
               PNG, JPG, GIF up to 5MB

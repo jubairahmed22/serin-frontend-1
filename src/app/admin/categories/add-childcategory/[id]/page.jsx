@@ -46,7 +46,7 @@ const EditChildCategoryPage = () => {
       try {
         setIsFetchingCategories(true);
         const response = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/category"
+          "https://cosmetics-server-001.vercel.app/api/admin/category"
         );
         setCategories(response.data.products);
       } catch (err) {
@@ -73,7 +73,7 @@ const EditChildCategoryPage = () => {
       setIsFetchingSubCategories(true);
       try {
         const response = await axios.get(
-          `https://books-server-001.vercel.app/api/admin/sub-category`
+          `https://cosmetics-server-001.vercel.app/api/admin/sub-category`
         );
         // Filter subcategories on the frontend
         const filteredSubCategories = response.data.products.filter(
@@ -97,7 +97,7 @@ const EditChildCategoryPage = () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `https://books-server-001.vercel.app/api/admin/child-category/${childCategoryId}`
+          `https://cosmetics-server-001.vercel.app/api/admin/child-category/${childCategoryId}`
         );
         const childCategory = response.data;
 
@@ -226,7 +226,7 @@ const handleSubmit = async (e) => {
     }
 
     const response = await axios.put(
-      `https://books-server-001.vercel.app/api/admin/update/child-categoryyy/${childCategoryId}`,
+      `https://cosmetics-server-001.vercel.app/api/admin/update/child-categoryyy/${childCategoryId}`,
       formDataToSend,
       {
         headers: {

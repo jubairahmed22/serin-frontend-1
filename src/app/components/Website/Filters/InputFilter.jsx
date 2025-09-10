@@ -120,7 +120,7 @@ const InputFilter = () => {
       try {
         if (searchMode === "english") {
           const englishRes = await fetch(
-            `https://books-server-001.vercel.app/api/admin/all-products?` +
+            `https://cosmetics-server-001.vercel.app/api/admin/all-products?` +
               new URLSearchParams({
                 title: searchTerm,
                 searchMode: "flexible",
@@ -143,7 +143,7 @@ const InputFilter = () => {
 
         if (searchMode === "bangla" && banglaSearchTerm) {
           const banglaRes = await fetch(
-            `https://books-server-001.vercel.app/api/admin/all-products?` +
+            `https://cosmetics-server-001.vercel.app/api/admin/all-products?` +
               new URLSearchParams({
                 title: banglaSearchTerm,
                 searchMode: "flexible",
@@ -256,7 +256,7 @@ const InputFilter = () => {
           ) : products.length > 0 ? (
             <ul>
               {products.map((product) => (
-                <Link key={product._id} href={`/all-books/${product._id}`}>
+                <Link key={product._id} href={`/products/${product._id}`}>
                   <li
                     className="p-3 hover:bg-blue-50 cursor-pointer border-b border-gray-100 flex items-center transition-colors"
                     onClick={() => handleProductSelect(product)}

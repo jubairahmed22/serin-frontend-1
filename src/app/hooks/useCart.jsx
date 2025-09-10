@@ -45,7 +45,9 @@ export const useCart = () => {
 
   const addToCart = (product) => {
     try {
-      const existingItemIndex = cart.findIndex(item => item._id === product._id);
+      const existingItemIndex = cart.findIndex(
+        (item) => item._id === product._id
+      );
       let newCart;
 
       if (existingItemIndex >= 0) {
@@ -75,7 +77,7 @@ export const useCart = () => {
 
   const removeFromCart = (productId) => {
     try {
-      const newCart = cart.filter(item => item._id !== productId);
+      const newCart = cart.filter((item) => item._id !== productId);
       const success = updateCart(newCart);
       if (success) {
         toast.success("Product removed from cart!");
@@ -88,7 +90,7 @@ export const useCart = () => {
   };
 
   const isInCart = (productId) => {
-    return cart.some(item => item._id === productId);
+    return cart.some((item) => item._id === productId);
   };
 
   const calculateDiscount = (product) => {
@@ -108,12 +110,47 @@ export const useCart = () => {
     }
   };
 
+  const clearCart = () => {
+    try {
+      setCart([]);
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("booksCart");
+        window.dispatchEvent(new Event("cartUpdated"));
+      }
+      toast.success("Cart cleared successfully!");
+      return true;
+    } catch (error) {
+      console.error("Failed to clear cart:", error);
+      toast.error("Failed to clear cart");
+      return false;
+    }
+  };
+
+  // NEW FUNCTION: Calculate total price of all items in cart
+  const getTotalPrice = () => {
+    try {
+      return cart.reduce((total, item) => {
+        // Use discountedPrice if available, otherwise use regular price
+        const price =
+          item.discountedPrice !== undefined
+            ? item.discountedPrice
+            : item.price;
+        return total + price * (item.quantity || 1);
+      }, 0);
+    } catch (error) {
+      console.error("Failed to calculate total price:", error);
+      return 0;
+    }
+  };
+
   return {
     cart,
     addToCart,
     removeFromCart,
     isInCart,
+    clearCart,
     cartCount: cart.reduce((sum, item) => sum + (item.quantity || 0), 0),
     updateCart,
+    getTotalPrice,
   };
 };

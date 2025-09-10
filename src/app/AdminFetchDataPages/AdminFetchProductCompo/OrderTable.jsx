@@ -128,7 +128,7 @@ const OrderTable = ({
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/make-payment-success",
+        "https://cosmetics-server-001.vercel.app/api/admin/make-payment-success",
         {
           method: "POST",
           headers: {
@@ -158,7 +158,7 @@ const OrderTable = ({
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/make-payment-pending",
+        "https://cosmetics-server-001.vercel.app/api/admin/make-payment-pending",
         {
           method: "POST",
           headers: {
@@ -188,7 +188,7 @@ const OrderTable = ({
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/remove-popular-books",
+        "https://cosmetics-server-001.vercel.app/api/admin/remove-popular-books",
         {
           method: "POST",
           headers: {
@@ -218,7 +218,7 @@ const OrderTable = ({
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/add-dailyDeals",
+        "https://cosmetics-server-001.vercel.app/api/admin/add-dailyDeals",
         {
           method: "POST",
           headers: {
@@ -248,7 +248,7 @@ const OrderTable = ({
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/remove-dailyDeals",
+        "https://cosmetics-server-001.vercel.app/api/admin/remove-dailyDeals",
         {
           method: "POST",
           headers: {
@@ -278,7 +278,7 @@ const OrderTable = ({
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/add-trendingNow",
+        "https://cosmetics-server-001.vercel.app/api/admin/add-trendingNow",
         {
           method: "POST",
           headers: {
@@ -308,7 +308,7 @@ const OrderTable = ({
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/remove-trending",
+        "https://cosmetics-server-001.vercel.app/api/admin/remove-trending",
         {
           method: "POST",
           headers: {
@@ -338,7 +338,7 @@ const OrderTable = ({
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/new-released",
+        "https://cosmetics-server-001.vercel.app/api/admin/new-released",
         {
           method: "POST",
           headers: {
@@ -368,7 +368,7 @@ const OrderTable = ({
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/remove/new-released",
+        "https://cosmetics-server-001.vercel.app/api/admin/remove/new-released",
         {
           method: "POST",
           headers: {

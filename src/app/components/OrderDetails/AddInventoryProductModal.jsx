@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import BooksAddToOrderData from "../../components/Website/DataFiltered/BooksAddToOrderData";
 import PaginationCard from "../../components/Website/Paginations/PaginationCard";
 import AllBooksFilterAdmin from "../../components/Website/Filters/AllBooksFilterAdmin";
+import AllProductAddInventory from "../../AdminFetchDataPages/AllProductAddInventory"
 
 const AddInventoryProductModal = ({ isOpen, onClose, onAddProduct }) => {
   // all books start
@@ -55,7 +56,7 @@ const AddInventoryProductModal = ({ isOpen, onClose, onAddProduct }) => {
     try {
       setInitialLoading(true);
       const params = new URLSearchParams(window.location.search);
-      const response = await axios.get(`https://books-server-001.vercel.app/api/admin/all-products?${params.toString()}`);
+      const response = await axios.get(`https://cosmetics-server-001.vercel.app/api/admin/all-products?${params.toString()}`);
       setProducts(response.data.products);
       setTotalPages(response.data.totalPages);
     } catch (err) {
@@ -181,9 +182,9 @@ const AddInventoryProductModal = ({ isOpen, onClose, onAddProduct }) => {
         setIsFetchingPublishers(true);
 
         const [categoriesRes, authorsRes, publishersRes] = await Promise.all([
-          axios.get("https://books-server-001.vercel.app/api/admin/category"),
-          axios.get("https://books-server-001.vercel.app/api/admin/all-author"),
-          axios.get("https://books-server-001.vercel.app/api/admin/all-publisher")
+          axios.get("https://cosmetics-server-001.vercel.app/api/admin/category"),
+          axios.get("https://cosmetics-server-001.vercel.app/api/admin/all-author"),
+          axios.get("https://cosmetics-server-001.vercel.app/api/admin/all-publisher")
         ]);
 
         setCategories(categoriesRes.data.products);
@@ -211,7 +212,7 @@ const AddInventoryProductModal = ({ isOpen, onClose, onAddProduct }) => {
 
       setIsFetchingSubCategories(true);
       try {
-        const response = await axios.get("https://books-server-001.vercel.app/api/admin/sub-category");
+        const response = await axios.get("https://cosmetics-server-001.vercel.app/api/admin/sub-category");
         setSubCategories(response.data.products.filter(
           subCat => subCat.parentCategory.id === categoryParam
         ));
@@ -235,7 +236,7 @@ const AddInventoryProductModal = ({ isOpen, onClose, onAddProduct }) => {
 
       setIsFetchingChildCategories(true);
       try {
-        const response = await axios.get("https://books-server-001.vercel.app/api/admin/child-category");
+        const response = await axios.get("https://cosmetics-server-001.vercel.app/api/admin/child-category");
         setChildCategories(response.data.products.filter(
           childCat => childCat.parentSubCategory.id === subCategoryParam
         ));
@@ -335,7 +336,7 @@ const AddInventoryProductModal = ({ isOpen, onClose, onAddProduct }) => {
 
   return (
     <div className="fixed inset-0 border fontPoppins  bg-black/10 bg-opacity-50 backdrop-blur flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-xl h-[80%]  w-[80%] overflow-y-auto">
+      <div className="bg-white rounded-lg shadow-xl h-[90%]  w-[90%] overflow-y-auto">
         <div className="flex justify-between rounded-t-xl sticky z-40 top-0 items-center px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
           <h3 className="text-xl font-semibold text-gray-800">Add inventory product</h3>
           <button
@@ -358,8 +359,8 @@ const AddInventoryProductModal = ({ isOpen, onClose, onAddProduct }) => {
             </svg>
           </button>
         </div>
-
-        <div className="fontPoppins w-full mx-auto flex justify-between gap-3">
+        <AllProductAddInventory onAddProduct={onAddProduct}></AllProductAddInventory>
+        {/* <div className="fontPoppins w-full mx-auto flex justify-between gap-3">
           <div className="flex w-[450px] mt-2">
             <AllBooksFilterAdmin
               authors={authors}
@@ -392,12 +393,12 @@ const AddInventoryProductModal = ({ isOpen, onClose, onAddProduct }) => {
           <div className="flex flex-col mt-2 mb-6 w-full bg-white rounded-lg ">
             <BooksAddToOrderData initialLoading={initialLoading} products={products} onAddToInventory={handleAddToInventory} />
             <PaginationCard
-              currentPage={currentPage}
+              currentPage={currentPage}         
               totalPages={totalPages}
               onPageChange={handlePageChange}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

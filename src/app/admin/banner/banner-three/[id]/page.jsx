@@ -38,7 +38,7 @@ const EditBannerThreePage = () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `https://books-server-001.vercel.app/api/admin/bannerThree/${categoryId}`
+          `https://cosmetics-server-001.vercel.app/api/admin/bannerThree/${categoryId}`
         );
         const category = response.data;
         setFormData({
@@ -140,7 +140,7 @@ const EditBannerThreePage = () => {
       }
 
       const response = await axios.put(
-        `https://books-server-001.vercel.app/api/admin/update/bannerThree/${categoryId}`,
+        `https://cosmetics-server-001.vercel.app/api/admin/update/bannerThree/${categoryId}`,
         formDataToSend,
         {
           headers: {

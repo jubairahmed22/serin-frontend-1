@@ -2,103 +2,92 @@
 import React, { useState } from "react";
 import { useCart } from "../hooks/useCart";
 import useCon from '../hooks/useCon';
-import { toast } from "react-hot-toast";
 import CartItemCompo from "../components/Website/CartCompo/CartItemCompo";
-import OrderSummery from "../components/Website/CartCompo/OrderSummery";
 import '../../styles/cart.css';
+import OrderSummary from "../components/Website/CartCompo/OrderSummery";
 
-const Page = () => {
-  const { cart, cartCount, removeFromCart, updateCart } = useCart();
-  const { config, loading, error } = useCon();
+const CartPage = () => {
+  const { cart, cartCount, clearCart, removeFromCart, updateCart } = useCart();
+  const { config } = useCon();
   const [editingQuantity, setEditingQuantity] = useState(null);
-  const DELIVERY_CHARGE = config.deliveryCharge;
+  const [deliveryLocation, setDeliveryLocation] = useState('insideDhaka');
+  
+  const { 
+    deliveryChargeOutsideDhaka: outsideCharge,
+    deliveryChargeInsideDhaka: insideCharge 
+  } = config;
+
+  const deliveryCharge = deliveryLocation === 'insideDhaka' ? insideCharge : outsideCharge;
 
   const calculateFinalPrice = (item) => {
+    if (!item.discountType) return item.price;
+    
     return Math.max(
       item.discountType === "percentage"
         ? item.price * (1 - item.discountValue / 100)
-        : item.discountType === "fixed"
-        ? item.price - item.discountValue
-        : item.price,
+        : item.price - item.discountValue,
       0
     );
   };
 
   const handleQuantityChange = (productId, newQuantity) => {
     if (newQuantity < 1) return;
-
-    const updatedCart = cart.map((item) =>
+    updateCart(cart.map(item => 
       item._id === productId ? { ...item, quantity: newQuantity } : item
-    );
-    updateCart(updatedCart);
+    ));
   };
 
-  const handleInputChange = (productId, value) => {
-    const numValue = parseInt(value);
-    if (!isNaN(numValue)) {
-      handleQuantityChange(productId, numValue);
-    }
-  };
-
-  const handleInputBlur = (productId, value) => {
-    const numValue = parseInt(value);
-    if (isNaN(numValue) || numValue < 1) {
-      handleQuantityChange(productId, 1);
-    }
-    setEditingQuantity(null);
-  };
-
-  // Calculate cart values
-  const cartSummary = cart.reduce(
+  const { subtotal, totalDiscount, itemCount } = cart.reduce(
     (acc, item) => {
       const finalPrice = calculateFinalPrice(item);
       const itemTotal = finalPrice * item.quantity;
-
       return {
         subtotal: acc.subtotal + itemTotal,
-        totalDiscount:
-          acc.totalDiscount + (item.price * item.quantity - itemTotal),
+        totalDiscount: acc.totalDiscount + (item.price * item.quantity - itemTotal),
         itemCount: acc.itemCount + item.quantity,
       };
     },
     { subtotal: 0, totalDiscount: 0, itemCount: 0 }
   );
 
-  const total = cartSummary.subtotal + DELIVERY_CHARGE;
-
+  const total = subtotal + deliveryCharge;
 
   return (
     <div className="min-h-screen bg-white max-w-[1400px] mx-auto py-10 fontPoppins px-4">
-      <div className="flex flex-row cartCustomLayout  gap-5 w-full">
+      <div className="flex flex-row cartCustomLayout gap-5 w-full">
         <div className="w-[55%] customWidthFull">
-          <h1 className="lg:text-xl md:text-lg sm:text-sm mb-6 py-6 px-4 bg-[#defde8] rounded-2xl text-black font-semibold ">
+          <h1 className="lg:text-xl md:text-lg sm:text-sm mb-6 py-6 px-4 bg-[#F01F7B]/10 rounded-2xl text-black font-semibold">
             Your Cart ({cartCount} items)
           </h1>
           <CartItemCompo
             cart={cart}
             editingQuantity={editingQuantity}
-            handleQuantityChange={handleQuantityChange}
-            handleInputChange={handleInputChange}
-            handleInputBlur={handleInputBlur}
             setEditingQuantity={setEditingQuantity}
             removeFromCart={removeFromCart}
             calculateFinalPrice={calculateFinalPrice}
+            handleQuantityChange={handleQuantityChange}
           />
         </div>
+        
         <div className="w-[45%] customWidthFull">
- 
-            <OrderSummery
-              itemCount={cartSummary.itemCount}
-              subtotal={cartSummary.subtotal}
-              totalDiscount={cartSummary.totalDiscount}
-              deliveryCharge={DELIVERY_CHARGE}
-              total={total}
-            />
-
+          <OrderSummary
+            cart={cart}
+            clearCart={clearCart}
+            itemCount={itemCount}
+            cartCount={cartCount}
+            subtotal={subtotal}
+            totalDiscount={totalDiscount}
+            total={total}
+            deliveryCharge={deliveryCharge}
+            deliveryChargeInsideDhaka={insideCharge}
+            deliveryChargeOutsideDhaka={outsideCharge}
+            deliveryLocation={deliveryLocation}
+            setDeliveryLocation={setDeliveryLocation}
+          />
         </div>
       </div>
     </div>
   );
 };
 
-export default Page;
+export default CartPage;

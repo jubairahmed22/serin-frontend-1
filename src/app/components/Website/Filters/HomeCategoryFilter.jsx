@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import '../../../../styles/serin.css'
 
-const HomeCategoryFilter = ({subCategoryId, categoryId}) => {
+const HomeCategoryFilter = ({ subCategoryId, categoryId }) => {
   const router = useRouter();
 
   const handleCategoryClick = () => {
@@ -12,17 +13,22 @@ const HomeCategoryFilter = ({subCategoryId, categoryId}) => {
     params.set("category", categoryId);
 
     // Navigate to all-books page with the query parameter
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
   };
 
   return (
     <div>
+      
       <button
-        onClick={handleCategoryClick}
-        className="px-6 py-3 buttonPopular hover:bg-green-600 cursor-pointer text-white font-medium rounded-full whitespace-nowrap transition-colors duration-300 shadow hover:shadow-md"
-      >
-        View All
-      </button>
+  onClick={handleCategoryClick}
+  className="fontPoppins text-sm font-medium seeMoreButton text-black cursor-pointer 
+             bg-white border border-black px-8 py-2 rounded-full
+             shadow-md hover:bg-[#F01F7B] hover:text-white hover:border-[#F01F7B] 
+             hover:shadow-lg transition-all duration-300 ease-in-out 
+             transform hover:scale-105 active:scale-95"
+>
+  Shop All Products
+</button>
     </div>
   );
 };

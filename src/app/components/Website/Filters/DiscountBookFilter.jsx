@@ -11,7 +11,7 @@ const DiscountBookFilter = () => {
     params.set("discount", "true");
 
     // Navigate to all-books page with the query parameter
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
   };
 
   return (

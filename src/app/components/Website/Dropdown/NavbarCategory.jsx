@@ -15,7 +15,7 @@ const NavbarCategory = () => {
       className="relative cursor-pointer w-[180px] h-[51px] flex justify-between px-8 items-center rounded-full overflow-hidden"
       initial={false}
       animate={{
-        backgroundColor: isOpen ? "#40B06B" : "#50C878", // Slightly darker when open
+        backgroundColor: isOpen ? "#40B06B" : "#414143", // Slightly darker when open
       }}
       whileHover={{ 
         scale: 1.03,

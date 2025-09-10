@@ -20,8 +20,8 @@ const DropdownCategoryData = ({setIsOpen}) => {
     const fetchData = async () => {
       try {
         const [subRes, childRes] = await Promise.all([
-          fetch("https://books-server-001.vercel.app/api/admin/sub-category"),
-          fetch("https://books-server-001.vercel.app/api/admin/child-category"),
+          fetch("https://cosmetics-server-001.vercel.app/api/admin/sub-category"),
+          fetch("https://cosmetics-server-001.vercel.app/api/admin/child-category"),
         ]);
 
         const subData = await subRes.json();
@@ -80,7 +80,7 @@ const DropdownCategoryData = ({setIsOpen}) => {
     params.set("page", "1");
     params.set("subCategory", subCategory._id);
     params.set("category", subCategory.parentCategory.id);
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
     setIsOpen(false)
   };
 
@@ -90,7 +90,7 @@ const DropdownCategoryData = ({setIsOpen}) => {
     params.set("childCategory", childCategory._id);
     params.set("subCategory", childCategory.parentSubCategory.id);
     params.set("category", childCategory.parentCategory.id);
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
     setIsOpen(false)
   };
 
@@ -114,7 +114,7 @@ const DropdownCategoryData = ({setIsOpen}) => {
     <div className="w-full h-full bg-white relative bangla-text">
       {/* Sub-categories navigation bar */}
       <div
-        className="max-w-7xl mx-auto px-4"
+        className="max-w-8xl mx-auto px-4"
         ref={navRef}
         onMouseLeave={handleNavLeave}
       >

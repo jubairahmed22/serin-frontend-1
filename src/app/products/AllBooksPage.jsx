@@ -5,7 +5,8 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import axios from "axios";
 import BooksData from "../components/Website/DataFiltered/BooksData";
 import PaginationCard from "../components/Website/Paginations/PaginationCard";
-import AllBooksFilter from "../components/Website/Filters/AllBooksFilter";
+import AllWebFilter from "../components/Website/Filters/AllWebFilter";
+import AllMobileFilter from "../components/Website/Filters/AllMobileFilter";
 import '../../styles/allBooks.css'
 
 
@@ -40,21 +41,22 @@ const AllBooksPage = () => {
   const subCategoryParam = searchParams.get("subCategory") || "";
   const childCategoryParam = searchParams.get("childCategory") || "";
   const authorParam = searchParams.get("author") || "";
-  const publisherParam = searchParams.get("publisher") || "";
+  const publisherParam = searchParams.get("brand") || "";
   const tagParam = searchParams.get("tag") || "";
-  const popularBooksParam = searchParams.get("popularBooks") || "";
+  const popularBooksParam = searchParams.get("popularProduct") || "";
   const discountParam = searchParams.get("discount") || "";
-  const dailyDealsParam = searchParams.get("dailyDeals") || "";
+  const newArrivalParam = searchParams.get("newArrival") || "";
   const trendingNowParam = searchParams.get("trendingNow") || "";
   const newReleasedParam = searchParams.get("newReleased") || "";
   const inStockParam = searchParams.get("inStock") || "";
+  const titleParam = searchParams.get("title") || "";
 
   // Fetch products
   const fetchProducts = useCallback(async () => {
     try {
       setInitialLoading(true);
       const params = new URLSearchParams(window.location.search);
-      const response = await axios.get(`https://books-server-001.vercel.app/api/admin/all-products?${params.toString()}`);
+      const response = await axios.get(`https://cosmetics-server-001.vercel.app/api/admin/all-products?${params.toString()}`);
       setProducts(response.data.products);
       setTotalPages(response.data.totalPages);
     } catch (err) {
@@ -69,9 +71,9 @@ const AllBooksPage = () => {
     const params = new URLSearchParams(window.location.search);
     
     // Remove all special filters first
-    params.delete("popularBooks");
+    params.delete("popularProduct");
     params.delete("discount");
-    params.delete("dailyDeals");
+    params.delete("newArrival");
     params.delete("trendingNow");
     params.delete("newReleased");
     params.delete("inStock");
@@ -118,7 +120,7 @@ const AllBooksPage = () => {
   };
 
   const handlePublisherChange = (e) => {
-    updateFilters(new URLSearchParams({ publisher: e.target.value }));
+    updateFilters(new URLSearchParams({ brand: e.target.value }));
   };
 
   const handleTagChange = (tagId) => {
@@ -131,9 +133,9 @@ const AllBooksPage = () => {
     const newParams = new URLSearchParams();
     
     // Clear all other special filters
-    newParams.delete("popularBooks");
+    newParams.delete("popularProduct");
     newParams.delete("discount");
-    newParams.delete("dailyDeals");
+    newParams.delete("newArrival");
     newParams.delete("trendingNow");
     newParams.delete("newReleased");
     newParams.delete("inStock");
@@ -148,9 +150,9 @@ const AllBooksPage = () => {
 
   const handleInStockChange = (e) => {
     const newParams = new URLSearchParams();
-    newParams.delete("popularBooks");
+    newParams.delete("popularProduct");
     newParams.delete("discount");
-    newParams.delete("dailyDeals");
+    newParams.delete("newArrival");
     newParams.delete("trendingNow");
     newParams.delete("newReleased");
 
@@ -179,10 +181,10 @@ const AllBooksPage = () => {
         setIsFetchingTags(true);
 
         const [categoriesRes, authorsRes, publishersRes, tagsRes] = await Promise.all([
-          axios.get("https://books-server-001.vercel.app/api/admin/category"),
-          axios.get("https://books-server-001.vercel.app/api/admin/all-author"),
-          axios.get("https://books-server-001.vercel.app/api/admin/all-publisher"),
-          axios.get("https://books-server-001.vercel.app/api/admin/all-tag")
+          axios.get("https://cosmetics-server-001.vercel.app/api/admin/category"),
+          axios.get("https://cosmetics-server-001.vercel.app/api/admin/all-author"),
+          axios.get("https://cosmetics-server-001.vercel.app/api/admin/all-brands"),
+          axios.get("https://cosmetics-server-001.vercel.app/api/admin/all-tag")
         ]);
 
         setCategories(categoriesRes.data.products);
@@ -212,7 +214,7 @@ const AllBooksPage = () => {
 
       setIsFetchingSubCategories(true);
       try {
-        const response = await axios.get("https://books-server-001.vercel.app/api/admin/sub-category");
+        const response = await axios.get("https://cosmetics-server-001.vercel.app/api/admin/sub-category");
         setSubCategories(response.data.products.filter(
           subCat => subCat.parentCategory.id === categoryParam
         ));
@@ -236,7 +238,7 @@ const AllBooksPage = () => {
 
       setIsFetchingChildCategories(true);
       try {
-        const response = await axios.get("https://books-server-001.vercel.app/api/admin/child-category");
+        const response = await axios.get("https://cosmetics-server-001.vercel.app/api/admin/child-category");
         setChildCategories(response.data.products.filter(
           childCat => childCat.parentSubCategory.id === subCategoryParam
         ));
@@ -258,9 +260,9 @@ const AllBooksPage = () => {
   if (error) return <div className="p-4 text-red-500">Error: {error}</div>;
 
   return (
-    <div className="fontPoppins max-w-[1400px] dark:bg-white customLayout mx-auto flex justify-between gap-3">
-      <div className="flex w-[450px] customWidth dark:bg-white mt-2">
-        <AllBooksFilter
+    <div className="fontPoppins max-w-[1400px] dark:bg-white customLayout mx-auto flex flex-col justify-between gap-3">
+      <div className="flex bigDisplay w-full pb-3 bg-white backdrop-blur-3xl dark:bg-white mt-2 sticky top-32 z-20 px-4 rounded-b">
+        <AllWebFilter
           authors={authors}
           publishers={publishers}
           tags={tags}
@@ -272,21 +274,50 @@ const AllBooksPage = () => {
           isFetchingTags={isFetchingTags}
           popularBooksFilter={popularBooksParam}
           discountFilter={discountParam}
-          dailyDealsFilter={dailyDealsParam}
+          newArrivalFilter={newArrivalParam}
           trendingNowFilter={trendingNowParam}
           newReleasedFilter={newReleasedParam}
           inStockFilter={inStockParam}
           onAuthorChange={handleAuthorChange}
           onPublisherChange={handlePublisherChange}
           onTagChange={handleTagChange}
-          onPopularBooksChange={handleSpecialFilterChange("popularBooks")}
+          onPopularBooksChange={handleSpecialFilterChange("popularProduct")}
           onDiscountChange={handleSpecialFilterChange("discount")}
-          onDailyDealsChange={handleSpecialFilterChange("dailyDeals")}
+          onnewArrivalChange={handleSpecialFilterChange("newArrival")}
           onTrendingNowChange={handleSpecialFilterChange("trendingNow")}
           onNewReleasedChange={handleSpecialFilterChange("newReleased")}
           onInStockChange={handleInStockChange}
           onClear={clearAllFilters}
         />
+      </div>
+      <div className="mobileDisplay sticky top-32 bg-white w-full z-20">
+        <AllMobileFilter
+        authors={authors}
+          publishers={publishers}
+          tags={tags}
+          selectedAuthor={authorParam}
+          selectedPublisher={publisherParam}
+          selectedTag={tagParam}
+          isFetchingAuthors={isFetchingAuthors}
+          isFetchingPublishers={isFetchingPublishers}
+          isFetchingTags={isFetchingTags}
+          popularBooksFilter={popularBooksParam}
+          discountFilter={discountParam}
+          newArrivalFilter={newArrivalParam}
+          trendingNowFilter={trendingNowParam}
+          newReleasedFilter={newReleasedParam}
+          inStockFilter={inStockParam}
+          onAuthorChange={handleAuthorChange}
+          onPublisherChange={handlePublisherChange}
+          onTagChange={handleTagChange}
+          onPopularBooksChange={handleSpecialFilterChange("popularProduct")}
+          onDiscountChange={handleSpecialFilterChange("discount")}
+          onnewArrivalChange={handleSpecialFilterChange("newArrival")}
+          onTrendingNowChange={handleSpecialFilterChange("trendingNow")}
+          onNewReleasedChange={handleSpecialFilterChange("newReleased")}
+          onInStockChange={handleInStockChange}
+          onClear={clearAllFilters}
+        ></AllMobileFilter>
       </div>
       <div className="flex flex-col mt-2 w-full bg-white rounded-lg mb-6">
         <BooksData initialLoading={initialLoading} products={products} />

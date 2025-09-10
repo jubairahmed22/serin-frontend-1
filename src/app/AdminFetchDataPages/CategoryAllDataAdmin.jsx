@@ -13,11 +13,12 @@ const CategoryAllDataAdmin = () => {
 
   // State for data and loading
   const [categories, setCategories] = useState([]);
-  const [initialLoading, setInitialLoading] = useState(true); // Only for first load
-  const [isRefreshing, setIsRefreshing] = useState(false); // For background refreshes
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
-  const [refreshInterval, setRefreshInterval] = useState(1000); // Default 1 second
+  const [refreshInterval, setRefreshInterval] = useState(1000);
+  const [isDragging, setIsDragging] = useState(false);
 
   // Get current params
   const currentPage = parseInt(searchParams.get("page")) || 1;
@@ -44,7 +45,7 @@ const CategoryAllDataAdmin = () => {
         if (showWebParam) params.set("showWebFilter", showWebParam);
 
         const response = await axios.get(
-          `https://books-server-001.vercel.app/api/admin/category?${params.toString()}`
+          `https://cosmetics-server-001.vercel.app/api/admin/category?${params.toString()}`
         );
         setCategories(response.data.products);
         setTotalPages(response.data.totalPages);
@@ -74,6 +75,85 @@ const CategoryAllDataAdmin = () => {
     // Clean up interval on unmount or when dependencies change
     return () => clearInterval(intervalId);
   }, [fetchCategories, refreshInterval]);
+
+  // Drag and drop handlers
+  const handleDragStart = (e, index) => {
+    e.dataTransfer.setData("text/plain", index);
+    setIsDragging(true);
+    e.currentTarget.classList.add("dragging");
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+  };
+
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    e.currentTarget.classList.add("drag-over");
+  };
+
+  const handleDragLeave = (e) => {
+    e.currentTarget.classList.remove("drag-over");
+  };
+
+  const handleDrop = async (e, targetIndex) => {
+    e.preventDefault();
+    setIsDragging(false);
+    
+    // Remove drag classes
+    document.querySelectorAll(".drag-over, .dragging").forEach(el => {
+      el.classList.remove("drag-over", "dragging");
+    });
+    
+    const sourceIndex = parseInt(e.dataTransfer.getData("text/plain"));
+    
+    if (sourceIndex === targetIndex) return;
+    
+    // Create a new array with reordered items
+    const reorderedCategories = [...categories];
+    const [movedItem] = reorderedCategories.splice(sourceIndex, 1);
+    reorderedCategories.splice(targetIndex, 0, movedItem);
+    
+    // Update UI immediately
+    setCategories(reorderedCategories);
+    
+    try {
+      // Update positions in backend using the provided API
+      const positionUpdates = reorderedCategories.map((category, index) => ({
+        id: category._id,
+        position: index
+      }));
+      
+      await axios.put("https://cosmetics-server-001.vercel.app/api/admin/update-position-category", {
+        positions: positionUpdates
+      });
+      
+      // Show success message
+      await Swal.fire({
+        title: "Success!",
+        text: "Positions updated successfully",
+        icon: "success",
+        timer: 2000,
+        showConfirmButton: false
+      });
+      
+      // Refresh data to ensure consistency
+      fetchCategories(false);
+    } catch (err) {
+      console.error("Error updating positions:", err);
+      
+      // Revert UI changes on error
+      fetchCategories(false);
+      
+      await Swal.fire({
+        title: "Error!",
+        text: "Failed to update positions",
+        icon: "error",
+        confirmButtonText: "OK"
+      });
+    }
+  };
 
   // Update URL when filters or pagination changes
   const updateUrlParams = (newParams) => {
@@ -115,7 +195,7 @@ const CategoryAllDataAdmin = () => {
 
     try {
       const response = await axios.delete(
-        `https://books-server-001.vercel.app/api/admin/category/${id}`
+        `https://cosmetics-server-001.vercel.app/api/admin/category/${id}`
       );
 
       if (response.data.success) {
@@ -228,11 +308,24 @@ const CategoryAllDataAdmin = () => {
         </div>
       </form>
 
+      {/* Drag and Drop Instructions */}
+      <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg dark:bg-blue-900/20 dark:border-blue-800">
+        <p className="text-blue-800 dark:text-blue-200 text-sm flex items-center">
+          <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd"></path>
+          </svg>
+          Drag and drop items to reorder. Changes are automatically saved.
+        </p>
+      </div>
+
       {/* Categories Table */}
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs border-b border-gray-400 text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
+              <th scope="col" className="px-6 py-3">
+                Position
+              </th>
               <th scope="col" className="px-6 py-3">
                 Title
               </th>
@@ -246,11 +339,28 @@ const CategoryAllDataAdmin = () => {
           </thead>
           <tbody>
             {categories.length > 0 ? (
-              categories.map((category) => (
+              categories.map((category, index) => (
                 <tr
                   key={category._id}
-                  className="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  className="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+                  draggable
+                  onDragStart={(e) => handleDragStart(e, index)}
+                  onDragOver={handleDragOver}
+                  onDragEnter={handleDragEnter}
+                  onDragLeave={handleDragLeave}
+                  onDrop={(e) => handleDrop(e, index)}
+                  onDragEnd={() => {
+                    setIsDragging(false);
+                    document.querySelectorAll(".drag-over, .dragging").forEach(el => {
+                      el.classList.remove("drag-over", "dragging");
+                    });
+                  }}
                 >
+                  <td className="px-6 py-4 text-gray-400 cursor-move drag-handle">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                    </svg>
+                  </td>
                   <th
                     scope="row"
                     className="px-6 py-4 flex flex-row gap-3 items-center font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -378,6 +488,22 @@ const CategoryAllDataAdmin = () => {
           </nav>
         </div>
       )}
+
+      <style jsx>{`
+        .dragging {
+          opacity: 0.5;
+          background-color: #f0f9ff;
+        }
+        .drag-over {
+          border-top: 2px solid #3b82f6;
+        }
+        .drag-handle {
+          cursor: grab;
+        }
+        .drag-handle:active {
+          cursor: grabbing;
+        }
+      `}</style>
     </div>
   );
 };

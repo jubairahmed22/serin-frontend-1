@@ -44,7 +44,7 @@ const PublisherAllDataAdmin = () => {
         if (showWebParam) params.set("showWebFilter", showWebParam);
 
         const response = await axios.get(
-          `https://books-server-001.vercel.app/api/admin/all-publisher/?${params.toString()}`
+          `https://cosmetics-server-001.vercel.app/api/admin/all-publisher/?${params.toString()}`
         );
         setCategories(response.data.products);
         setTotalPages(response.data.totalPages);
@@ -115,7 +115,7 @@ const PublisherAllDataAdmin = () => {
 
     try {
       const response = await axios.delete(
-        `https://books-server-001.vercel.app/api/admin/delete/publisher/${id}`
+        `https://cosmetics-server-001.vercel.app/api/admin/delete/publisher/${id}`
       );
 
       if (response.data.success) {

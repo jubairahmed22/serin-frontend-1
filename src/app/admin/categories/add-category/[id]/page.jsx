@@ -38,7 +38,7 @@ const EditCategoryPage = () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `https://books-server-001.vercel.app/api/admin/category/${categoryId}`
+          `https://cosmetics-server-001.vercel.app/api/admin/category/${categoryId}`
         );
         const category = response.data;
         setFormData({
@@ -140,7 +140,7 @@ const EditCategoryPage = () => {
       }
 
       const response = await axios.put(
-        `https://books-server-001.vercel.app/api/admin/update/main-categoryyy/${categoryId}`,
+        `https://cosmetics-server-001.vercel.app/api/admin/update/main-categoryyy/${categoryId}`,
         formDataToSend,
         {
           headers: {

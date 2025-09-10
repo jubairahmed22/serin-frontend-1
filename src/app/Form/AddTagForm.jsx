@@ -15,7 +15,7 @@ const AddTagForm = ({ onClose, refreshTags }) => {
 
     try {
       const response = await axios.post(
-        "https://books-server-001.vercel.app/api/admin/upload/add-tag",
+        "https://cosmetics-server-001.vercel.app/api/admin/upload/add-tag",
         { title },
         { headers: { "Content-Type": "application/json" } }
       );

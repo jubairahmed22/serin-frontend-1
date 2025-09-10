@@ -11,11 +11,12 @@ const TiptapEditor = dynamic(() => import("../../components/TiptapEditor"), {
 const ConfigurationPage = () => {
   const [formData, setFormData] = useState({
     termsAndConditions: "",
-    deliveryCharge: 0,
+    deliveryChargeInsideDhaka: 0,
+    deliveryChargeOutsideDhaka: 0,
     taxRate: 0,
     storeName: "",
     contactEmail: "",
-    contactPhone: "", // Added phone number field
+    contactPhone: "",
   });
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -24,7 +25,7 @@ const ConfigurationPage = () => {
     const fetchConfig = async () => {
       try {
         const response = await fetch(
-          "https://books-server-001.vercel.app/api/get-configuration"
+          "https://cosmetics-server-001.vercel.app/api/get-configuration"
         );
         if (!response.ok) throw new Error("Failed to fetch configuration");
 
@@ -32,11 +33,12 @@ const ConfigurationPage = () => {
         if (data) {
           setFormData({
             termsAndConditions: data.termsAndConditions || "",
-            deliveryCharge: data.deliveryCharge || 0,
+            deliveryChargeInsideDhaka: data.deliveryChargeInsideDhaka || 0,
+            deliveryChargeOutsideDhaka: data.deliveryChargeOutsideDhaka || 0,
             taxRate: data.taxRate || 0,
             storeName: data.storeName || "",
             contactEmail: data.contactEmail || "",
-            contactPhone: data.contactPhone || "", // Initialize phone number
+            contactPhone: data.contactPhone || "",
           });
         }
       } catch (error) {
@@ -66,7 +68,7 @@ const ConfigurationPage = () => {
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/add-configure/appConfig",
+        "https://cosmetics-server-001.vercel.app/api/add-configure/appConfig",
         {
           method: "PUT",
           headers: {
@@ -166,26 +168,65 @@ const ConfigurationPage = () => {
             </div>
 
             {/* Financial Settings */}
-            <div className="space-y-4 w-56">
+            <div className="space-y-4 flex flex-row gap-5">
               <div>
                 <label
-                  htmlFor="deliveryCharge"
+                  htmlFor="deliveryChargeInsideDhaka"
                   className="block font-semibold text-sm fontPoppins text-gray-700 mb-1"
                 >
-                  Delivery Charge ($)
+                  Delivery Charge Inside Dhaka 
                 </label>
                 <input
                   type="number"
-                  id="deliveryCharge"
-                  name="deliveryCharge"
+                  id="deliveryChargeInsideDhaka"
+                  name="deliveryChargeInsideDhaka"
                   min="0"
                   step="0.01"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value={formData.deliveryCharge}
+                  value={formData.deliveryChargeInsideDhaka}
                   onChange={handleChange}
                   required
                 />
               </div>
+              <div>
+                <label
+                  htmlFor="deliveryChargeOutsideDhaka"
+                  className="block font-semibold text-sm fontPoppins text-gray-700 mb-1"
+                >
+                  Delivery Charge Outside Dhaka
+                </label>
+                <input
+                  type="number"
+                  id="deliveryChargeOutsideDhaka"
+                  name="deliveryChargeOutsideDhaka"
+                  min="0"
+                  step="0.01"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value={formData.deliveryChargeOutsideDhaka}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              {/* <div>
+                <label
+                  htmlFor="taxRate"
+                  className="block font-semibold text-sm fontPoppins text-gray-700 mb-1"
+                >
+                  Tax Rate (%)
+                </label>
+                <input
+                  type="number"
+                  id="taxRate"
+                  name="taxRate"
+                  min="0"
+                  max="100"
+                  step="0.01"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value={formData.taxRate}
+                  onChange={handleChange}
+                  required
+                />
+              </div> */}
             </div>
           </div>
 

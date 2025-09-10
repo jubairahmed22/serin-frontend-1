@@ -127,32 +127,32 @@ const EditProductForm = ({ onClose }) => {
       try {
         // Fetch categories
         const categoriesResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/category"
+          "https://cosmetics-server-001.vercel.app/api/admin/category"
         );
         setCategories(categoriesResponse.data.products);
 
         // Fetch authors
         const authorsResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/all-author"
+          "https://cosmetics-server-001.vercel.app/api/admin/all-author"
         );
         setAuthors(authorsResponse.data.products);
 
         // Fetch tags
         const tagsResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/all-tag"
+          "https://cosmetics-server-001.vercel.app/api/admin/all-tag"
         );
         setTags(tagsResponse.data.products);
 
         // Fetch publishers
         const publishersResponse = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/all-publisher"
+          "https://cosmetics-server-001.vercel.app/api/admin/all-brands"
         );
         setPublishers(publishersResponse.data.products);
 
         // Fetch product data if in edit mode
         if (productId) {
           const productResponse = await axios.get(
-            `https://books-server-001.vercel.app/api/admin/all-products/${productId}`
+            `https://cosmetics-server-001.vercel.app/api/admin/all-products/${productId}`
           );
           const product = productResponse.data;
           console.log("products", product);
@@ -172,8 +172,8 @@ const EditProductForm = ({ onClose }) => {
             edition: product.edition || "",
             numberOfPages: product.numberOfPages || "",
             language: product.language || "",
-            publisher: product.publisher.name || "",
-            publisherId: product.publisher.id || "",
+            publisher: product?.brand?.name || "",
+            publisherId: product?.brand?.id || "",
             country: product.country || "",
             weight: product.weight || "",
             rating: product.rating || "",
@@ -199,7 +199,7 @@ const EditProductForm = ({ onClose }) => {
 
               // Fetch subcategories for this category
               const subCatResponse = await axios.get(
-                "https://books-server-001.vercel.app/api/admin/sub-category"
+                "https://cosmetics-server-001.vercel.app/api/admin/sub-category"
               );
               const filteredSubCategories = subCatResponse.data.products.filter(
                 (subCat) => subCat.parentCategory.id === product.categoryId
@@ -215,7 +215,7 @@ const EditProductForm = ({ onClose }) => {
 
                   // Fetch child categories for this subcategory
                   const childCatResponse = await axios.get(
-                    "https://books-server-001.vercel.app/api/admin/child-category"
+                    "https://cosmetics-server-001.vercel.app/api/admin/child-category"
                   );
                   const filteredChildCategories =
                     childCatResponse.data.products.filter(
@@ -257,7 +257,7 @@ const EditProductForm = ({ onClose }) => {
       setIsFetchingSubCategories(true);
       try {
         const response = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/sub-category"
+          "https://cosmetics-server-001.vercel.app/api/admin/sub-category"
         );
         const filteredSubCategories = response.data.products.filter(
           (subCat) => subCat.parentCategory.id === selectedCategory._id
@@ -282,7 +282,7 @@ const EditProductForm = ({ onClose }) => {
       setIsFetchingChildCategories(true);
       try {
         const response = await axios.get(
-          "https://books-server-001.vercel.app/api/admin/child-category"
+          "https://cosmetics-server-001.vercel.app/api/admin/child-category"
         );
         const filteredChildCategories = response.data.products.filter(
           (childCat) =>
@@ -379,7 +379,7 @@ const EditProductForm = ({ onClose }) => {
 
     try {
       const response = await axios.put(
-        `https://books-server-001.vercel.app/api/admin/update/all-products/${productId}`,
+        `https://cosmetics-server-001.vercel.app/api/admin/update/all-products-cosmetics/${productId}`,
         formDataToSend,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

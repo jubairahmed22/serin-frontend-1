@@ -12,22 +12,29 @@ import ShopByCategory from './components/Website/HomePage/ShopByCategory'
 import HomeCategorySection from './components/Website/HomePage/HomeCategorySection'
 import DiscountedBooks from './components/Website/HomePage/DiscountedBooks'
 import BannerSliderThree from './components/Website/HomePage/BannerSliderThree'
+import HomeBannerGridTwo from './components/Website/HomePage/HomeBannerGridTwo'
+import HomeBannerGridThree from './components/Website/HomePage/HomeBannerGridThree'
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <div className="">
          <HomeSlider></HomeSlider>
-         <PopularBooks></PopularBooks>
+         <HomeBannerGridTwo></HomeBannerGridTwo>
+         <HomeBannerGridThree></HomeBannerGridThree>
+         <HomeCategorySection></HomeCategorySection>
+         {/* <PopularBooks></PopularBooks>
          <DiscountedBooks></DiscountedBooks>
          <ShopByCategory></ShopByCategory>
          <BannerSlider></BannerSlider>
          <DailyDeals></DailyDeals>
          <TrendingNow></TrendingNow>
          <NewRelease></NewRelease>
-         <HomeCategorySection></HomeCategorySection>
+         
          <BannerSliderThree></BannerSliderThree>
          <FeaturedAuthors></FeaturedAuthors>
-         <FeaturedPublishers></FeaturedPublishers>
+         <FeaturedPublishers></FeaturedPublishers> */}
+         <Footer></Footer>
     </div>
   )
 }

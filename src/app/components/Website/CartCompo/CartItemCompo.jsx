@@ -77,7 +77,7 @@ const CartItemCompo = ({
               animate="visible"
               exit="exit"
               layout
-              className="grid grid-cols-11 bg-[#f0fff5] gap-4 items-center border-b border-gray-100 p-4 rounded-lg shadow-sm dark:bg-white dark:border-gray-200"
+              className="grid grid-cols-11 bg-[#F01F7B]/10 gap-4 items-center border-b border-gray-100 p-4 rounded-lg shadow-sm dark:bg-white dark:border-gray-200"
             >
               <div className="md:col-span-5 flex items-center space-x-4">
                 {item.singleImage && (
@@ -240,7 +240,7 @@ const CartItemCompo = ({
               animate="visible"
               exit="exit"
               layout
-              className="grid grid-cols-1 md:grid-cols-12 bg-[#f0fff5] gap-3 md:gap-4 items-center border border-gray-100 p-3 md:p-4 rounded-lg shadow-sm dark:bg-white dark:border-gray-200"
+              className="grid grid-cols-1 md:grid-cols-12 bg-[#F01F7B]/10 gap-3 md:gap-4 items-center border border-gray-100 p-3 md:p-4 rounded-lg shadow-sm dark:bg-white dark:border-gray-200"
             >
               {/* Product Info (Mobile: Full width, Desktop: 5 columns) */}
               <div className="md:col-span-5 flex items-start space-x-3">
@@ -312,7 +312,7 @@ const CartItemCompo = ({
               </div>
 
               {/* Quantity (Mobile: Full width, Desktop: 3 columns) */}
-              <div className="md:col-span-3">
+              <div className="md:col-span-3 w-[40%]">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="flex items-center justify-between md:justify-center border rounded-lg max-w-full md:max-w-[140px] mx-auto overflow-hidden dark:border-gray-300"

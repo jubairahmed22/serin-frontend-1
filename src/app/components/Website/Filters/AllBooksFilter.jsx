@@ -17,7 +17,7 @@ const AllBooksFilter = ({
   isFetchingTags,
   popularBooksFilter,
   discountFilter,
-  dailyDealsFilter,
+  newArrivalFilter,
   trendingNowFilter,
   newReleasedFilter,
   inStockFilter,
@@ -26,7 +26,7 @@ const AllBooksFilter = ({
   onTagChange,
   onPopularBooksChange,
   onDiscountChange,
-  onDailyDealsChange,
+  onnewArrivalChange,
   onTrendingNowChange,
   onNewReleasedChange,
   onInStockChange,
@@ -70,7 +70,7 @@ const [openDropdown, setOpenDropdown] = useState(null);
     // First reset all special filters
     onPopularBooksChange({ target: { value: "" } });
     onDiscountChange({ target: { value: "" } });
-    onDailyDealsChange({ target: { value: "" } });
+    onnewArrivalChange({ target: { value: "" } });
     onTrendingNowChange({ target: { value: "" } });
     onNewReleasedChange({ target: { value: "" } });
     onInStockChange({ target: { value: "" } });
@@ -79,7 +79,7 @@ const [openDropdown, setOpenDropdown] = useState(null);
     const isActive =
       (filterType === "popular" && popularBooksFilter === "true") ||
       (filterType === "discount" && discountFilter === "true") ||
-      (filterType === "dailyDeals" && dailyDealsFilter === "true") ||
+      (filterType === "newArrival" && newArrivalFilter === "true") ||
       (filterType === "trending" && trendingNowFilter === "true") ||
       (filterType === "newReleased" && newReleasedFilter === "true") ||
       (filterType === "inStock" && inStockFilter === "true");
@@ -94,8 +94,8 @@ const [openDropdown, setOpenDropdown] = useState(null);
         case "discount":
           onDiscountChange(setEvent);
           break;
-        case "dailyDeals":
-          onDailyDealsChange(setEvent);
+        case "newArrival":
+          onnewArrivalChange(setEvent);
           break;
         case "trending":
           onTrendingNowChange(setEvent);
@@ -135,7 +135,7 @@ const [openDropdown, setOpenDropdown] = useState(null);
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z" />
       </svg>
     ),
-    dailyDeals: (
+    newArrival: (
       <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
@@ -187,7 +187,7 @@ const [openDropdown, setOpenDropdown] = useState(null);
         </div>
 
       {/* Author Filter */}
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label className="block mb-2 text-sm font-medium text-gray-900">
           Authors
         </label>
@@ -201,12 +201,12 @@ const [openDropdown, setOpenDropdown] = useState(null);
           disabled={isFetchingAuthors}
           noOptionsMessage="No authors found"
         />
-      </div>
+      </div> */}
 
       {/* Publisher Filter */}
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label className="block mb-2 text-sm font-medium text-gray-900">
-          Publishers
+          Brands
         </label>
         <SearchableSelect
           options={publishers}
@@ -218,7 +218,7 @@ const [openDropdown, setOpenDropdown] = useState(null);
           disabled={isFetchingPublishers}
           noOptionsMessage="No publishers found"
         />
-      </div>
+      </div> */}
 
       {/* Tags Filter */}
       <div className="mb-4">
@@ -262,13 +262,7 @@ const [openDropdown, setOpenDropdown] = useState(null);
         </div>
         <div className="space-y-2">
           {[
-            {
-              type: "popular",
-              label: "Popular Books",
-              activeText: "Popular Books",
-              inactiveText: "Popular Books",
-              filter: popularBooksFilter,
-            },
+            
             {
               type: "discount",
               label: "Discounted",
@@ -277,33 +271,27 @@ const [openDropdown, setOpenDropdown] = useState(null);
               filter: discountFilter,
             },
             {
-              type: "dailyDeals",
-              label: "Daily Deals",
-              activeText: "Daily Deals",
-              inactiveText: "Daily Deals",
-              filter: dailyDealsFilter,
+              type: "popular",
+              label: "Popular Products",
+              activeText: "Popular Products",
+              inactiveText: "Popular Products",
+              filter: popularBooksFilter,
             },
             {
-              type: "trending",
-              label: "Trending Now",
-              activeText: "Trending Now",
-              inactiveText: "Trending Now",
-              filter: trendingNowFilter,
+              type: "newArrival",
+              label: "New Arrival",
+              activeText: "New Arrival",
+              inactiveText: "New Arrival",
+              filter: newArrivalFilter,
             },
-            {
-              type: "newReleased",
-              label: "New Releases",
-              activeText: "New Releases",
-              inactiveText: "New Releases",
-              filter: newReleasedFilter,
-            },
-            {
-              type: "inStock",
-              label: "In Stock Only",
-              activeText: "In Stock Only",
-              inactiveText: "In Stock Only",
-              filter: inStockFilter,
-            },
+           
+            // {
+            //   type: "inStock",
+            //   label: "In Stock Only",
+            //   activeText: "In Stock Only",
+            //   inactiveText: "In Stock Only",
+            //   filter: inStockFilter,
+            // },
           ].map(({ type, label, activeText, inactiveText, filter }) => (
             <motion.button
               key={type}
@@ -520,11 +508,11 @@ const [openDropdown, setOpenDropdown] = useState(null);
               filter: discountFilter,
             },
             {
-              type: "dailyDeals",
+              type: "newArrival",
               label: "Daily Deals",
               activeText: "Daily Deals",
               inactiveText: "Daily Deals",
-              filter: dailyDealsFilter,
+              filter: newArrivalFilter,
             },
             {
               type: "trending",

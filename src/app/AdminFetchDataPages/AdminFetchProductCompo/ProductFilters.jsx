@@ -165,29 +165,12 @@ const ProductFilters = ({
     </div>
 
     {/* Author and Publisher Filters */}
-    <div className="grid grid-cols-3 md:grid-cols-2 gap-4">
-      <div>
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-          Author
-        </label>
-        <select
-          value={selectedAuthor || ""}
-          onChange={onAuthorChange}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          disabled={isFetchingAuthors}
-        >
-          <option value="">All Authors</option>
-          {authors.map((author) => (
-            <option key={author._id} value={author._id}>
-              {author.title}
-            </option>
-          ))}
-        </select>
-      </div>
+    <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+  
 
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-          Publisher
+          Brand
         </label>
         <select
           value={selectedPublisher || ""}
@@ -195,7 +178,7 @@ const ProductFilters = ({
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
           disabled={isFetchingPublishers}
         >
-          <option value="">All Publishers</option>
+          <option value="">All Brands</option>
           {publishers.map((publisher) => (
             <option key={publisher._id} value={publisher._id}>
               {publisher.title}
@@ -232,10 +215,10 @@ const ProductFilters = ({
     </div>
 
     {/* Boolean Status Filters */}
-    <div className="grid grid-cols-5 md:grid-cols-5 gap-4">
+    <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-          Popular Books
+          Popular Products
         </label>
         <select
           value={popularBooksFilter}
@@ -265,7 +248,7 @@ const ProductFilters = ({
 
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-          Daily Deals
+          New Arrival
         </label>
         <select
           value={dailyDealsFilter}
@@ -277,7 +260,7 @@ const ProductFilters = ({
           <option value="false">No</option>
         </select>
       </div>
-
+{/* 
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
           Trending Now
@@ -306,7 +289,7 @@ const ProductFilters = ({
           <option value="true">Yes</option>
           <option value="false">No</option>
         </select>
-      </div>
+      </div> */}
     </div>
 
     {/* Action Buttons */}

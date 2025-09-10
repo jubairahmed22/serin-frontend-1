@@ -11,7 +11,7 @@ const NonFictionBookFilter = () => {
     params.set("tag", "685eebbb7843568eb9ec4bf2");
 
     // Navigate to all-books page with the query parameter
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
   };
 
   return (

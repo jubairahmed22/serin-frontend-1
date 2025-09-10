@@ -19,7 +19,7 @@ const NonFictionData = () => {
       try {
         setChildCategoriesLoading(true);
         const response = await fetch(
-          "https://books-server-001.vercel.app/api/admin/child-category"
+          "https://cosmetics-server-001.vercel.app/api/admin/child-category"
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
@@ -40,7 +40,7 @@ const NonFictionData = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        let url = `https://books-server-001.vercel.app/api/admin/non-fiction?page=${currentPage}`;
+        let url = `https://cosmetics-server-001.vercel.app/api/admin/non-fiction?page=${currentPage}`;
         if (selectedChildCategory) url += `&childCategory=${selectedChildCategory}`;
 
         const response = await fetch(url);
@@ -83,7 +83,7 @@ const NonFictionData = () => {
         Error: {error}
         <button 
           onClick={() => window.location.reload()}
-          className="ml-4 px-4 py-2 bg-[#50C878] text-white rounded hover:bg-green-600"
+          className="ml-4 px-4 py-2 bg-[#414143] text-white rounded hover:bg-green-600"
         >
           Retry
         </button>
@@ -92,7 +92,7 @@ const NonFictionData = () => {
   }
 
   return (
-    <div className="fontPoppins w-full max-w-6xl mx-auto lg:px-4">
+    <div className="fontPoppins w-full max-w-8xl mx-auto lg:px-4">
       {/* Header and Filters */}
       <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full">
         {/* <h1 className="text-2xl font-bold text-gray-900 whitespace-nowrap">Non-Fiction Books</h1> */}
@@ -137,7 +137,7 @@ const NonFictionData = () => {
             {selectedChildCategory && (
               <button
                 onClick={handleResetFilters}
-                className="px-4 py-2 bg-[#50C878] text-white rounded hover:bg-green-600"
+                className="px-4 py-2 bg-[#414143] text-white rounded hover:bg-green-600"
               >
                 Reset Filters
               </button>
@@ -159,7 +159,7 @@ const NonFictionData = () => {
             className={`p-2 rounded-full ${
               currentPage === 1
                 ? "bg-gray-200 cursor-not-allowed text-gray-400"
-                : "bg-[#50C878] text-white hover:bg-green-600"
+                : "bg-[#414143] text-white hover:bg-green-600"
             }`}
             aria-label="Previous page"
           >
@@ -187,7 +187,7 @@ const NonFictionData = () => {
             className={`p-2 rounded-full ${
               currentPage === totalPages
                 ? "bg-gray-200 cursor-not-allowed text-gray-400"
-                : "bg-[#50C878] text-white hover:bg-green-600"
+                : "bg-[#414143] text-white hover:bg-green-600"
             }`}
             aria-label="Next page"
           >

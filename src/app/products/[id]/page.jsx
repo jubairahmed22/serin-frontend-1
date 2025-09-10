@@ -24,7 +24,7 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const response = await fetch(
-          `https://books-server-001.vercel.app/api/web/all-products/${id}`
+          `https://cosmetics-server-001.vercel.app/api/web/all-products/${id}`
         );
         if (!response.ok) {
           throw new Error("Product not found");
@@ -40,6 +40,19 @@ const ProductDetails = () => {
 
     fetchProduct();
   }, [id]);
+  
+    const handleCategoryClick = (category) => {
+    if (!category?.id) {
+      console.error("Invalid parameters", { category });
+      return;
+    }
+
+    const params = new URLSearchParams();
+    params.set("page", "1");
+    params.set("category", category.id);
+    // params.set("category", parentCategoryId); // Using the parent category's id
+    router.push(`/products?${params.toString()}`);
+  };
 
   const handleSubCategoryClick = (subCategory, parentCategoryId) => {
     if (!subCategory?.objectId || !parentCategoryId) {
@@ -51,7 +64,7 @@ const ProductDetails = () => {
     params.set("page", "1");
     params.set("subCategory", subCategory.objectId);
     params.set("category", parentCategoryId); // Using the parent category's id
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
   };
 
   const handleChildCategoryClick = (childCategory, parentCategoryId) => {
@@ -64,7 +77,7 @@ const ProductDetails = () => {
     params.set("page", "1");
     params.set("childCategory", childCategory.objectId);
     params.set("category", parentCategoryId); // Using the parent category's id
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
   };
 
   if (loading) {
@@ -98,16 +111,17 @@ const ProductDetails = () => {
           product={product}
           handleSubCategoryClick={handleSubCategoryClick}
           handleChildCategoryClick={handleChildCategoryClick}
+          handleCategoryClick={handleCategoryClick}
         />
-        <div className="flex flex-row layoutFlexOne gap-5">
-          <div className="lg:w-[60%] md:w-full sm:w-full rounded-xl  my-2">
+        <div className="flex flex-row layoutFlexOne gap-5 mt-5">
+          <div className="lg:w-[60%] md:w-full sm:w-full rounded-xl  ">
             <ImageManagement product={product}></ImageManagement>
           </div>
-          <div className="lg:w-[60%] md:w-full sm:w-full rounded-xl border border-[#E6E6E6] my-7 p-5">
+          <div className="lg:w-[60%] md:w-full sm:w-full rounded-xl border border-[#E6E6E6]">
             <DataDetails product={product}></DataDetails>
           </div>
         </div>
-        <Specification product={product}></Specification>
+        {/* <Specification product={product}></Specification> */}
       </div>
       <RelatedProduct
       handleSubCategoryClick={handleSubCategoryClick}

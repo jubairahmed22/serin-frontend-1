@@ -13,7 +13,7 @@ const AuthorProfile = ({ product }) => {
     const fetchAuthorData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`https://books-server-001.vercel.app/api/web/all-author/${dataId}`);
+        const response = await axios.get(`https://cosmetics-server-001.vercel.app/api/web/all-author/${dataId}`);
         setAuthor(response.data);
         setError(null);
       } catch (err) {

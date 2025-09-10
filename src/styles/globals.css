@@ -4,12 +4,25 @@
 @import "flowbite/dist/flowbite.min.css";
 
 /* Import fonts */
+
+/* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Garamond:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gotham:wght@400;500;700&display=swap');
 
 body {
   background-color: #f3f4f6;
 }
+
+/* textColor{
+  #F01F7B / normal pink
+  #414143 /dark pink
+} */
 
 .container {
   /* max-width: 1200px; */
@@ -19,6 +32,34 @@ body {
 
 .fontPoppins{
   font-family: 'Poppins', sans-serif;
+}
+
+.fontNoto {
+  font-family: 'Noto Sans Bengali', sans-serif;
+}
+
+.fontSofia {
+  font-family: 'Sofia Pro', sans-serif;
+}
+
+.fontBelleza {
+  font-family: 'Belleza', sans-serif;
+}
+
+.fontRoboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.fontOpenSans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.fontGaramond {
+  font-family: 'Garamond', serif;
+}
+
+.fontGotham {
+  font-family: 'Gotham', sans-serif;
 }
 
 .navInfoText{
@@ -51,7 +92,7 @@ body {
 
 
 .buttonCategory{
-  background-color: #50C878;
+  background-color: #414143;
 }
 
 .buttonText{
@@ -171,3 +212,4 @@ body {
   font-size: 14px;
   font-family: 'Noto Sans Bengali', sans-serif;
 }
+

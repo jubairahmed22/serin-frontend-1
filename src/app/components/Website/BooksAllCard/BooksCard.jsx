@@ -102,144 +102,142 @@ const BooksCard = ({ product }) => {
 
   return (
     <motion.div
-  initial={{ opacity: 1, y: 0 }}
-  whileHover={{ y: -5 }}
-  transition={{ duration: 0.2 }}
-  className="relative group border flex flex-col justify-between border-gray-100 p-3 h-full" // Added h-full here
->
-  <Link href={`/all-books/${product?._id}`} prefetch={true}>
-    <div className="flex flex-col gap-3 rounded-xl bg-white transition-all duration-300 h-full"> {/* Added h-full here */}
-      {/* Image with overlay */}
-      <div className="relative overflow-hidden rounded-lg aspect-[3/4] bg-gray-100">
-        <img
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          src={product?.singleImage}
-          alt={product?.title}
-        />
+      initial={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
+      className="relative group border border-gray-200 bg-white  rounded-xl shadow flex flex-col justify-between  p-3 h-full" // Added h-full here
+    >
+      <Link href={`/products/${product?._id}`} prefetch={true}>
+        <div className="flex flex-col gap-3 rounded bg-white transition-all duration-300 h-full">
+          {" "}
+          {/* Added h-full here */}
+          {/* Image with overlay */}
+          <div className="relative overflow-hidden rounded aspect-[3/4] bg-white">
+            <img
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-130"
+              src={product?.singleImage}
+              alt={product?.title}
+            />
 
-        {/* Hover overlay */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          className="absolute inset-0 bg-black/30 flex items-center justify-center"
-        >
-          <motion.span
-            initial={{ y: 10 }}
-            whileHover={{ y: 0 }}
-            className="text-white font-medium text-sm bg-black/70 px-3 py-1.5 rounded-full"
-          >
-            View Details
-          </motion.span>
-        </motion.div>
+            {/* Hover overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+              className="absolute inset-0 bg-black/30 flex items-center justify-center"
+            >
+              <motion.span
+                initial={{ y: 10 }}
+                whileHover={{ y: 0 }}
+                className="text-white font-medium text-sm bg-black/70 px-3 py-1.5 rounded-full"
+              >
+                View Details
+              </motion.span>
+            </motion.div>
 
-        {/* Discount badge */}
-        {hasDiscount && (
-          <div className="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
-            {product?.discountType === "percentage"
-              ? `${product?.discountValue}% OFF`
-              : "SALE"}
-          </div>
-        )}
-      </div>
-
-      {/* Product Info - Added min-h-[120px] to maintain consistent height */}
-      <div className="flex flex-col gap-2 min-h-[120px]">
-        <h1 className="bangla-text font-semibold text-gray-900 truncate">
-          {product?.title.split(" ").slice(0, 3).join(" ")}
-          {product?.title.split(" ").length > 3 && "..."}
-        </h1>
-
-        {/* Rating */}
-        <div className="flex items-center gap-1">
-          <div className="flex">{renderStars()}</div>
-          <span className="text-xs text-gray-500 ml-1">
-            ({rating.toFixed(1)})
-          </span>
-        </div>
-
-        {/* Stock */}
-        <div className="text-xs text-gray-600">
-          {product?.stock > 0
-            ? `${product?.stock} in stock`
-            : "Out of stock"}
-        </div>
-
-        {/* Price - Added flex-grow to push the button down */}
-        <div className="mt-1 flex-grow">
-          {hasDiscount ? (
-            <div className="flex flex-col">
-              <div className="flex flexPrice items-center gap-2">
-                <span className="lg:text-lg PriceTextSizeMain font-bold text-gray-900">
-                  BDT {discountedPrice.toFixed(2)}
-                </span>
-                <del className="text-sm PriceTextSize text-gray-500">
-                  BDT {product?.price.toFixed(2)}
-                </del>
+            {/* Discount badge */}
+            {hasDiscount && (
+              <div className="absolute top-2 right-2 bg-[#414143] text-white text-xs font-bold px-2 py-1 rounded-full">
+                {product?.discountType === "percentage"
+                  ? `${product?.discountValue}% OFF`
+                  : "SALE"}
               </div>
-              {product?.discountType === "percentage" && (
-                <span className="text-xs PriceTextSize text-red-600">
-                  You save BDT{" "}
-                  {(product?.price - discountedPrice).toFixed(2)} (
-                  {product?.discountValue}%)
-                </span>
+            )}
+          </div>
+          {/* Product Info - Added min-h-[120px] to maintain consistent height */}
+          <div className="flex flex-col gap-2 min-h-[100px]">
+            <h1 className="bangla-text textTitleCard font-semibold text-gray-900 line-clamp-2 lg:h-12">
+              {product?.title}
+            </h1>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1">
+              <div className="flex">{renderStars()}</div>
+              <span className="text-xs text-gray-500 ml-1">
+                ({rating.toFixed(1)})
+              </span>
+            </div>
+
+            {/* Stock */}
+            {/* <div className="text-xs text-gray-600">
+              {product?.stock > 0
+                ? `${product?.stock} in stock`
+                : "Out of stock"}
+            </div> */}
+
+            {/* Price - Added flex-grow to push the button down */}
+            <div className="mt-1 flex-grow">
+              {hasDiscount ? (
+                <div className="flex flex-col">
+                  <div className="flex flexPrice items-center gap-2">
+                    <span className="lg:text-lg PriceTextSizeMain font-bold text-gray-900">
+                      BDT {discountedPrice.toFixed(2)}
+                    </span>
+                    <del className="text-sm PriceTextSize text-gray-500">
+                      BDT {product?.price.toFixed(2)}
+                    </del>
+                  </div>
+                  {product?.discountType === "percentage" && (
+                    <span className="text-xs PriceTextSize text-red-600">
+                      You save BDT{" "}
+                      {(product?.price - discountedPrice).toFixed(2)} (
+                      {product?.discountValue}%)
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <div className="flex flex-col mb-4">
+                  <span className="lg:text-lg PriceTextSizeMain font-bold text-gray-900">
+                    BDT {product?.price.toFixed(2)}
+                  </span>
+                </div>
               )}
             </div>
-          ) : (
-            <div className="flex flex-col mb-4">
-              <span className="text-lg font-bold text-gray-900">
-              BDT {product?.price.toFixed(2)}
-            </span>
-            
-            </div>
-          )}
+          </div>
         </div>
-      </div>
-    </div>
-  </Link>
+      </Link>
 
-  {/* Add to Cart Button */}
-  <motion.button
-    onClick={handleCartAction}
-    whileHover={{ scale: 1.02 }}
-    whileTap={{ scale: 0.98 }}
-    className={`w-full cursor-pointer mt-3 py-2.5 px-4 rounded-lg cartButton font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
-      productInCart
-        ? "bg-red-600 hover:bg-red-700 text-white"
-        : "bg-[#50C878] hover:bg-emerald-700 text-white"
-    }`}
-  >
-    <svg
-      className="w-4 h-4"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      {productInCart ? (
+      {/* Add to Cart Button */}
+      <motion.button
+        onClick={handleCartAction}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className={`w-full cursor-pointer lg:mt-3 py-2.5 px-4 rounded-full cartButton font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
+          productInCart
+            ? "bg-[#414143] hover:bg-red-700 text-white"
+            : "bg-[#F01F7B] hover:bg-emerald-700 text-white"
+        }`}
+      >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          className="w-4 h-4"
           fill="none"
-          viewBox="0 0 24 24"
           stroke="currentColor"
+          viewBox="0 0 24 24"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
+          {productInCart ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+            />
+          )}
         </svg>
-      ) : (
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-        />
-      )}
-    </svg>
-    {productInCart ? "Remove from Cart" : "Add to Cart"}
-  </motion.button>
-</motion.div>
+        {productInCart ? "Remove from Cart" : "Add to Cart"}
+      </motion.button>
+    </motion.div>
   );
 };
 

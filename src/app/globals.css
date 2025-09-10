@@ -19,6 +19,48 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Garamond:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gotham:wght@400;500;700&display=swap');
+
+
+.fontPoppins{
+  font-family: 'Poppins', sans-serif;
+}
+
+.fontNoto {
+  font-family: 'Noto Sans Bengali', sans-serif;
+}
+
+.fontSofia {
+  font-family: 'Sofia Pro', sans-serif;
+}
+
+.fontBelleza {
+  font-family: 'Belleza', sans-serif;
+}
+
+.fontRoboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.fontOpenSans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.fontGaramond {
+  font-family: 'Garamond', serif;
+}
+
+.fontGotham {
+  font-family: 'Gotham', sans-serif;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

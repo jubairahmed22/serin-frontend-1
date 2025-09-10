@@ -11,7 +11,7 @@ const FictionBookFilter = () => {
     params.set("tag", "685eebaf7843568eb9ec4bf1");
 
     // Navigate to all-books page with the query parameter
-    router.push(`/all-books?${params.toString()}`);
+    router.push(`/products?${params.toString()}`);
   };
 
   return (

@@ -32,7 +32,7 @@ const AddBannerThreeForm = ({ onClose }) => {
 
     try {
       const response = await axios.post(
-        "https://books-server-001.vercel.app/api/admin/upload/banner-three",
+        "https://cosmetics-server-001.vercel.app/api/admin/upload/banner-three",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

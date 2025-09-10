@@ -117,7 +117,7 @@ const ProductTable = ({ products, onDelete, currentPage, totalPages }) => {
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/add-popular-books",
+        "https://cosmetics-server-001.vercel.app/api/admin/add-popular-products",
         {
           method: "POST",
           headers: {
@@ -147,7 +147,7 @@ const ProductTable = ({ products, onDelete, currentPage, totalPages }) => {
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/remove-popular-books",
+        "https://cosmetics-server-001.vercel.app/api/admin/remove-popular-products",
         {
           method: "POST",
           headers: {
@@ -169,7 +169,7 @@ const ProductTable = ({ products, onDelete, currentPage, totalPages }) => {
     }
   };
 
-  const handleMarkAsDailyBooks = async () => {
+  const handleNewArrival = async () => {
     if (selectedProducts.length === 0) {
       alert("Please select at least one product");
       return;
@@ -177,7 +177,7 @@ const ProductTable = ({ products, onDelete, currentPage, totalPages }) => {
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/add-dailyDeals",
+        "https://cosmetics-server-001.vercel.app/api/admin/add-newArrival",
         {
           method: "POST",
           headers: {
@@ -199,7 +199,7 @@ const ProductTable = ({ products, onDelete, currentPage, totalPages }) => {
     }
   };
 
-  const handleRemoveDailyBooks = async () => {
+  const handleRemoveNewArrival = async () => {
     if (selectedProducts.length === 0) {
       alert("Please select at least one product");
       return;
@@ -207,127 +207,7 @@ const ProductTable = ({ products, onDelete, currentPage, totalPages }) => {
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/remove-dailyDeals",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ selectedProducts }),
-        }
-      );
-
-      const data = await response.json();
-      if (response.ok) {
-        alert(data.message);
-        setSelectedProducts([]);
-      } else {
-        throw new Error(data.error || "Failed to update statuses");
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleMarkAsTrendingNow = async () => {
-    if (selectedProducts.length === 0) {
-      alert("Please select at least one product");
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/add-trendingNow",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ selectedProducts }),
-        }
-      );
-
-      const data = await response.json();
-      if (response.ok) {
-        alert(data.message);
-        setSelectedProducts([]);
-      } else {
-        throw new Error(data.error || "Failed to update statuses");
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleRemoveTrendingNow = async () => {
-    if (selectedProducts.length === 0) {
-      alert("Please select at least one product");
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/remove-trending",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ selectedProducts }),
-        }
-      );
-
-      const data = await response.json();
-      if (response.ok) {
-        alert(data.message);
-        setSelectedProducts([]);
-      } else {
-        throw new Error(data.error || "Failed to update statuses");
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleMarkAsNewReleased = async () => {
-    if (selectedProducts.length === 0) {
-      alert("Please select at least one product");
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/new-released",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ selectedProducts }),
-        }
-      );
-
-      const data = await response.json();
-      if (response.ok) {
-        alert(data.message);
-        setSelectedProducts([]);
-      } else {
-        throw new Error(data.error || "Failed to update statuses");
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleRemoveNewReleased = async () => {
-    if (selectedProducts.length === 0) {
-      alert("Please select at least one product");
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/remove/new-released",
+        "https://cosmetics-server-001.vercel.app/api/admin/remove-newArrival",
         {
           method: "POST",
           headers: {
@@ -373,7 +253,7 @@ const ProductTable = ({ products, onDelete, currentPage, totalPages }) => {
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/add-status-discount",
+        "https://cosmetics-server-001.vercel.app/api/admin/add-status-discount",
         {
           method: "POST",
           headers: {
@@ -408,7 +288,7 @@ const ProductTable = ({ products, onDelete, currentPage, totalPages }) => {
 
     try {
       const response = await fetch(
-        "https://books-server-001.vercel.app/api/admin/remove-discount",
+        "https://cosmetics-server-001.vercel.app/api/admin/remove-discount",
         {
           method: "POST",
           headers: {
@@ -483,75 +363,49 @@ const ProductTable = ({ products, onDelete, currentPage, totalPages }) => {
       <div className="grid grid-cols-2 gap-5">
         {/* Add to Categories Section */}
         <div>
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1  gap-3">
             <button
               onClick={handleMarkAsPopular}
               className="px-4 py-2 flex items-center justify-center gap-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               <FaStar className="h-4 w-4" />
-              Popular Books
+              Add Popular Product
             </button>
             <button
-              onClick={handleMarkAsDailyBooks}
+              onClick={handleNewArrival}
               className="px-4 py-2 flex items-center justify-center gap-2 bg-amber-600 text-white text-sm font-medium rounded-md hover:bg-amber-700 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
             >
               <FaCalendarAlt className="h-4 w-4" />
-              Daily Books
+              Add New Arrival
             </button>
-            <button
-              onClick={handleMarkAsTrendingNow}
-              className="px-4 py-2 flex items-center justify-center gap-2 bg-rose-600 text-white text-sm font-medium rounded-md hover:bg-rose-700 transition-colors focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
-            >
-              <FaFire className="h-4 w-4" />
-              Trending Now
-            </button>
-            <button
-              onClick={handleMarkAsNewReleased}
-              className="px-4 py-2 flex items-center justify-center gap-2 bg-teal-600 text-white text-sm font-medium rounded-md hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
-            >
-              <FaNewspaper className="h-4 w-4" />
-              New Releases
-            </button>
+  
           </div>
         </div>
 
         {/* Remove from Categories Section */}
         <div>
-          <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            <button
-              onClick={handleRemoveDiscount}
-              className="px-4 py-2 flex items-center justify-center gap-2 bg-indigo-500/20 text-indigo-700 dark:text-indigo-800 text-sm font-medium rounded-md hover:bg-indigo-500/30 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 border border-indigo-300 dark:border-indigo-400"
-            >
-              <FaTimes className="h-4 w-4" />
-              Remove Discount
-            </button>
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            
             <button
               onClick={handleRemovePopular}
               className="px-4 py-2 flex items-center justify-center gap-2 bg-indigo-500/20 text-indigo-700 dark:text-indigo-800 text-sm font-medium rounded-md hover:bg-indigo-500/30 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 border border-indigo-300 dark:border-indigo-400"
             >
               <FaTimes className="h-4 w-4" />
-              Remove Popular
+              Remove Popular Product
             </button>
             <button
-              onClick={handleRemoveDailyBooks}
+              onClick={handleRemoveNewArrival}
               className="px-4 py-2 flex items-center justify-center gap-2 bg-amber-500/20 text-amber-700 dark:text-amber-800 text-sm font-medium rounded-md hover:bg-amber-500/30 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 border border-amber-300 dark:border-amber-400"
             >
               <FaTimes className="h-4 w-4" />
-              Remove Daily
+              Remove New Arrival
             </button>
-            <button
-              onClick={handleRemoveTrendingNow}
-              className="px-4 py-2 flex items-center justify-center gap-2 bg-rose-500/20 text-rose-700 dark:text-rose-800 text-sm font-medium rounded-md hover:bg-rose-500/30 transition-colors focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 border border-rose-300 dark:border-rose-400"
+      <button
+              onClick={handleRemoveDiscount}
+              className="px-4 py-2 flex items-center justify-center gap-2 bg-indigo-500/20 text-indigo-700 dark:text-indigo-800 text-sm font-medium rounded-md hover:bg-indigo-500/30 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 border border-indigo-300 dark:border-indigo-400"
             >
               <FaTimes className="h-4 w-4" />
-              Remove Trending
-            </button>
-            <button
-              onClick={handleRemoveNewReleased}
-              className="px-4 py-2 flex items-center justify-center gap-2 bg-teal-500/20 text-teal-700 dark:text-teal-800 text-sm font-medium rounded-md hover:bg-teal-500/30 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 border border-teal-300 dark:border-teal-400"
-            >
-              <FaTimes className="h-4 w-4" />
-              Remove New Releases
+              Remove Discount
             </button>
           </div>
         </div>
@@ -596,7 +450,7 @@ const ProductTable = ({ products, onDelete, currentPage, totalPages }) => {
           Category
         </th>
         <th scope="col" className="px-6 py-3">
-          Production
+          Brand
         </th>
         <th scope="col" className="px-6 py-3">
           Website
@@ -673,53 +527,33 @@ const ProductRow = ({
       
       <td className="px-6 py-4">
         <div className="flex flex-col dark:text-black">
-          <span>Author : {product.author?.name || "N/A"}</span>
-          <span>Publisher : {product.publisher?.name || "N/A"}</span>
+          <span>{product.brand?.name || "N/A"}</span>
         </div>
       </td>
       <StatusCell showWebsite={product.showWebsite} />
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="space-y-1 text-sm text-gray-700 dark:text-black">
           <div className="flex items-center gap-2">
-            <span className="font-medium w-28">Popular Books:</span>
+            <span className="font-medium w-28">Popular Products:</span>
             <span className={`px-2 py-1 rounded text-xs font-medium ${
               product.popularBooks 
                 ? 'bg-green-100 text-green-800 dark:bg-green-100 dark:text-green-800' 
                 : 'bg-gray-100 text-gray-800 dark:bg-gray-100 dark:text-gray-800'
             }`}>
-              {product.popularBooks ? "Yes" : "No"}
+              {product.popularProducts ? "Yes" : "No"}
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="font-medium w-28">Daily Deals:</span>
+            <span className="font-medium w-28">New Arrival:</span>
             <span className={`px-2 py-1 rounded text-xs font-medium ${
               product.dailyDeals 
                 ? 'bg-green-100 text-green-800 dark:bg-green-100 dark:text-green-800' 
                 : 'bg-gray-100 text-gray-800 dark:bg-gray-100 dark:text-gray-800'
             }`}>
-              {product.dailyDeals ? "Yes" : "No"}
+              {product.newArrival ? "Yes" : "No"}
             </span>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="font-medium w-28">Trending Now:</span>
-            <span className={`px-2 py-1 rounded text-xs font-medium ${
-              product.trendingNow 
-                ? 'bg-green-100 text-green-800 dark:bg-green-100 dark:text-green-800' 
-                : 'bg-gray-100 text-gray-800 dark:bg-gray-100 dark:text-gray-800'
-            }`}>
-              {product.trendingNow ? "Yes" : "No"}
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="font-medium w-28">New Releases:</span>
-            <span className={`px-2 py-1 rounded text-xs font-medium ${
-              product.newReleased 
-                ? 'bg-green-100 text-green-800 dark:bg-green-100 dark:text-green-800' 
-                : 'bg-gray-100 text-gray-800 dark:bg-gray-100 dark:text-gray-800'
-            }`}>
-              {product.newReleased ? "Yes" : "No"}
-            </span>
-          </div>
+      
           <div className="flex items-center gap-2">
             <span className="font-medium w-28">Discount:</span>
             <span className={`px-2 py-1 rounded text-xs font-medium ${
@@ -763,7 +597,7 @@ const ProductCell = ({ product, formatDate }) => (
         className="hover:underline hover:text-blue-600 dark:hover:text-blue-600"
       >
         <div className="flex flex-col gap-1">
-          <span className="font-medium">{product.title || "N/A"}</span>
+          <span className="font-medium ">{product.title.slice(0,20) || "N/A"}...</span>
           <span className="text-xs text-gray-500 dark:text-gray-600">
             Created: {formatDate(product.createdAt)}
           </span>

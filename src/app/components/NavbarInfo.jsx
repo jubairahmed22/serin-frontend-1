@@ -50,7 +50,7 @@ const NavbarInfo = () => {
           <Link href="/">
             <div className="flex flex-row items-center gap-5">
               <img src={logo.src} alt="" className="w-[149px] h-[140px]"></img>
-              <h1 className="text-2xl dark:text-black font-bold text-[#50C878]">Book Forest</h1>
+              <h1 className="text-2xl dark:text-black font-bold text-[#414143]">Book Forest</h1>
             </div>
           </Link>
           <div className="w-[650px] h-[52px] flex flex-row justify-between gap-5">
@@ -82,7 +82,7 @@ const NavbarInfo = () => {
                   </svg>
 
                   {cartCount > 0 && (
-                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#50C878] text-xs font-medium text-white shadow-sm transition-all duration-200 group-hover:scale-110 dark:bg-green-500">
+                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#414143] text-xs font-medium text-white shadow-sm transition-all duration-200 group-hover:scale-110 dark:bg-green-500">
                       {cartCount > 9 ? "9+" : cartCount}
                     </span>
                   )}
@@ -122,7 +122,7 @@ const NavbarInfo = () => {
 
                     <button
                       onClick={() => signOut({ callbackUrl: "/" })}
-                      className="bg-[#50C878] hover:bg-green-700 text-white px-3 py-1.5 rounded-md transition-colors text-sm font-medium"
+                      className="bg-[#414143] hover:bg-green-700 text-white px-3 py-1.5 rounded-md transition-colors text-sm font-medium"
                       aria-label="Sign out"
                     >
                       Logout
@@ -139,7 +139,7 @@ const NavbarInfo = () => {
                   </Link>
                   <Link
                     href="/auth/register"
-                    className="bg-[#50C878] hover:bg-green-700 text-white px-3 py-1.5 rounded-md transition-colors text-sm font-medium"
+                    className="bg-[#414143] hover:bg-green-700 text-white px-3 py-1.5 rounded-md transition-colors text-sm font-medium"
                   >
                     Register
                   </Link>
@@ -185,7 +185,7 @@ const NavbarInfo = () => {
                 </svg>
 
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#50C878] text-xs font-medium text-white shadow-sm transition-all duration-200 group-hover:scale-110 dark:bg-green-500">
+                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#414143] text-xs font-medium text-white shadow-sm transition-all duration-200 group-hover:scale-110 dark:bg-green-500">
                     {cartCount > 9 ? "9+" : cartCount}
                   </span>
                 )}
@@ -209,7 +209,7 @@ const NavbarInfo = () => {
 
                   <button
                     onClick={() => signOut({ callbackUrl: "/" })}
-                    className="bg-[#50C878] text-[10px] hover:bg-green-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
+                    className="bg-[#414143] text-[10px] hover:bg-green-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
                     aria-label="Sign out"
                   >
                     Logout
@@ -226,7 +226,7 @@ const NavbarInfo = () => {
                 </Link>
                 <Link
                   href="/auth/register"
-                  className="bg-[#50C878] text-[10px] hover:bg-green-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
+                  className="bg-[#414143] text-[10px] hover:bg-green-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
                 >
                   Register
                 </Link>
@@ -235,7 +235,7 @@ const NavbarInfo = () => {
           </div>
         </div>
          </div>
-         <div className="w-full bg-[#50C878] px-8 py-2">
+         <div className="w-full bg-[#414143] px-8 py-2">
             <InputFilter></InputFilter>
          </div>
       </div>
