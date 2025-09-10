@@ -27,7 +27,7 @@ const HomeCategoryFilter = ({ subCategoryId, categoryId }) => {
              hover:shadow-lg transition-all duration-300 ease-in-out 
              transform hover:scale-105 active:scale-95"
 >
-  Shop All Products asdf
+  Shop All Products
 </button>
     </div>
   );
