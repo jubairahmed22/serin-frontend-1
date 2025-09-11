@@ -23,6 +23,9 @@
     grid-template-columns: repeat(1, 1fr);
     gap: 10px; /* optional */
   }
+  .textTotal{
+    font-size: 8px;
+  }
 }
 
 /* Tablet (640px-1040px) - 3 columns */
@@ -34,6 +37,9 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px; /* optional */
+  }
+  .textTotal{
+    font-size: 12px;
   }
 }
 
@@ -52,6 +58,9 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 20px; /* optional */
   }
+    .textTotal{
+    font-size: 12px;
+  }
 }
 
 /* Large desktop (1601px+) - 5 columns */
@@ -68,5 +77,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px; /* optional */
+  }
+    .textTotal{
+    font-size: 12px;
   }
 }

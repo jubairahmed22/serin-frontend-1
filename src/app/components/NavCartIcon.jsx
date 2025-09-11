@@ -148,7 +148,7 @@ const NavCartIcon = () => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className="bg-[#414143] text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md border border-white"
+        className="bg-[#414143] text-white textTotal px-3 py-1 rounded-full text-sm font-semibold shadow-md border border-white"
       >
         BDT {totalPrice}
       </motion.div>
@@ -219,7 +219,7 @@ const NavCartIcon = () => {
               <div className="absolute bottom-0 left-0 right-0 border-t bg-white p-4">
                 <div className="flex justify-between mb-4">
                   <span className="font-bold">Total:</span>
-                  <span className="font-bold">BDT {totalPrice}</span>
+                  <span className="font-bold ">BDT {totalPrice}</span>
                 </div>
                 <Link
                   href="/cart"

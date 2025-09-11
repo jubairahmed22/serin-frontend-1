@@ -229,7 +229,7 @@ const DataDetails = ({ product }) => {
       className={`flex items-center cursor-pointer txtAddToCart justify-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-200 shadow-md hover:shadow-lg ${
         productInCart
           ? "bg-red-600 hover:bg-red-700 text-white"
-          : "bg-emerald-600 hover:bg-emerald-700 text-white"
+          : "bg-pink-600 hover:bg-pink-700 text-white"
       }`}
     >
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
