@@ -33,9 +33,8 @@ const Footer = () => {
           {/* Need Help */}
           <div>
             <h2 className="text-lg font-semibold mb-4">Need Help</h2>
-            <p className="text-2xl font-bold text-pink-100 mb-2">01734346050</p>
-            <p className="text-sm text-pink-50">Sunday - Friday: 9:00 - 20:00</p>
-            <p className="text-sm text-pink-50">Saturday: 11:00 - 15:00</p>
+            <p className="text-2xl font-bold text-pink-100 mb-2">+880 1888 108 555</p>
+            {/* <p className="text-sm text-pink-50">Saturday: 11:00 - 15:00</p> */}
             <div>
               <div className="flex justify-start space-x-6 mt-5">
           {socialLinks.map((social, index) => (
