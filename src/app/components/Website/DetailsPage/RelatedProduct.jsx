@@ -198,9 +198,11 @@ const RelatedProduct = ({ product, handleChildCategoryClick }) => {
             Related Products
           </h2>
           <button
-                className="fontPoppins h-6 text-black seeMoreButton cursor-pointer bg-white border border-black px-6 py-2 rounded 
-             shadow-md hover:bg-[#F01F7B] hover:text-white hover:shadow-lg 
-             transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95"
+                 className="fontPoppins text-sm font-medium seeMoreButton text-black cursor-pointer 
+             bg-white border border-black px-8 py-2 rounded-full
+             shadow-md hover:bg-[#F01F7B] hover:text-white hover:border-[#F01F7B] 
+             hover:shadow-lg transition-all duration-300 ease-in-out 
+             transform hover:scale-105 active:scale-95"
       
             onClick={() =>
               handleChildCategoryClick(

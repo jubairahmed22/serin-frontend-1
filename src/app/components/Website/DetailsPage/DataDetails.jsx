@@ -127,16 +127,11 @@ const DataDetails = ({ product }) => {
   };
 
   return (
-    <div className="fontPoppins bangla-text flex flex-col gap-4 p-5">
-      {/* <div className="in-stock w-20 py-1 rounded text-white flex justify-center items-center">
-        <h1 className="font-semibold">Stock : {product.stock}</h1>
-      </div> */}
+    <div className="fontPoppins bangla-text flex flex-col gap-4 p-5 rounded-xl border border-[#E6E6E6]">
+    
       <h1 className="text-title fontGaramond font-bold">{product.title}</h1>
       <div className="flex flex-row gap-10">
-        {/* <h1 className="text-author-data font-semibold">
-          <span className="text-author">Author : </span>
-          {product.author.name}
-        </h1> */}
+      
         <div className="flex items-center gap-1">
           <div className="flex">{renderStars()}</div>
           <span className="text-ratting ml-1 font-semibold">
@@ -175,118 +170,85 @@ const DataDetails = ({ product }) => {
 />
 
       <hr className="des-line w-full"></hr>
-      <div className="flex flex-col gap-2 ">
-        <h1 className="quantity font-semibold fontPoppins">Quantity</h1>
-        <div className="flex flex-row gap-5">
-          <div className="flex flex-row items-center gap-1 rounded border border-gray-300 dark:border-gray-300 px-4 py-1 focus-within:ring-2 focus-within:ring-primary-500 focus-within:border-transparent transition-all duration-200 hover:border-gray-400 dark:hover:border-gray-400 dark:bg-white">
-            <button
-              onClick={handleDecrement}
-              disabled={quantity <= 1}
-              aria-label="Decrease quantity"
-              className={`p-1 cursor-pointer rounded focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 transition-colors duration-200 ${
-                quantity <= 1
-                  ? "opacity-50 cursor-not-allowed text-gray-400"
-                  : "hover:bg-gray-100 dark:hover:bg-gray-100 text-gray-700 dark:text-gray-900"
-              }`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20 12H4"
-                />
-              </svg>
-            </button>
+   <div className="flex flex-col gap-3 w-full">
+  <h1 className="quantity font-semibold text-lg fontPoppins">Quantity</h1>
+  <div className="flex flex-row gap-3 w-full items-center">
+    
+    {/* Quantity Selector */}
+    <div className="flex items-center gap-1 rounded-full border border-gray-300 dark:border-gray-300 px-3 py-1 bg-white dark:bg-gray-100 shadow-sm hover:shadow-md transition-all duration-200">
+      
+      {/* Decrement */}
+      <button
+        onClick={handleDecrement}
+        disabled={quantity <= 1}
+        aria-label="Decrease quantity"
+        className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200 ${
+          quantity <= 1
+            ? " text-gray-400 cursor-not-allowed"
+            : " text-gray-700 cursor-pointer"
+        }`}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+        </svg>
+      </button>
 
-            <input
-              type="number"
-              value={quantity}
-              min="1"
-              max={product.stock}
-              onChange={handleInputChange}
-              aria-label="Quantity"
-              className="w-12 text-center bg-transparent border-none focus:outline-none focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none dark:text-gray-900"
-            />
+      {/* Quantity Input */}
+      <input
+        type="number"
+        value={quantity}
+        min="1"
+        max={product.stock}
+        onChange={handleInputChange}
+        aria-label="Quantity"
+        className="w-12 text-center bg-transparent border-none focus:outline-none focus:ring-0 text-gray-900 dark:text-gray-900 font-medium"
+      />
 
-            <button
-              onClick={handleIncrement}
-              disabled={quantity >= product.stock}
-              aria-label="Increase quantity"
-              className={`p-1 cursor-pointer rounded focus:outline-none focus:ring-2 focus:ring-gray-50 focus:ring-opacity-50 transition-colors duration-200 ${
-                quantity >= product.stock
-                  ? "opacity-50 cursor-not-allowed text-gray-400"
-                  : "hover:bg-gray-100 dark:hover:bg-gray-100 text-gray-700 dark:text-gray-900"
-              }`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 4v16m8-8H4"
-                />
-              </svg>
-            </button>
-          </div>
+      {/* Increment */}
+      <button
+        onClick={handleIncrement}
+        disabled={quantity >= product.stock}
+        aria-label="Increase quantity"
+        className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200 ${
+          quantity >= product.stock
+            ? " text-gray-400 cursor-not-allowed"
+            : " text-gray-700 cursor-pointer"
+        }`}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+        </svg>
+      </button>
+    </div>
 
-          <div>
-            <motion.button
-              onClick={handleCartAction}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className={` transition-colors duration-200 cursor-pointer addCartButtons hover:bg-[#414143]  px-6 py-3.5 rounded flex items-center justify-center gap-2 ${
-                productInCart
-                  ? "bg-[#414143] hover:bg-[#414143] text-white"
-                  : "bg-emerald-600 hover:bg-[#414143] text-white"
-              }`}
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                {productInCart ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                )}
-              </svg>
-              {productInCart ? "Remove from Cart" : "Add to Cart"}
-            </motion.button>
-          </div>
-        </div>
-      </div>
+    {/* Add/Remove Cart Button */}
+    <motion.button
+      onClick={handleCartAction}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
+      className={`flex items-center cursor-pointer txtAddToCart justify-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-200 shadow-md hover:shadow-lg ${
+        productInCart
+          ? "bg-red-600 hover:bg-red-700 text-white"
+          : "bg-emerald-600 hover:bg-emerald-700 text-white"
+      }`}
+    >
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        {productInCart ? (
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        ) : (
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+          />
+        )}
+      </svg>
+      {productInCart ? "Remove" : "Add to Cart"}
+    </motion.button>
+  </div>
+</div>
+
       <hr className="des-line w-full mt-1"></hr>
       <div className="fontPoppins">
         <h1 className="categoryText">

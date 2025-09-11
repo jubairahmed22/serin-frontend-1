@@ -7,6 +7,7 @@ import "../../styles/globals.css";
 import NavData from "../components/Website/Dropdown/NavData";
 import SearchByProduct from "../components/Website/Filters/SearchByProduct";
 import serinLogo from "../../assets/serin-logo.png";
+import serinMobileLogo from "../../assets/mobileLogo.png";
 import NavbarMobileCategory from "./Website/Dropdown/NavbarMobileCategory";
 import '../../styles/serin.css';
 
@@ -184,24 +185,18 @@ const NavbarSerin = () => {
           </div>
         </div>
       </div>
-      <div className="mobileDisplay">
-        <div className="w-full flex flex-row items-center justify-between fontPoppins bg-pink-50 py-3 px-4">
+      <div className="mobileDisplay top-0">
+        <div className="w-full flex flex-row items-center justify-between fontPoppins bg-white py-3 px-4">
           <div className="flex flex-row justify-between items-center gap-4 w-full">
             <NavbarMobileCategory></NavbarMobileCategory>
             <Link href="/">
               <div className="flex flex-row gap-5">
                 
               <div className="flex flex-row items-center gap-1">
-                <img src={serinLogo.src} alt="" className="w-[36px] h-[24px]"></img>
+                <img src={serinMobileLogo.src} alt="" className="w-[90px] h-[32px]"></img>
            
               </div>
             
-            
-                 <h1>S</h1>
-              <h1>E</h1>
-              <h1>R</h1>
-              <h1>I</h1>
-              <h1>N</h1>
               </div>
               </Link>
               <Link href="/cart">
@@ -281,7 +276,7 @@ const NavbarSerin = () => {
             </div>
           </div>
         </div>
-        <div className="w-full pb-4 bg-pink-50">
+        <div className="w-full pb-4 bg-white">
                     <SearchByProduct></SearchByProduct>
 
         </div>

@@ -117,7 +117,7 @@ const ProductDetails = () => {
           <div className="lg:w-[60%] md:w-full sm:w-full rounded-xl  ">
             <ImageManagement product={product}></ImageManagement>
           </div>
-          <div className="lg:w-[60%] md:w-full sm:w-full rounded-xl border border-[#E6E6E6]">
+          <div className="lg:w-[60%] md:w-full sm:w-full ">
             <DataDetails product={product}></DataDetails>
           </div>
         </div>

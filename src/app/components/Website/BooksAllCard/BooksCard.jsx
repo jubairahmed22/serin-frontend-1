@@ -200,7 +200,7 @@ const BooksCard = ({ product }) => {
         onClick={handleCartAction}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className={`w-full cursor-pointer lg:mt-3 py-2.5 px-4 rounded-full cartButton font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
+        className={`w-full cursor-pointer lg:mt-2 py-2.5 px-4 rounded-full cartButton font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
           productInCart
             ? "bg-[#414143] hover:bg-red-700 text-white"
             : "bg-[#F01F7B] hover:bg-emerald-700 text-white"

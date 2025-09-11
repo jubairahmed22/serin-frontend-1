@@ -172,9 +172,10 @@
   }
 }
 
+@media (min-width: 200px) and (max-width: 639px) {
 .main-image-container {
   width: 100%;
-  height: 500px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -184,6 +185,10 @@
   background-color: #f9f9f9;
   position: relative;
 }
+
+}
+
+
 
 .main-image {
   max-width: 100%;

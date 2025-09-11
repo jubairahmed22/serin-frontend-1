@@ -35,10 +35,7 @@
   font-size: 14px;
   line-height: 1.5;
 }
-.addCartButtons {
-  background-color: #f01f7b;
-  font-size: 14px;
-}
+
 .quantity {
   color: #000000;
   font-size: 14px;
@@ -90,8 +87,14 @@
   .sliderImgSize {
     height: 300px;
   }
+  .txtAddToCart{
+    font-size: 12px;
+  }
 
-
+  .addCartButtons {
+  background-color: #f01f7b;
+  font-size: 10px;
+}
   .text-title {
   font-size: 18px;
 }
@@ -132,6 +135,14 @@
   .forWeb {
     display: none;
   }
+  .addCartButtons {
+  background-color: #f01f7b;
+  font-size: 12px;
+}
+  .txtAddToCart{
+    font-size: 12px;
+  }
+
 }
 
 @media (min-width: 1040px) and (max-width: 1600px) {
@@ -141,13 +152,29 @@
   .forMobile {
     display: none;
   }
+  .addCartButtons {
+  background-color: #f01f7b;
+  font-size: 14px;
+}
+  .txtAddToCart{
+    font-size: 14px;
+  }
+
 }
 
 @media (min-width: 1600px) and (max-width: 2200px) {
   .sliderImgSize {
-    height: 600px;
+    height: 650px;
   }
   .forMobile {
     display: none;
   }
+    .txtAddToCart{
+    font-size: 14px;
+  }
+
+  .addCartButtons {
+  background-color: #f01f7b;
+  font-size: 14px;
+}
 }

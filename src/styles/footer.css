@@ -4,17 +4,28 @@
   gap: 20px;
 }
 
+/* Mobile (200px-639px) - 2 columns */
+@media (min-width: 200px) and (max-width: 639px) {
+    .serinfoter{
+      width: 100px;
+    }
+}
+
 /* Small screen: 2 columns (640px - 1040px) */
 @media (min-width: 639px) and (max-width: 1040px) {
   .gridCustom {
     grid-template-columns: repeat(2, 1fr);
   }
+
 }
 
 /* Medium and above: 5 columns (1040px and up) */
 @media (min-width: 1040px) {
   .gridCustom {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .serinfoter{
+    width: 200px;
   }
 }
 

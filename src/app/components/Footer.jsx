@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import logo from "../../assets/serin-logo.png";
+import logo from "../../assets/Logo-SERIN-white.png";
 import "../../styles/footer.css";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -25,17 +25,17 @@ const Footer = () => {
         <div className="gridCustom w-full">
           {/* Logo & Address */}
           <div className="flex flex-col items-start">
-            <img src={logo.src} alt="Bookforrest Logo" className="w-[250px] h-auto mb-4" />
-            {/* <p className="text-sm text-[#b3b3b3]">Octroy Mor, Kazla, Rajshahi-6204 (Beside University of Rajshahi)</p> */}
+            <img src={logo.src} alt="BookforrestLogo" className="serinfoter  h-auto mb-4" />
+            {/* <p className="text-sm text-pink-50">Octroy Mor, Kazla, Rajshahi-6204 (Beside University of Rajshahi)</p> */}
          
           </div>
 
           {/* Need Help */}
           <div>
             <h2 className="text-lg font-semibold mb-4">Need Help</h2>
-            <p className="text-2xl font-bold text-[#50C878] mb-2">01734346050</p>
-            <p className="text-sm text-[#b3b3b3]">Sunday - Friday: 9:00 - 20:00</p>
-            <p className="text-sm text-[#b3b3b3]">Saturday: 11:00 - 15:00</p>
+            <p className="text-2xl font-bold text-pink-100 mb-2">01734346050</p>
+            <p className="text-sm text-pink-50">Sunday - Friday: 9:00 - 20:00</p>
+            <p className="text-sm text-pink-50">Saturday: 11:00 - 15:00</p>
             <div>
               <div className="flex justify-start space-x-6 mt-5">
           {socialLinks.map((social, index) => (
@@ -45,7 +45,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, color: "#50C878" }}
-              className="text-gray-200 hover:text-[#50C878] transition-colors duration-300"
+              className="text-gray-200 hover:text-pink-100 transition-colors duration-300"
             >
               {social.icon}
             </div>
@@ -61,7 +61,7 @@ const Footer = () => {
           {/* Explore */}
           <div>
             <h2 className="text-lg font-semibold mb-4">Explore</h2>
-            <ul className="space-y-4 text-sm text-[#b3b3b3]">
+            <ul className="space-y-4 text-sm text-pink-50">
               <Link href="/products"><li>All Products</li></Link>
               {/* <Link href="/all-publishers"><li>Publications</li></Link> */}
               <Link href="/auth/login">Sign Up / Login</Link>
@@ -71,7 +71,7 @@ const Footer = () => {
           {/* Services */}
           {/* <div>
             <h2 className="text-lg font-semibold mb-4">Our Services</h2>
-            <ul className="space-y-2 text-sm text-[#b3b3b3]">
+            <ul className="space-y-2 text-sm text-pink-50">
                <li>
         <Link target="_blank" href="/help-center">Help Center</Link>
       </li>
@@ -94,8 +94,8 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-[#444]">
         <div className="max-w-[1400px] mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-sm text-[#b3b3b3] text-center sm:text-left">
-            © 2025 <span className="text-[#50C878]">Bookforrest</span>. All rights reserved.
+          <p className="text-sm text-pink-50 text-center sm:text-left">
+            © 2025 <span className="text-pink-100">Bookforrest</span>. All rights reserved.
           </p>
         </div>
       </div>
