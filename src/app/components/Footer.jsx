@@ -42,7 +42,7 @@ const Footer = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-200 cursor-pointer hover:text-pink-100 transition-colors duration-300"
+                    className="text-gray-200 cursor-pointer hover:text-white  transition-colors duration-300"
                   >
                     {social.icon}
                   </a>
@@ -60,7 +60,7 @@ const Footer = () => {
           {/* Explore */}
           <div>
             <h2 className="text-lg font-semibold mb-4">Explore</h2>
-            <ul className="space-y-4 text-sm text-pink-50">
+            <ul className="space-y-4 text-sm text-pink-300 hover:text-white">
               <Link href="/products"><li>All Products</li></Link>
               {/* <Link href="/all-publishers"><li>Publications</li></Link> */}
               <Link href="/auth/login">Sign Up / Login</Link>

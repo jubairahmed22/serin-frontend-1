@@ -124,7 +124,7 @@ const NavbarSerin = () => {
 
                   <button
                     onClick={() => signOut({ callbackUrl: "/" })}
-                    className="bg-[#414143] hover:bg-pink-600 text-white px-4 py-2 rounded-full transition-colors text-sm font-medium shadow-md hover:shadow-lg"
+                    className="bg-black hover:bg-pink-600 text-white px-4 py-2 rounded-full transition-colors text-sm font-medium shadow-md hover:shadow-lg"
                     aria-label="Sign out"
                   >
                     Logout
@@ -140,7 +140,7 @@ const NavbarSerin = () => {
                   </Link>
                   <Link
                     href="/auth/register"
-                    className="bg-[#414143] hover:bg-pink-600 text-white px-4 py-2 rounded-full transition-colors text-sm font-medium shadow-md hover:shadow-lg"
+                    className="bg-black hover:bg-pink-600 text-white px-4 py-2 rounded-full transition-colors text-sm font-medium shadow-md hover:shadow-lg"
                   >
                     Register
                   </Link>
@@ -201,7 +201,7 @@ const NavbarSerin = () => {
               </Link>
               <Link href="/cart">
                 <button
-                  className="relative cursor-pointer flex items-center justify-center p-2 text-gray-600 transition-colors duration-200 ease-in-out hover:text-pink-600 dark:text-black dark:hover:text-pink-400"
+                  className="relative cursor-pointer flex items-center justify-center p-2 text-black transition-colors duration-200 ease-in-out hover:text-pink-600 dark:text-black dark:hover:text-pink-400"
                   aria-label={`Shopping cart with ${cartCount} items`}
                 >
                   <svg
@@ -222,7 +222,7 @@ const NavbarSerin = () => {
                   </svg>
 
                   {cartCount > 0 && (
-                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#414143] text-xs font-medium text-white shadow-sm transition-all duration-200 group-hover:scale-110 dark:bg-pink-500">
+                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs font-medium text-white shadow-sm transition-all duration-200 group-hover:scale-110 dark:bg-pink-500">
                       {cartCount > 9 ? "9+" : cartCount}
                     </span>
                   )}
@@ -250,7 +250,7 @@ const NavbarSerin = () => {
 
                     <button
                       onClick={() => signOut({ callbackUrl: "/" })}
-                      className="bg-[#414143] text-[10px] hover:bg-pink-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
+                      className="bg-black text-[10px] hover:bg-pink-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
                       aria-label="Sign out"
                     >
                       Logout
@@ -267,7 +267,7 @@ const NavbarSerin = () => {
                   </Link>
                   <Link
                     href="/auth/register"
-                    className="bg-[#414143] text-[10px] hover:bg-pink-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
+                    className="bg-black text-[10px] hover:bg-pink-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
                   >
                     Register
                   </Link>

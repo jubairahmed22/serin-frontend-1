@@ -52,11 +52,11 @@ const Categories = () => {
   }
 
   return (
-    <ul className="w-full text-sm grid grid-cols-2 gap-5 text-[#b3b3b3]">
+    <ul className="w-full text-sm grid grid-cols-2 gap-5 text-pink-300">
       {subCategories.slice(0, 10).map((subCategory) => (
         <li 
           key={subCategory._id}
-          className="hover:text-[#50C878] cursor-pointer transition-colors"
+          className="hover:text-white cursor-pointer transition-colors"
           onClick={() => handleCategoryClick(subCategory)}
         >
           {subCategory.title}
