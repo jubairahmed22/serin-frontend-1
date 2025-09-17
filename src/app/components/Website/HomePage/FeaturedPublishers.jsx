@@ -61,7 +61,7 @@ const FeaturedPublishers = () => {
             <div className="flex-grow h-px bg-gray-200 mx-8"></div>
 
             <Link href="/all-publishers">
-              <button className="px-6 py-3 buttonPopular hover:bg-green-600 cursor-pointer text-white font-medium rounded-full whitespace-nowrap transition-colors duration-300 shadow hover:shadow-md">
+              <button className="px-6 py-3 buttonPopular hover:bg-pink-600 cursor-pointer text-white font-medium rounded-full whitespace-nowrap transition-colors duration-300 shadow hover:shadow-md">
                 View All
               </button>
             </Link>
@@ -119,7 +119,7 @@ const FeaturedPublishers = () => {
           </Swiper>
 
           {/* Custom Navigation Buttons */}
-          <div className="publisher-books-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-colors duration-300">
+          <div className="publisher-books-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-pink-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-colors duration-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 text-white"
@@ -135,7 +135,7 @@ const FeaturedPublishers = () => {
               />
             </svg>
           </div>
-          <div className="publisher-books-next absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-colors duration-300">
+          <div className="publisher-books-next absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-pink-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-colors duration-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 text-white"

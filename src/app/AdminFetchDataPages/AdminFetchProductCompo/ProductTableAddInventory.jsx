@@ -255,7 +255,7 @@ const ProductRow = ({
             <span className="font-medium w-28">Popular:</span>
             <span className={`px-2 py-1 rounded text-xs font-medium ${
               product.popularBooks 
-                ? 'bg-green-100 text-green-800' 
+                ? 'bg-pink-100 text-pink-800' 
                 : 'bg-gray-100 text-gray-800'
             }`}>
               {product.popularProducts ? "Yes" : "No"}
@@ -265,7 +265,7 @@ const ProductRow = ({
             <span className="font-medium w-28">New Arrival:</span>
             <span className={`px-2 py-1 rounded text-xs font-medium ${
               product.dailyDeals 
-                ? 'bg-green-100 text-green-800' 
+                ? 'bg-pink-100 text-pink-800' 
                 : 'bg-gray-100 text-gray-800'
             }`}>
               {product.newArrival ? "Yes" : "No"}
@@ -292,7 +292,7 @@ const ProductRow = ({
           {hasDiscount ? (
             <>
               <span className="text-gray-400 line-through">{product.price} Tk</span>
-              <span className="font-semibold text-green-600">{discountedPrice.toFixed(2)} Tk</span>
+              <span className="font-semibold text-pink-600">{discountedPrice.toFixed(2)} Tk</span>
             </>
           ) : (
             <span>{product.price || "N/A"} Tk</span>
@@ -376,7 +376,7 @@ const StatusCell = ({ showWebsite }) => (
     <span
       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
         showWebsite
-          ? "bg-green-100 text-green-800"
+          ? "bg-pink-100 text-pink-800"
           : "bg-red-100 text-red-800"
       }`}
     >

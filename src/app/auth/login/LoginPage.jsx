@@ -110,7 +110,7 @@ export default function LoginPage() {
           <div className="flex items-center justify-end">
             <Link
               href="/auth/forgot-password"
-              className="text-sm text-emerald-600 hover:text-emerald-800 hover:underline"
+              className="text-sm text-pink-600 hover:text-pink-800 hover:underline"
             >
               Forgot password?
             </Link>
@@ -119,7 +119,7 @@ export default function LoginPage() {
           <button
             type="submit"
             className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-all ${
-              loading ? "bg-emerald-400" : "bg-[#414143] hover:bg-emerald-600"
+              loading ? "bg-pink-400" : "bg-[#414143] hover:bg-pink-600"
             } shadow-md hover:shadow-lg`}
             disabled={loading}
           >
@@ -195,7 +195,7 @@ export default function LoginPage() {
               pathname: "/auth/register",
               query: callbackUrl ? { callbackUrl } : {},
             }}
-            className="text-emerald-600 hover:text-emerald-800 font-medium hover:underline transition-colors"
+            className="text-pink-600 hover:text-pink-800 font-medium hover:underline transition-colors"
           >
             Register here
           </Link>

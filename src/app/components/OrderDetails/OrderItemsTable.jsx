@@ -53,7 +53,7 @@ const OrderItemsTable = ({
           <button
             type="button"
             onClick={onAddInventory}
-            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors text-sm"
+            className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700 transition-colors text-sm"
           >
             Add Inventory
           </button>
@@ -174,7 +174,7 @@ const OrderItemsTable = ({
               </td>
               <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                 {item.discountValue > 0 ? (
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-green-100 text-green-800">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-800">
                     {item.discountValue}
                     {item.discountType === "percentage" ? "%" : " tk"}
                   </span>

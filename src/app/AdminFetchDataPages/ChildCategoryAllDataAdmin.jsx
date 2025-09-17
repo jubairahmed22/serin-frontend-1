@@ -328,7 +328,7 @@ const ChildCategoryAllDataAdmin = () => {
                   <span
                     className={`px-2 py-1 rounded-full text-xs ${
                       c.showWebsite
-                        ? "bg-green-100 text-green-800"
+                        ? "bg-pink-100 text-pink-800"
                         : "bg-red-100 text-red-800"
                     }`}
                   >

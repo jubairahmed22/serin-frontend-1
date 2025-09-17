@@ -163,12 +163,12 @@ const RelatedProduct = ({ product, handleChildCategoryClick }) => {
             {/* Navigation Buttons */}
             {relatedProducts.length > 5 && (
               <>
-                <div className="prev-related absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                <div className="prev-related absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-pink-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
                   <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M15 19l-7-7 7-7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
                   </svg>
                 </div>
-                <div className="next-related absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                <div className="next-related absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-pink-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
                   <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M9 5l7 7-7 7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
                   </svg>
@@ -181,7 +181,7 @@ const RelatedProduct = ({ product, handleChildCategoryClick }) => {
             <div className="text-center mt-8">
               <button
                 onClick={loadMore}
-                className="px-6 py-2 bg-[#414143] text-white rounded-md hover:bg-emerald-600 transition-colors"
+                className="px-6 py-2 bg-[#414143] text-white rounded-md hover:bg-pink-600 transition-colors"
               >
                 Load More
               </button>
@@ -247,12 +247,12 @@ const RelatedProduct = ({ product, handleChildCategoryClick }) => {
             {/* Navigation Buttons */}
             {relatedProducts.length > 5 && (
               <>
-                <div className="prev-related absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                <div className="prev-related absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-pink-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
                   <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M15 19l-7-7 7-7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
                   </svg>
                 </div>
-                <div className="next-related absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                <div className="next-related absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-pink-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
                   <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M9 5l7 7-7 7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
                   </svg>
@@ -265,7 +265,7 @@ const RelatedProduct = ({ product, handleChildCategoryClick }) => {
             <div className="text-center mt-8">
               <button
                 onClick={loadMore}
-                className="px-6 py-2 bg-[#414143] text-white rounded-md hover:bg-emerald-600 transition-colors"
+                className="px-6 py-2 bg-[#414143] text-white rounded-md hover:bg-pink-600 transition-colors"
               >
                 Load More
               </button>

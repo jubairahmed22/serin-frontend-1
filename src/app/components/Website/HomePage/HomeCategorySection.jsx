@@ -137,12 +137,12 @@ const HomeCategorySection = () => {
                   {/* Navigation Buttons */}
                   {category.products.length > 5 && (
                     <>
-                      <div className={`prev-${category._id} absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg`}>
+                      <div className={`prev-${category._id} absolute left-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-pink-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg`}>
                         <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" stroke="currentColor">
                           <path d="M15 19l-7-7 7-7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
                         </svg>
                       </div>
-                      <div className={`next-${category._id} absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-emerald-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg`}>
+                      <div className={`next-${category._id} absolute right-0 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-[#414143] hover:bg-pink-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg`}>
                         <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" stroke="currentColor">
                           <path d="M9 5l7 7-7 7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
                         </svg>

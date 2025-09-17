@@ -246,12 +246,12 @@ const AllMobileFilter = ({
         }}
         className="flex items-center justify-center gap-2 px-4 py-3 rounded-l-full transition-colors flex-1"
       >
-        <FiLayers className="text-emerald-600 text-sm" />
-        <span className="text-emerald-600 font-medium text-xs sm:text-sm">All Products</span>
+        <FiLayers className="text-pink-600 text-sm" />
+        <span className="text-pink-600 font-medium text-xs sm:text-sm">All Products</span>
       </motion.button>
       
       {/* Divider */}
-      <div className="h-6 w-px bg-emerald-100"></div>
+      <div className="h-6 w-px bg-pink-100"></div>
       
       {/* Sort Button */}
       {/* <motion.button
@@ -263,12 +263,12 @@ const AllMobileFilter = ({
         onClick={() => toggleDropdown('sort')}
         className="flex items-center justify-center gap-2 px-4 py-3 transition-colors flex-1"
       >
-        <FiArrowUp className="text-emerald-600 text-sm" />
-        <span className="text-emerald-600 font-medium text-xs sm:text-sm">Sort</span>
+        <FiArrowUp className="text-pink-600 text-sm" />
+        <span className="text-pink-600 font-medium text-xs sm:text-sm">Sort</span>
       </motion.button> */}
 
       {/* Divider */}
-      <div className="h-6 w-px bg-emerald-100"></div>
+      <div className="h-6 w-px bg-pink-100"></div>
 
       {/* Filter Button */}
       <motion.button
@@ -280,8 +280,8 @@ const AllMobileFilter = ({
         onClick={() => toggleDropdown('filter')}
         className="flex items-center justify-center gap-2 px-4 py-3 rounded-r-full transition-colors flex-1"
       >
-        <FiFilter className="text-emerald-600 text-sm" />
-        <span className="text-emerald-600 font-medium text-xs sm:text-sm">Filter</span>
+        <FiFilter className="text-pink-600 text-sm" />
+        <span className="text-pink-600 font-medium text-xs sm:text-sm">Filter</span>
       </motion.button>
     </div>
   </div>
@@ -338,7 +338,7 @@ const AllMobileFilter = ({
                     <motion.button
                       key={option}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full text-left p-3 rounded-lg bg-gray-50 hover:bg-emerald-50 transition-colors"
+                      className="w-full text-left p-3 rounded-lg bg-gray-50 hover:bg-pink-50 transition-colors"
                     >
                       <span className="text-gray-700">{option}</span>
                     </motion.button>
@@ -361,8 +361,8 @@ const AllMobileFilter = ({
                       whileTap={{ scale: 0.95 }}
                       className={`px-4 py-2 text-sm rounded-full transition-all duration-200 ${
                         selectedTag === tag._id
-                          ? "bg-emerald-500 text-white shadow-md"
-                          : "bg-gray-100 text-gray-700 hover:bg-emerald-100 hover:text-emerald-700"
+                          ? "bg-pink-500 text-white shadow-md"
+                          : "bg-gray-100 text-gray-700 hover:bg-pink-100 hover:text-pink-700"
                       }`}
                     >
                       {tag.title}
@@ -389,7 +389,7 @@ const AllMobileFilter = ({
           <div className="p-4 border-t border-gray-200 bg-white">
             <motion.button
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 bg-emerald-500 text-white font-medium rounded-lg shadow-md"
+              className="w-full py-3 bg-pink-500 text-white font-medium rounded-lg shadow-md"
             >
               Apply Sort
             </motion.button>
@@ -447,7 +447,7 @@ const AllMobileFilter = ({
                       <path d="M3 5h18M3 12h18M3 19h18" strokeLinecap="round" />
                     </svg>
                   ),
-                  color: "bg-emerald-500",
+                  color: "bg-pink-500",
                   activeColor: "bg-[#F01F7B]"
                 },
                 {
@@ -527,8 +527,8 @@ const AllMobileFilter = ({
                   whileTap={{ scale: 0.95 }}
                   className={`px-4 py-2 text-sm rounded-full transition-all duration-200 ${
                     selectedTag === tag._id
-                      ? "bg-emerald-500 text-white shadow-md"
-                      : "bg-gray-100 text-gray-700 hover:bg-emerald-100 hover:text-emerald-700"
+                      ? "bg-pink-500 text-white shadow-md"
+                      : "bg-gray-100 text-gray-700 hover:bg-pink-100 hover:text-pink-700"
                   }`}
                 >
                   {tag.title}

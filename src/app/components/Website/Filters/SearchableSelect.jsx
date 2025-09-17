@@ -143,7 +143,7 @@ const SearchableSelect = ({
             <button
               type="button"
               onClick={clearSelection}
-              className="text-gray-400  hover:text-emerald-600 transition-colors p-1 rounded-full hover:bg-emerald-50"
+              className="text-gray-400  hover:text-pink-600 transition-colors p-1 rounded-full hover:bg-pink-50"
               aria-label="Clear selection"
             >
               <FiX size={16} />
@@ -210,11 +210,11 @@ const SearchableSelect = ({
                   ref={(el) => (optionsRef.current[index] = el)}
                   className={`px-4 py-2 mx-2 rounded-md cursor-pointer flex items-center justify-between transition-colors ${
                     highlightedIndex === index
-                      ? "bg-emerald-100 dark:bg-emerald-900 text-emerald-900 dark:text-emerald-100"
-                      : "hover:bg-emerald-50 dark:hover:bg-emerald-800/50"
+                      ? "bg-pink-100 dark:bg-pink-900 text-pink-900 dark:text-pink-100"
+                      : "hover:bg-pink-50 dark:hover:bg-pink-800/50"
                   } ${
                     value === option._id
-                      ? "bg-emerald-50 dark:bg-emerald-800/30 font-medium text-emerald-800 dark:text-emerald-200"
+                      ? "bg-pink-50 dark:bg-pink-800/30 font-medium text-pink-800 dark:text-pink-200"
                       : ""
                   }`}
                   onClick={() => handleSelect(option._id)}
@@ -224,7 +224,7 @@ const SearchableSelect = ({
                 >
                   <span className="truncate">{option.title}</span>
                   {value === option._id && (
-                    <FiCheck className="text-emerald-600 dark:text-emerald-400 ml-2 flex-shrink-0" />
+                    <FiCheck className="text-pink-600 dark:text-pink-400 ml-2 flex-shrink-0" />
                   )}
                 </li>
               ))}

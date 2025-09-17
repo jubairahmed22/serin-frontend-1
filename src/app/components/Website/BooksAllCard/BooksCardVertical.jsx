@@ -199,7 +199,7 @@ const BooksCardVertical = ({ product }) => {
               className={`w-36 cursor-pointer cartButton mt-3 py-2 px-2 rounded-lg text-[10px] font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
                 productInCart
                   ? "bg-red-600 hover:bg-red-700 text-white"
-                  : "bg-[#414143] hover:bg-emerald-700 text-white"
+                  : "bg-[#414143] hover:bg-pink-700 text-white"
               }`}
             >
               <svg

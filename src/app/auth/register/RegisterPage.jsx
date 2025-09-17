@@ -168,7 +168,7 @@ export default function RegisterPage() {
 
     <button
       type="submit"
-      className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-all ${loading ? 'bg-emerald-400' : 'bg-[#414143] hover:bg-emerald-600'} shadow-md hover:shadow-lg`}
+      className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-all ${loading ? 'bg-pink-400' : 'bg-[#414143] hover:bg-pink-600'} shadow-md hover:shadow-lg`}
       disabled={loading}
     >
       {loading ? (
@@ -206,7 +206,7 @@ export default function RegisterPage() {
 
   <div className="mt-6 text-center">
     <span className="text-gray-600">Already have an account? </span>
-    <Link href="/auth/login" className="text-emerald-600 hover:text-emerald-800 font-medium hover:underline transition-colors">
+    <Link href="/auth/login" className="text-pink-600 hover:text-pink-800 font-medium hover:underline transition-colors">
       Sign in here
     </Link>
   </div>

@@ -351,8 +351,8 @@ const AllWebFilter = ({
             onClick={() => handleTagClick(tag._id)}
             className={`px-3 py-1.5 text-xs rounded-md transition-all duration-200 ${
               selectedTag === tag._id
-                ? "bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-sm"
-                : "bg-gray-50 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 border border-gray-200"
+                ? "bg-pink-100 text-pink-800 border border-emerald-200 shadow-sm"
+                : "bg-gray-50 text-gray-700 hover:bg-pink-50 hover:text-pink-700 border border-gray-200"
             }`}
             variants={buttonVariants}
             initial="initial"

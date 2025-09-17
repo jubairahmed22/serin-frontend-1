@@ -61,7 +61,7 @@ const NavbarInfo = () => {
             <div className="flex items-center gap-4 ml-2">
               <Link href="/cart">
                 <button
-                  className="relative cursor-pointer flex items-center justify-center dark:text-black p-2 text-gray-600 transition-colors duration-200 ease-in-out hover:text-green-600  dark:hover:text-green-400"
+                  className="relative cursor-pointer flex items-center justify-center dark:text-black p-2 text-gray-600 transition-colors duration-200 ease-in-out hover:text-pink-600  dark:hover:text-pink-400"
                   aria-label={`Shopping cart with ${cartCount} items`}
                 >
                   <svg
@@ -82,14 +82,14 @@ const NavbarInfo = () => {
                   </svg>
 
                   {cartCount > 0 && (
-                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#414143] text-xs font-medium text-white shadow-sm transition-all duration-200 group-hover:scale-110 dark:bg-green-500">
+                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#414143] text-xs font-medium text-white shadow-sm transition-all duration-200 group-hover:scale-110 dark:bg-pink-500">
                       {cartCount > 9 ? "9+" : cartCount}
                     </span>
                   )}
                 </button>
               </Link>
 
-              {/* <button className="text-gray-600 dark:text-black hover:text-green-600 dark:hover:text-green-400 transition-colors p-1">
+              {/* <button className="text-gray-600 dark:text-black hover:text-pink-600 dark:hover:text-pink-400 transition-colors p-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -111,7 +111,7 @@ const NavbarInfo = () => {
                     {session?.user?.role === "admin" && (
                       <Link
                         href="/admin"
-                        className="p-1  text-gray-600 dark:text-black hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                        className="p-1  text-gray-600 dark:text-black hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
                         aria-label="Admin dashboard"
                         title="Admin"
                         prefetch={true}
@@ -122,7 +122,7 @@ const NavbarInfo = () => {
 
                     <button
                       onClick={() => signOut({ callbackUrl: "/" })}
-                      className="bg-[#414143] hover:bg-green-700 text-white px-3 py-1.5 rounded-md transition-colors text-sm font-medium"
+                      className="bg-[#414143] hover:bg-pink-700 text-white px-3 py-1.5 rounded-md transition-colors text-sm font-medium"
                       aria-label="Sign out"
                     >
                       Logout
@@ -133,13 +133,13 @@ const NavbarInfo = () => {
                 <div className="flex items-center gap-3">
                   <Link
                     href="/auth/login"
-                    className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors px-3 py-1.5 rounded-md text-sm font-medium"
+                    className="text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 transition-colors px-3 py-1.5 rounded-md text-sm font-medium"
                   >
                     Login
                   </Link>
                   <Link
                     href="/auth/register"
-                    className="bg-[#414143] hover:bg-green-700 text-white px-3 py-1.5 rounded-md transition-colors text-sm font-medium"
+                    className="bg-[#414143] hover:bg-pink-700 text-white px-3 py-1.5 rounded-md transition-colors text-sm font-medium"
                   >
                     Register
                   </Link>
@@ -150,7 +150,7 @@ const NavbarInfo = () => {
         </div>
       </div>
       <div className="phoneShow ">
-         <div className="w-full flex flex-row items-center justify-between fontPoppins bg-green-100 py-2 px-4">
+         <div className="w-full flex flex-row items-center justify-between fontPoppins bg-pink-100 py-2 px-4">
             <div className="flex flex-row items-center gap-4">
           <NavbarMobileCategory></NavbarMobileCategory>
           <Link href="/">
@@ -164,7 +164,7 @@ const NavbarInfo = () => {
           <div className="flex items-center gap-1">
             <Link href="/cart">
               <button
-                className="relative cursor-pointer flex items-center justify-center p-2 text-gray-600 transition-colors duration-200 ease-in-out hover:text-green-600 dark:text-black dark:hover:text-green-400"
+                className="relative cursor-pointer flex items-center justify-center p-2 text-gray-600 transition-colors duration-200 ease-in-out hover:text-pink-600 dark:text-black dark:hover:text-pink-400"
                 aria-label={`Shopping cart with ${cartCount} items`}
               >
                 <svg
@@ -185,7 +185,7 @@ const NavbarInfo = () => {
                 </svg>
 
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#414143] text-xs font-medium text-white shadow-sm transition-all duration-200 group-hover:scale-110 dark:bg-green-500">
+                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#414143] text-xs font-medium text-white shadow-sm transition-all duration-200 group-hover:scale-110 dark:bg-pink-500">
                     {cartCount > 9 ? "9+" : cartCount}
                   </span>
                 )}
@@ -198,7 +198,7 @@ const NavbarInfo = () => {
                   {session?.user?.role === "admin" && (
                     <Link
                       href="/admin"
-                      className="p-1 text-[10px]  text-gray-600 dark:text-black hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                      className="p-1 text-[10px]  text-gray-600 dark:text-black hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
                       aria-label="Admin dashboard"
                       title="Admin"
                       prefetch={true}
@@ -209,7 +209,7 @@ const NavbarInfo = () => {
 
                   <button
                     onClick={() => signOut({ callbackUrl: "/" })}
-                    className="bg-[#414143] text-[10px] hover:bg-green-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
+                    className="bg-[#414143] text-[10px] hover:bg-pink-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
                     aria-label="Sign out"
                   >
                     Logout
@@ -220,13 +220,13 @@ const NavbarInfo = () => {
               <div className="flex items-center gap-1">
                 <Link
                   href="/auth/login"
-                  className="text-gray-700 text-[10px] dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors px-3 py-1.5 rounded-md text-sm font-medium"
+                  className="text-gray-700 text-[10px] dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 transition-colors px-3 py-1.5 rounded-md text-sm font-medium"
                 >
                   Login
                 </Link>
                 <Link
                   href="/auth/register"
-                  className="bg-[#414143] text-[10px] hover:bg-green-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
+                  className="bg-[#414143] text-[10px] hover:bg-pink-700 text-white px-2 py-1.5 rounded-md transition-colors text-sm font-medium"
                 >
                   Register
                 </Link>

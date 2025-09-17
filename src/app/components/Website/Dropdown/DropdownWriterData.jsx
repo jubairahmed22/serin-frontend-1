@@ -65,7 +65,7 @@ const DropdownWriterData = ({ setIsOpen }) => {
               delay: index * 0.05,
             }}
             onClick={handleAuthorClick(product)}
-            className="cursor-pointer text-start font-medium textSubLink text-gray-800 mb-1 hover:text-green-600"
+            className="cursor-pointer text-start font-medium textSubLink text-gray-800 mb-1 hover:text-pink-600"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

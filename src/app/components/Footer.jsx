@@ -17,8 +17,8 @@ const Footer = () => {
     // { icon: <FaLinkedin size={24} />, url: "https://www.linkedin.com/in/book-forest-27502b379/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
     // { icon: <FaXTwitter size={24} />, url: "https://x.com/BookForest2025?t=6H2hD3PaUSou4-kFFN_X9g&s=09" },
     // { icon: <FaTiktok size={24} />, url: "https://www.tiktok.com/@book.forest2?_t=ZS-8yeKXSCgzGE&_r=1", name: "TikTok" },
-
   ];
+  
   return (
     <div className="bg-[#282828] text-white fontPoppins w-full">
       <div className="max-w-[1400px] w-full mx-auto px-4 py-10">
@@ -27,7 +27,6 @@ const Footer = () => {
           <div className="flex flex-col items-start">
             <img src={logo.src} alt="BookforrestLogo" className="serinfoter  h-auto mb-4" />
             {/* <p className="text-sm text-pink-50">Octroy Mor, Kazla, Rajshahi-6204 (Beside University of Rajshahi)</p> */}
-         
           </div>
 
           {/* Need Help */}
@@ -37,26 +36,27 @@ const Footer = () => {
             {/* <p className="text-sm text-pink-50">Saturday: 11:00 - 15:00</p> */}
             <div>
               <div className="flex justify-start space-x-6 mt-5">
-          {socialLinks.map((social, index) => (
-            <div
-              key={index}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, color: "#50C878" }}
-              className="text-gray-200 hover:text-pink-100 transition-colors duration-300"
-            >
-              {social.icon}
-            </div>
-          ))}
-        </div>
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-200 cursor-pointer hover:text-pink-100 transition-colors duration-300"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
- {/* Categories */}
+          
+          {/* Categories */}
           <div>
             <h2 className="text-lg font-semibold mb-4">Categories</h2>
             <Categories />
           </div>
+          
           {/* Explore */}
           <div>
             <h2 className="text-lg font-semibold mb-4">Explore</h2>
@@ -66,27 +66,6 @@ const Footer = () => {
               <Link href="/auth/login">Sign Up / Login</Link>
             </ul>
           </div>
-
-          {/* Services */}
-          {/* <div>
-            <h2 className="text-lg font-semibold mb-4">Our Services</h2>
-            <ul className="space-y-2 text-sm text-pink-50">
-               <li>
-        <Link target="_blank" href="/help-center">Help Center</Link>
-      </li>
-      <li>
-        <Link target="_blank" href="/privacy-policy">Privacy Policy</Link>
-      </li>
-      <li>
-        <Link target="_blank" href="/store-pickup">Store Pickup</Link>
-      </li>
-            <li>
-        <Link target="_blank" href="/contact-us">Contact Us</Link>
-      </li>
-            </ul>
-          </div> */}
-
-         
         </div>
       </div>
 
@@ -94,7 +73,7 @@ const Footer = () => {
       <div className="border-t border-[#444]">
         <div className="max-w-[1400px] mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-sm text-pink-50 text-center sm:text-left">
-            © 2025 <span className="text-pink-100">Bookforrest</span>. All rights reserved.
+            © 2025 <span className="text-pink-100">SERIN</span>. All rights reserved.
           </p>
         </div>
       </div>

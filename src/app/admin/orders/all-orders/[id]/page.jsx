@@ -477,7 +477,7 @@ const EditOrders = () => {
               onClick={() => setIsPaymentModalOpen(true)}
               className={`px-4 py-2  rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                 formData.payment
-                  ? "bg-green-600 text-white hover:bg-green-700 focus:ring-green-500"
+                  ? "bg-pink-600 text-white hover:bg-pink-700 focus:ring-green-500"
                   : "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
               }`}
             >

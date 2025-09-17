@@ -24,7 +24,7 @@ const InvoicePaymentDetails = ({ paymentData }) => {
     
     switch (status) {
       case "success":
-        return `${baseClasses} bg-green-100 text-green-800`;
+        return `${baseClasses} bg-pink-100 text-pink-800`;
       case "due":
         return `${baseClasses} bg-yellow-100 text-yellow-800`;
       case "pending":

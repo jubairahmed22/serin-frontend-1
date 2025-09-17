@@ -18,7 +18,7 @@ const NewReleasedFilter = () => {
     <div>
       <button
         onClick={handlePopularBooksClick}
-        className="px-6 py-3 buttonPopular hover:bg-green-600 cursor-pointer text-white font-medium rounded-full whitespace-nowrap transition-colors duration-300 shadow hover:shadow-md"
+        className="px-6 py-3 buttonPopular hover:bg-pink-600 cursor-pointer text-white font-medium rounded-full whitespace-nowrap transition-colors duration-300 shadow hover:shadow-md"
       >
         View All
       </button>

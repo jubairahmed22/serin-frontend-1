@@ -34,7 +34,7 @@ const ShippingProductsValue = ({
       </div>
 
       {/* {totalDiscount > 0 && (
-        <div className="flex justify-between text-green-600 dark:text-green-700">
+        <div className="flex justify-between text-pink-600 dark:text-pink-700">
           <span>Discount</span>
           <span>-৳{totalDiscount.toFixed(2)}</span>
         </div>

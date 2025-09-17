@@ -259,7 +259,7 @@ const AllBooksFilterAdmin = ({
               <motion.button
                 type="button"
                 onClick={onClear}
-                className="px-3 py-1.5 text-xs font-medium text-white bg-emerald-600 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:bg-emerald-700 dark:hover:bg-emerald-800 transition-all duration-200 shadow-sm flex items-center justify-center whitespace-nowrap"
+                className="px-3 py-1.5 text-xs font-medium text-white bg-pink-600 rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:bg-pink-700 dark:hover:bg-pink-800 transition-all duration-200 shadow-sm flex items-center justify-center whitespace-nowrap"
                 variants={clearButtonVariants}
                 initial="initial"
                 whileHover="hover"
@@ -333,8 +333,8 @@ const AllBooksFilterAdmin = ({
                 onClick={() => handleFilterChange(type)}
                 className={`w-full text-left px-3 py-4 cursor-pointer text-sm rounded-md transition-all duration-200 ${
                   filter === "true"
-                    ? "bg-emerald-100 text-emerald-800 border border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-100 dark:border-emerald-800 shadow-sm"
-                    : "bg-gray-50 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 border border-gray-200 dark:bg-gray-700/50 dark:text-gray-200 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-100 dark:border-gray-600"
+                    ? "bg-pink-100 text-pink-800 border border-emerald-200 dark:bg-pink-900/30 dark:text-pink-100 dark:border-emerald-800 shadow-sm"
+                    : "bg-gray-50 text-gray-700 hover:bg-pink-50 hover:text-pink-700 border border-gray-200 dark:bg-gray-700/50 dark:text-gray-200 dark:hover:bg-pink-900/20 dark:hover:text-pink-100 dark:border-gray-600"
                 }`}
                 variants={buttonVariants}
                 initial="initial"

@@ -276,7 +276,7 @@ const AuthorAllDataAdmin = () => {
               <span
                 className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                   category.showWebsite
-                    ? "bg-green-100 text-green-800 dark:bg-green-100 dark:text-green-800"
+                    ? "bg-pink-100 text-pink-800 dark:bg-pink-100 dark:text-pink-800"
                     : "bg-red-100 text-red-800 dark:bg-red-100 dark:text-red-800"
                 }`}
               >

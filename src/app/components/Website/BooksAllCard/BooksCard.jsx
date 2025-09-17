@@ -203,7 +203,7 @@ const BooksCard = ({ product }) => {
         className={`w-full cursor-pointer lg:mt-2 py-2.5 px-4 rounded-full cartButton font-semibold transition-colors duration-200 shadow-sm flex items-center justify-center gap-2 ${
           productInCart
             ? "bg-[#414143] hover:bg-red-700 text-white"
-            : "bg-[#F01F7B] hover:bg-emerald-700 text-white"
+            : "bg-[#F01F7B] hover:bg-pink-700 text-white"
         }`}
       >
         <svg

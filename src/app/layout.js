@@ -15,7 +15,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return (
+  return ( 
     <html lang="en">
       <head>
         {/* Add the Google Fonts link here */}

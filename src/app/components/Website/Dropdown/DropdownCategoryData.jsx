@@ -137,8 +137,8 @@ const DropdownCategoryData = ({setIsOpen}) => {
                       : "cursor-pointer"
                   } ${
                     activeItem === subCategory._id
-                      ? "text-green-600 bg-green-50"
-                      : "text-gray-700 hover:text-green-600"
+                      ? "text-pink-600 bg-pink-50"
+                      : "text-gray-700 hover:text-pink-600"
                   }`}
                   onClick={() => handleSubCategoryClick(subCategory)}
                 >
@@ -166,7 +166,7 @@ const DropdownCategoryData = ({setIsOpen}) => {
 
                 {activeItem === subCategory._id && (
                   <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-1 bg-green-600 rounded-t"
+                    className="absolute bottom-0 left-0 right-0 h-1 bg-pink-600 rounded-t"
                     layoutId="activeIndicator"
                   />
                 )}
@@ -196,10 +196,10 @@ const DropdownCategoryData = ({setIsOpen}) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: index * 0.05 }}
-                    className="hover:text-green-600 cursor-pointer"
+                    className="hover:text-pink-600 cursor-pointer"
                     onClick={() => handleChildCategoryClick(child)}
                   >
-                    <h4 className="font-medium text-gray-800 mb-1 hover:text-green-600">
+                    <h4 className="font-medium text-gray-800 mb-1 hover:text-pink-600">
                       {child.title}
                     </h4>
                   </motion.div>

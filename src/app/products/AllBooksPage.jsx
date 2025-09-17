@@ -319,7 +319,7 @@ const AllBooksPage = () => {
           onClear={clearAllFilters}
         ></AllMobileFilter>
       </div>
-      <div className="flex flex-col mt-2 w-full bg-white rounded-lg mb-6">
+      <div className="flex flex-col mt-2 w-full bg-white rounded-lg mb-20">
         <BooksData initialLoading={initialLoading} products={products} />
         <PaginationCard
           currentPage={currentPage}

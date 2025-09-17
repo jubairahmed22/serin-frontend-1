@@ -172,7 +172,7 @@ const [openDropdown, setOpenDropdown] = useState(null);
             <motion.button
               type="button"
               onClick={onClear}
-              className="px-3 py-1.5 text-xs font-medium text-white bg-emerald-600 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 shadow-sm flex items-center justify-center whitespace-nowrap"
+              className="px-3 py-1.5 text-xs font-medium text-white bg-pink-600 rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 shadow-sm flex items-center justify-center whitespace-nowrap"
               variants={clearButtonVariants}
               initial="initial"
               whileHover="hover"
@@ -233,8 +233,8 @@ const [openDropdown, setOpenDropdown] = useState(null);
               onClick={() => onTagChange(tag._id)}
               className={`px-3 py-1.5 text-xs rounded-md transition-all duration-200 ${
                 selectedTag === tag._id
-                  ? "bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-sm"
-                  : "bg-gray-50 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 border border-gray-200"
+                  ? "bg-pink-100 text-pink-800 border border-emerald-200 shadow-sm"
+                  : "bg-gray-50 text-gray-700 hover:bg-pink-50 hover:text-pink-700 border border-gray-200"
               }`}
               variants={buttonVariants}
               initial="initial"
@@ -299,8 +299,8 @@ const [openDropdown, setOpenDropdown] = useState(null);
               onClick={() => handleFilterChange(type)}
               className={`w-full text-left px-3 py-4 cursor-pointer text-sm rounded-md transition-all duration-200 ${
                 filter === "true"
-                  ? "bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-sm"
-                  : "bg-gray-50 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 border border-gray-200"
+                  ? "bg-pink-100 text-pink-800 border border-emerald-200 shadow-sm"
+                  : "bg-gray-50 text-gray-700 hover:bg-pink-50 hover:text-pink-700 border border-gray-200"
               }`}
               variants={buttonVariants}
               initial="initial"
@@ -342,8 +342,8 @@ const [openDropdown, setOpenDropdown] = useState(null);
         }}
         className="flex w-full items-center gap-2 border-l border-y rounded-l border-l-rounded-lg border-emerald-500 px-4 py-2 transition-colors"
       >
-        <FiLayers className="text-emerald-500" />
-        <span className="text-emerald-500 font-medium">All</span>
+        <FiLayers className="text-pink-500" />
+        <span className="text-pink-500 font-medium">All</span>
       </motion.button>
       
       <motion.button
@@ -353,8 +353,8 @@ const [openDropdown, setOpenDropdown] = useState(null);
         onClick={() => toggleDropdown('sort')}
         className="flex w-full items-center gap-2 border-l border-y border-emerald-500 px-4 py-2 transition-colors"
       >
-        <FiArrowUp className="text-emerald-500" />
-        <span className="text-emerald-500 font-medium">Sort</span>
+        <FiArrowUp className="text-pink-500" />
+        <span className="text-pink-500 font-medium">Sort</span>
       </motion.button>
 
       <div className="h-6 w-px bg-gray-300"></div>
@@ -366,8 +366,8 @@ const [openDropdown, setOpenDropdown] = useState(null);
         onClick={() => toggleDropdown('filter')}
         className="flex w-full items-center gap-2 border-r rounded-r border-y border-l border-r-rounded-lg border-emerald-500 px-4 py-2 transition-colors"
       >
-        <FiFilter className="text-emerald-500" />
-        <span className="text-emerald-500 font-medium">Filter</span>
+        <FiFilter className="text-pink-500" />
+        <span className="text-pink-500 font-medium">Filter</span>
       </motion.button>
     </div>
 
@@ -450,8 +450,8 @@ const [openDropdown, setOpenDropdown] = useState(null);
                     }}
                     className={`px-3 py-1.5 text-xs rounded-md transition-all duration-200 ${
                       selectedTag === tag._id
-                        ? "bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-sm"
-                        : "bg-gray-50 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 border border-gray-200"
+                        ? "bg-pink-100 text-pink-800 border border-emerald-200 shadow-sm"
+                        : "bg-gray-50 text-gray-700 hover:bg-pink-50 hover:text-pink-700 border border-gray-200"
                     }`}
                     variants={buttonVariants}
                     initial="initial"
@@ -545,8 +545,8 @@ const [openDropdown, setOpenDropdown] = useState(null);
               }}
               className={`w-full text-left px-3 py-4 cursor-pointer text-sm rounded-md transition-all duration-200 ${
                 filter === "true"
-                  ? "bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-sm dark:bg-emerald-200 dark:text-emerald-900 dark:border-emerald-300"
-                  : "bg-gray-50 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 border border-gray-200 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-emerald-100 dark:hover:text-emerald-800 dark:border-gray-300"
+                  ? "bg-pink-100 text-pink-800 border border-emerald-200 shadow-sm dark:bg-pink-200 dark:text-pink-900 dark:border-emerald-300"
+                  : "bg-gray-50 text-gray-700 hover:bg-pink-50 hover:text-pink-700 border border-gray-200 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-pink-100 dark:hover:text-pink-800 dark:border-gray-300"
               }`}
               variants={buttonVariants}
               initial="initial"

@@ -134,7 +134,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
             <div
               className={`flex items-center justify-between p-4 ${
                 activeTab === 'writers'
-                  ? "bg-green-50"
+                  ? "bg-pink-50"
                   : "hover:bg-gray-50"
               }`}
               onClick={() => setActiveTab(activeTab === 'writers' ? null : 'writers')}
@@ -142,7 +142,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
               <span
                 className={`font-medium ${
                   activeTab === 'writers'
-                    ? "text-green-600"
+                    ? "text-pink-600"
                     : "text-gray-700"
                 }`}
               >
@@ -171,7 +171,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
                     {writers.map((writer) => (
                       <div
                         key={writer._id}
-                        className="p-3 text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-md transition-colors"
+                        className="p-3 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md transition-colors"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleWriterClick(writer);
@@ -191,7 +191,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
             <div
               className={`flex items-center justify-between p-4 ${
                 activeTab === 'publishers'
-                  ? "bg-green-50"
+                  ? "bg-pink-50"
                   : "hover:bg-gray-50"
               }`}
               onClick={() => setActiveTab(activeTab === 'publishers' ? null : 'publishers')}
@@ -199,7 +199,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
               <span
                 className={`font-medium ${
                   activeTab === 'publishers'
-                    ? "text-green-600"
+                    ? "text-pink-600"
                     : "text-gray-700"
                 }`}
               >
@@ -228,7 +228,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
                     {publishers.map((publisher) => (
                       <div
                         key={publisher._id}
-                        className="p-3 text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-md transition-colors"
+                        className="p-3 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md transition-colors"
                         onClick={(e) => {
                           e.stopPropagation();
                           handlePublisherClick(publisher);
@@ -254,7 +254,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
                 <div
                   className={`flex items-center justify-between p-4 ${
                     activeTab === subCategory._id
-                      ? "bg-green-50"
+                      ? "bg-pink-50"
                       : "hover:bg-gray-50"
                   }`}
                   onClick={() => {
@@ -268,7 +268,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
                   <span
                     className={`font-medium ${
                       activeTab === subCategory._id
-                        ? "text-green-600"
+                        ? "text-pink-600"
                         : "text-gray-700"
                     }`}
                   >
@@ -300,7 +300,7 @@ const DropdownCategoryMobileData = ({ setIsOpen }) => {
                         {children.map((child) => (
                           <div
                             key={child._id}
-                            className="p-3 text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-md transition-colors"
+                            className="p-3 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md transition-colors"
                             onClick={(e) => {
                               e.stopPropagation();
                               handleChildCategoryClick(child);

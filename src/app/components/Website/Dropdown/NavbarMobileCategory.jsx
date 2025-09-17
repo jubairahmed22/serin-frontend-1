@@ -14,7 +14,7 @@ const NavbarMobileCategory = () => {
       {/* Menu Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className=" text-green-800 hover:text-green-700 transition-colors"
+        className=" text-pink-800 hover:text-pink-700 transition-colors"
       >
         <HiMenuAlt3 className="text-4xl scale-x-[-1]" />
       </button>
