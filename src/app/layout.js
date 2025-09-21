@@ -12,6 +12,10 @@ const poppins = Poppins({
 export const metadata = {
   title: "SERIN",
   description: "",
+ icons: {
+    icon: '/favicon.ico',
+    shortcut: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
