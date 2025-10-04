@@ -96,7 +96,7 @@ const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
     try {
       const response = await axios.post(
-        "https://books-server-001.vercel.app/pay-sslcommerz",
+        "https://cosmetics-server-001.vercel.app/pay-sslcommerz",
         {
           total,
           deliveryLocation,
@@ -135,7 +135,7 @@ const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   //     try {
   //       const response = await fetch(
-  //         "https://books-server-001.vercel.app/api/sent-cart-details",
+  //         "https://cosmetics-server-001.vercel.app/api/sent-cart-details",
   //         {
   //           method: "POST",
   //           headers: { "Content-Type": "application/json" },
@@ -195,7 +195,7 @@ const [privacyAccepted, setPrivacyAccepted] = useState(false);
     try {
       // First make the cash on delivery order request
       const orderResponse = await axios.post(
-        "https://books-server-001.vercel.app/pay-cashondelivery",
+        "https://cosmetics-server-001.vercel.app/pay-cashondelivery",
         {
           total,
           deliveryLocation: deliveryLocation,
@@ -215,7 +215,7 @@ const [privacyAccepted, setPrivacyAccepted] = useState(false);
         // Then send the email confirmation
         try {
           const emailResponse = await fetch(
-            "https://books-server-001.vercel.app/api/sent-cart-details",
+            "https://cosmetics-server-001.vercel.app/api/sent-cart-details",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
